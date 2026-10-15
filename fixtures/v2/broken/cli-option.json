@@ -1,0 +1,8 @@
+{
+  "code": "E-OPTION",
+  "args": [
+    "--lenient",
+    "--json"
+  ],
+  "exit": 2
+}

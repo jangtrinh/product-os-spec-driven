@@ -1,0 +1,24 @@
+{
+  "id": "decision-1",
+  "packet_id": "packet-34bd3ea36660d9ec7495c909bcca468f06902a9e1122a9d990a77bbf0cf8f1b8",
+  "data_sha256": "34bd3ea36660d9ec7495c909bcca468f06902a9e1122a9d990a77bbf0cf8f1b8",
+  "scope": {
+    "kind": "ac",
+    "ids": [
+      "US-01.AC-01"
+    ],
+    "revision": "49ab152c81062c0a429dd64b78c59ca1ec070f58f1c52823a36a7011906e3402"
+  },
+  "pins": {
+    "head": "fixture-head",
+    "base": "fixture-base",
+    "manifest": "4b7775b8e926745757bd6e1f594a7532bcc27376404e81918d15c95bf028b25a",
+    "build": "not-built"
+  },
+  "by": "po@example.test",
+  "at": "2026-01-09T00:00:00Z",
+  "default": "defer",
+  "reason": "Review pending",
+  "overrides": [],
+  "exceptions": []
+}

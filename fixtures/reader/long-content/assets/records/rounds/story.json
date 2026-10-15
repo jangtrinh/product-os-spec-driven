@@ -1,0 +1,16 @@
+{
+  "gate": "story",
+  "limits": {
+    "max_fix_rounds": 3,
+    "max_review_rounds": 3
+  },
+  "cycles": [
+    {
+      "cycle": 1,
+      "started_at": "2026-01-08T00:00:00Z",
+      "eval_rounds": 0,
+      "review_rounds": 1,
+      "ended": "running"
+    }
+  ]
+}

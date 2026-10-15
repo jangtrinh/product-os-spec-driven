@@ -1,0 +1,10 @@
+{
+  "id": "baseline-saved-filters-g5",
+  "head": "saved-filters-v1",
+  "base": "not-published",
+  "build": "not-built",
+  "date": "2026-10-14",
+  "stories": ["US-01", "US-02"],
+  "requirements": ["REQ-01", "REQ-02", "REQ-03"],
+  "decisions": ["D1", "D2", "D3", "D4"]
+}

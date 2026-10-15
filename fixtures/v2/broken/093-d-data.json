@@ -1,0 +1,12 @@
+{
+  "code": "D-DATA",
+  "severity": "error",
+  "fault": null,
+  "changes": [
+    {
+      "path": "ux/inventory.md",
+      "before": "6d45417fb5d3e30bd32c428de9bed5bc2815530829ce2ebebdf32227106edde3",
+      "after": "LS0tCmlkOiBzdHJ1Y3R1cmVkLWludmVudG9yeQp0eXBlOiBzY3JlZW4taW52ZW50b3J5CnRpdGxlOiBTY3JlZW5zIGFuZCBzdGF0ZXMKdXBkYXRlZDogMjAyNi0wMS0wOQpkYXRhOiBhc3NldHMvY2hhbmdlLmpzb24KLS0tCgojIyBTY3JlZW5zIGFuZCBzdGF0ZXMKU3RydWN0dXJlZCByZWNvcmRzOiBbaW52ZW50b3J5XSguLi9hc3NldHMvaW52ZW50b3J5Lmpzb24pLgoKIyMgRmxvdyBhbmQgZGlzY2xvc3VyZQpFYWNoIHJvdyBqb2lucyBpdHMgb3duaW5nIFVTLgoKIyMgR2FwcyBhbmQgZGVwYXJ0dXJlcwpObyBleHRlcm5hbCBzb3VyY2Ugc2VsZWN0ZWQ7IG5vIHZpc3VhbCBhY2NlcHRhbmNlIGNsYWltZWQuCg=="
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "version": "1",
+  "adapter": "example",
+  "kind": "component",
+  "items": [
+    {
+      "handle": "Button",
+      "name": "Button",
+      "status": "active"
+    }
+  ]
+}

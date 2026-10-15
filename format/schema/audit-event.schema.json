@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec-driven.local/format/v2/audit-event.schema.json",
+  "title": "Audit Event",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "id": {"type":"string","minLength":1,"x-spec-ref":"audit-event-id"},
+    "channel": {"enum":["direct","agent-ask-user"],"x-spec-ref":false,"x-spec-ref-reason":"Decision input channel, not an artifact reference.","x-spec-exclusion":{"category":"enum-literal"}},
+    "at": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/utc","x-spec-ref":false,"x-spec-ref-reason":"Timestamp/date value, not a dependency identity.","x-spec-exclusion":{"category":"alias-of","owner":"model-common.schema.json#/$defs/utc"}},
+    "actor": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/actor","x-spec-ref":false,"x-spec-ref-reason":"Actor identity/role, not an artifact dependency.","x-spec-exclusion":{"category":"alias-of","owner":"model-common.schema.json#/$defs/actor"}},
+    "type": {"enum":["change","finding","transition","decision","approval","eval","exception","publication","acknowledgment","switch","feedback"],"x-spec-ref":false,"x-spec-ref-reason":"Closed type selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},
+    "scope": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/scope","x-spec-ref":"audit-event-scope"},
+    "before": {"anyOf":[{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"audit-event.schema.json#/properties/before"}},{"type":"null","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"audit-event.schema.json#/properties/before"}}],"x-spec-ref":"audit-event-before"},
+    "after": {"anyOf":[{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"audit-event.schema.json#/properties/after"}},{"type":"null","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"audit-event.schema.json#/properties/after"}}],"x-spec-ref":"audit-event-after"},
+    "refs": {"type":"array","items":{"type":"string","minLength":1,"x-spec-ref":"audit-event-refs"},"minItems":1,"uniqueItems":true,"x-spec-ref":false,"x-spec-ref-reason":"Literal refs value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"audit-event.schema.json#/properties/refs/items"}},
+    "reason": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal reason value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+    "previous_sha256": {"anyOf":[{"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/hash","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"audit-event.schema.json#/properties/previous_sha256"}},{"type":"null"}],"x-spec-ref":false,"x-spec-ref-reason":"Content/version pin; binding context, not a separate reference.","x-spec-exclusion":{"category":"free-text"}}
+  },
+  "required": ["id","at","actor","type","scope","before","after","refs","reason","previous_sha256"]
+}

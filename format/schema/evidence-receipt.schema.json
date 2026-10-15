@@ -1,0 +1,164 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec-driven.local/format/v2/evidence-receipt.schema.json",
+  "title": "Evidence Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "id": {"type":"string","minLength":1,"x-spec-ref":"evidence-receipt-id"},
+    "scope": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/scope","x-spec-ref":"evidence-receipt-scope"},
+    "at": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/utc","x-spec-ref":false,"x-spec-ref-reason":"Timestamp/date value, not a dependency identity.","x-spec-exclusion":{"category":"alias-of","owner":"model-common.schema.json#/$defs/utc"}},
+    "freshness": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/freshness","x-spec-ref":false,"x-spec-ref-reason":"Shared value grammar; not a separate dependency at this alias.","x-spec-exclusion":{"category":"alias-of","owner":"model-common.schema.json#/$defs/freshness"}},
+    "pins": {"type":"object","minProperties":1,"additionalProperties":{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal additionalProperties value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},"x-spec-exclusion":{"category":"container-of","owner":"evidence-receipt.schema.json#/properties/pins/additionalProperties"},"x-spec-ref":false},
+    "execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "command": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal command value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+        "cwd": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/path","x-spec-ref":"evidence-receipt-execution-cwd"},
+        "exit": {"anyOf":[{"type":"integer"},{"type":"null"}]},
+        "result": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/eval","x-spec-ref":false,"x-spec-ref-reason":"Shared value grammar; not a separate dependency at this alias.","x-spec-exclusion":{"category":"alias-of","owner":"model-common.schema.json#/$defs/eval"}},
+        "selected": {"type":"integer","minimum":0},
+        "total": {"type":"integer","minimum":0},
+        "skipped": {"type":"array","items":{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal items value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},"minItems":0,"uniqueItems":true},
+        "baseline_debt": {"type":"array","items":{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal items value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},"minItems":0,"uniqueItems":true},
+        "red_controls": {"type":"array","items":{"type":"string","minLength":1,"x-spec-ref":"evidence-receipt-execution-red-controls"},"minItems":0,"uniqueItems":true,"x-spec-ref":false,"x-spec-ref-reason":"Literal red_controls value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"evidence-receipt.schema.json#/properties/execution/properties/red_controls/items"}},
+        "recovery": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal recovery value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}}
+      },
+      "required": ["command","cwd","exit","result","selected","total","skipped","baseline_debt","red_controls","recovery"],
+      "allOf": [
+        {"if":{"properties":{"result":{"const":"PASS","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"evidence-receipt.schema.json#/properties/execution/properties/result"}}},"required":["result"],"type":"object"},"then":{"properties":{"exit":{"const":0},"selected":{"type":"integer","minimum":1}},"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"evidence-receipt.schema.json#/properties/execution"}},"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"evidence-receipt.schema.json#/properties/execution"}},
+        {"if":{"properties":{"result":{"const":"NOT_RUN","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"evidence-receipt.schema.json#/properties/execution/properties/result"}}},"required":["result"],"type":"object"},"then":{"properties":{"exit":{"type":"null"}},"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"evidence-receipt.schema.json#/properties/execution"}},"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"evidence-receipt.schema.json#/properties/execution"}}
+      ]
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "builder": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/actor","x-spec-ref":false,"x-spec-ref-reason":"Actor identity/role, not an artifact dependency.","x-spec-exclusion":{"category":"alias-of","owner":"model-common.schema.json#/$defs/actor"}},
+        "reviewer": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/actor","x-spec-ref":false,"x-spec-ref-reason":"Actor identity/role, not an artifact dependency.","x-spec-exclusion":{"category":"alias-of","owner":"model-common.schema.json#/$defs/actor"}},
+        "independent": {"type":"boolean"},
+        "evaluator_version": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal evaluator_version value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+        "prompt_version": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal prompt_version value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+        "ruleset_version": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal ruleset_version value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+        "verdict": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/review","x-spec-ref":false,"x-spec-ref-reason":"Shared value grammar; not a separate dependency at this alias.","x-spec-exclusion":{"category":"alias-of","owner":"model-common.schema.json#/$defs/review"}},
+        "inputs": {"type":"array","items":{"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/path","x-spec-ref":"evidence-receipt-review-inputs"},"minItems":1,"uniqueItems":true,"x-spec-ref":false,"x-spec-ref-reason":"Literal inputs value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"evidence-receipt.schema.json#/properties/review/properties/inputs/items"}},
+        "criteria": {"type":"array","items":{"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/criterion"},"minItems":0,"uniqueItems":true},
+        "findings": {"type":"array","items":{"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/finding"},"minItems":0,"uniqueItems":true}
+      },
+      "required": ["builder","reviewer","independent","evaluator_version","prompt_version","ruleset_version","verdict","inputs","criteria","findings"]
+    },
+    "coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "ac": {"type":"array","items":{"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/ac","x-spec-ref":"evidence-receipt-coverage-ac"},"minItems":0,"uniqueItems":true,"x-spec-ref":false,"x-spec-ref-reason":"Literal ac value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"evidence-receipt.schema.json#/properties/coverage/properties/ac/items"}},
+        "scenarios": {"type":"array","items":{"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/scn","x-spec-ref":"evidence-receipt-coverage-scenarios"},"minItems":0,"uniqueItems":true,"x-spec-ref":false,"x-spec-ref-reason":"Literal scenarios value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"evidence-receipt.schema.json#/properties/coverage/properties/scenarios/items"}},
+        "passed": {"type":"array","items":{"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/ac","x-spec-ref":"evidence-receipt-coverage-passed"},"minItems":0,"uniqueItems":true,"x-spec-ref":false,"x-spec-ref-reason":"Literal passed value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"evidence-receipt.schema.json#/properties/coverage/properties/passed/items"}},
+        "na": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {"id":{"type":"string","minLength":1,"x-spec-ref":"evidence-receipt-coverage-na-id"},"reason":{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal reason value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},"confirmer":{"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/actor","x-spec-ref":false,"x-spec-ref-reason":"Actor identity/role, not an artifact dependency.","x-spec-exclusion":{"category":"alias-of","owner":"model-common.schema.json#/$defs/actor"}}},
+            "required": ["id","reason","confirmer"]
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        }
+      },
+      "required": ["ac","scenarios","passed","na"]
+    },
+    "artifacts": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/hashes","x-spec-ref":"evidence-receipt-artifacts"},
+    "domain": {"enum":["spec","concept","local-ci","visual","live-provider","deployed-protection","figma","delivery"],"x-spec-ref":false,"x-spec-ref-reason":"Closed domain selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},
+    "visual": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "screen": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/screen","x-spec-ref":"evidence-receipt-visual-screen"},
+        "state": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/state","x-spec-ref":"evidence-receipt-visual-state"},
+        "scenarios": {"type":"array","items":{"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/scn","x-spec-ref":"evidence-receipt-visual-scenarios"},"minItems":1,"uniqueItems":true,"x-spec-ref":false,"x-spec-ref-reason":"Literal scenarios value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"evidence-receipt.schema.json#/properties/visual/properties/scenarios/items"}},
+        "width": {"type":"integer","minimum":1},
+        "height": {"type":"integer","minimum":1},
+        "mode": {"enum":["light","dark"],"x-spec-ref":false,"x-spec-ref-reason":"Closed mode selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},
+        "locale": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal locale value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+        "fixture": {"type":"string","minLength":1,"x-spec-ref":"evidence-receipt-visual-fixture"},
+        "browser": {"anyOf":[{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"evidence-receipt.schema.json#/properties/visual/properties/browser"}},{"type":"null"}],"x-spec-ref":false,"x-spec-ref-reason":"Literal browser value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+        "build": {"anyOf":[{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"evidence-receipt.schema.json#/properties/visual/properties/build"}},{"type":"null","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"evidence-receipt.schema.json#/properties/visual/properties/build"}}],"x-spec-ref":"evidence-receipt-visual-build"},
+        "ds": {"anyOf":[{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"evidence-receipt.schema.json#/properties/visual/properties/ds"}},{"type":"null","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"evidence-receipt.schema.json#/properties/visual/properties/ds"}}],"x-spec-ref":"evidence-receipt-visual-ds"},
+        "probe": {"anyOf":[{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"evidence-receipt.schema.json#/properties/visual/properties/probe"}},{"type":"null","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"evidence-receipt.schema.json#/properties/visual/properties/probe"}}],"x-spec-ref":"evidence-receipt-visual-probe"},
+        "png": {"anyOf":[{"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/path","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"evidence-receipt.schema.json#/properties/visual/properties/png"}},{"type":"null","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"evidence-receipt.schema.json#/properties/visual/properties/png"}}],"x-spec-ref":"evidence-receipt-visual-png"},
+        "measurements": {"anyOf":[{"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/path","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"evidence-receipt.schema.json#/properties/visual/properties/measurements"}},{"type":"null","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"evidence-receipt.schema.json#/properties/visual/properties/measurements"}}],"x-spec-ref":"evidence-receipt-visual-measurements"},
+        "role": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal role value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+        "scope": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal scope value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}}
+      },
+      "required": ["screen","state","role","scope","scenarios","width","height","mode","locale","fixture"]
+    },
+    "supersedes": {"type":"array","minItems":1,"uniqueItems":true,"description":"AM-9: receipts this one supersedes within the same evidence key; validity rules in gate-model §5.","items":{"type":"object","additionalProperties":false,"required":["id","reason"],"properties":{"id":{"type":"string","minLength":1,"x-spec-ref":"evidence-receipt-supersedes-id"},"reason":{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal reason value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}}}}}
+  },
+  "required": ["id","scope","at","freshness","pins","execution","review","coverage","artifacts","domain"],
+  "allOf": [
+    {
+      "if": {"type":"object","properties":{"domain":{"const":"visual","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"evidence-receipt.schema.json#/properties/domain"}}},"required":["domain"]},
+      "then": {
+        "type": "object",
+        "properties": {"visual":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"evidence-receipt.schema.json#/properties/visual"}}},
+        "required": ["visual"],
+        "allOf": [
+          {
+            "if": {"type":"object","properties":{"execution":{"type":"object","properties":{"exit":{"type":"null"}},"required":["exit"]}},"required":["execution"]},
+            "then": {
+              "properties": {
+                "freshness": {"const":"MISSING","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"evidence-receipt.schema.json#/properties/freshness"}},
+                "execution": {"type":"object","properties":{"selected":{"const":0},"result":{"enum":["NOT_RUN","BLOCKED","SKIPPED","NA"],"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"evidence-receipt.schema.json#/properties/execution/properties/result"}}}},
+                "coverage": {"type":"object","properties":{"passed":{"type":"array","maxItems":0,"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"evidence-receipt.schema.json#/properties/coverage/properties/passed"}}}},
+                "visual": {
+                  "type": "object",
+                  "properties": {
+                    "browser": {"type":"null"},
+                    "build": {"type":"null","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"evidence-receipt.schema.json#/properties/visual/properties/build"}},
+                    "ds": {"type":"null","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"evidence-receipt.schema.json#/properties/visual/properties/ds"}},
+                    "probe": {"type":"null","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"evidence-receipt.schema.json#/properties/visual/properties/probe"}},
+                    "png": {"type":"null","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"evidence-receipt.schema.json#/properties/visual/properties/png"}},
+                    "measurements": {"type":"null","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"evidence-receipt.schema.json#/properties/visual/properties/measurements"}}
+                  }
+                }
+              },
+              "x-spec-ref": false,
+              "x-spec-ref-reason": "Constraint refinement; extraction belongs to the owning field."
+            ,"x-spec-exclusion":{"category":"refinement-of","owner":"evidence-receipt.schema.json#"}},
+            "else": {
+              "properties": {
+                "execution": {"type":"object","properties":{"result":{"enum":["PASS","FAIL"],"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"evidence-receipt.schema.json#/properties/execution/properties/result"}}}},
+                "visual": {
+                  "type": "object",
+                  "required": ["browser","build","ds","probe","png","measurements"],
+                  "properties": {
+                    "browser": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"evidence-receipt.schema.json#/properties/visual/properties/browser"}},
+                    "build": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"evidence-receipt.schema.json#/properties/visual/properties/build"}},
+                    "ds": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"evidence-receipt.schema.json#/properties/visual/properties/ds"}},
+                    "probe": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"evidence-receipt.schema.json#/properties/visual/properties/probe"}},
+                    "png": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/path","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"evidence-receipt.schema.json#/properties/visual/properties/png"}},
+                    "measurements": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/path","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"evidence-receipt.schema.json#/properties/visual/properties/measurements"}}
+                  }
+                }
+              },
+              "x-spec-ref": false,
+              "x-spec-ref-reason": "Constraint refinement; extraction belongs to the owning field."
+            ,"x-spec-exclusion":{"category":"refinement-of","owner":"evidence-receipt.schema.json#"}},
+            "x-spec-ref": false,
+            "x-spec-ref-reason": "Constraint refinement; extraction belongs to the owning field."
+          ,"x-spec-exclusion":{"category":"refinement-of","owner":"evidence-receipt.schema.json#"}}
+        ]
+      },
+      "x-spec-ref": false,
+      "x-spec-ref-reason": "Constraint refinement; extraction belongs to the owning field."
+    ,"x-spec-exclusion":{"category":"refinement-of","owner":"evidence-receipt.schema.json#"}},
+    {
+      "if": {"type":"object","properties":{"freshness":{"const":"CURRENT","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"evidence-receipt.schema.json#/properties/freshness"}}},"required":["freshness"]},
+      "then": {"properties":{"execution":{"type":"object","properties":{"result":{"enum":["PASS","FAIL"],"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"evidence-receipt.schema.json#/properties/execution/properties/result"}},"exit":{"type":"integer"}}}},"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"evidence-receipt.schema.json#"}},
+      "x-spec-ref": false,
+      "x-spec-ref-reason": "Constraint refinement; extraction belongs to the owning field."
+    ,"x-spec-exclusion":{"category":"refinement-of","owner":"evidence-receipt.schema.json#"}}
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec-driven.local/format/v2/rulings-index.schema.json",
+  "title": "Design authority rulings index (AM-6)",
+  "description": "Adapter-owned index of rulings referenced by design-profile authority entries of kind rulings.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version","adapter","items"],
+  "properties": {
+    "version": {"const":"1","x-spec-ref":false,"x-spec-ref-reason":"Closed version selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},
+    "adapter": {"type":"string","pattern":"^[a-z][a-z0-9-]*$","x-spec-ref":"rulings-index-adapter"},
+    "revision": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Content/version pin; binding context, not a separate reference.","x-spec-exclusion":{"category":"free-text"}},
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id","subject","scope","date","status","text_ref"],
+        "properties": {
+          "id": {"type":"string","minLength":1,"x-spec-ref":"rulings-index-items-id"},
+          "subject": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal subject value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+          "scope": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal scope value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+          "date": {"type":"string","format":"date","x-spec-ref":false,"x-spec-ref-reason":"Timestamp/date value, not a dependency identity.","x-spec-exclusion":{"category":"format-value"}},
+          "status": {"enum":["active","superseded","retired"],"x-spec-ref":false,"x-spec-ref-reason":"Closed status selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},
+          "supersedes": {"type":"array","items":{"type":"string","minLength":1,"x-spec-ref":"rulings-index-items-supersedes"},"uniqueItems":true,"x-spec-ref":false,"x-spec-ref-reason":"Literal supersedes value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"rulings-index.schema.json#/properties/items/items/properties/supersedes/items"}},
+          "non_waivable": {"type":"boolean"},
+          "text_ref": {"type":"string","minLength":1,"x-spec-ref":"rulings-index-items-text-ref"}
+        }
+      }
+    }
+  }
+}

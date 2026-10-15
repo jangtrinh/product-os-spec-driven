@@ -1,0 +1,12 @@
+{
+  "code": "Q-EXPECTED",
+  "severity": "error",
+  "fault": null,
+  "changes": [
+    {
+      "path": "assets/records/expected/XC-001.json",
+      "before": "db0880b0931e32947e06ed9bddedd15878288a10a839def59c499e9f79c23372",
+      "after": "ewogICJpZCI6ICJYQy0wMDEiLAogICJ0YXJnZXQiOiB7CiAgICAia2luZCI6ICJhYyIsCiAgICAiaWQiOiAiVVMtOTkuQUMtOTkiCiAgfSwKICAiYmVmb3JlIjogIk5vIGNvbmZpcm1hdGlvbiIsCiAgImFmdGVyIjogIkNvbmZpcm1hdGlvbiByZXF1aXJlZCIsCiAgInJlYXNvbiI6ICJvd25lciBydWxpbmciLAogICJyZXF1ZXN0ZWRfYnkiOiAicG9AZXhhbXBsZS50ZXN0IiwKICAicmVxdWVzdGVkX2F0IjogIjIwMjYtMDEtMDhUMDA6MDA6MDBaIiwKICAic3RhdHVzIjogImFwcHJvdmVkIiwKICAiZGVjaWRlZF9ieSI6ICJwb0BleGFtcGxlLnRlc3QiLAogICJkZWNpZGVkX2F0IjogIjIwMjYtMDEtMDlUMDA6MDA6MDBaIiwKICAiYW1lbmRtZW50X3JlZiI6ICJmYy0wMDEuQS0wMSIsCiAgInJlZF9oaXN0b3J5IjogWwogICAgewogICAgICAicmVjZWlwdCI6ICJyZWNlaXB0LXJlZCIsCiAgICAgICJyZXN1bHQiOiAiRkFJTCIKICAgIH0KICBdCn0K"
+    }
+  ]
+}

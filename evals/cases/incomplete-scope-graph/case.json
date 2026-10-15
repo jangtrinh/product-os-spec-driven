@@ -1,0 +1,6 @@
+{
+  "name": "incomplete-scope-graph",
+  "title": "Incomplete scope graph",
+  "ui": false,
+  "behavior": "incomplete-graph"
+}

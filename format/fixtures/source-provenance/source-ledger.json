@@ -1,0 +1,99 @@
+{
+  "version": 1,
+  "normalization": "nfc-lf-trim-trailing-v1",
+  "crosswalk": "crosswalk.json",
+  "items": [
+    {
+      "id": "CW-001",
+      "crosswalk_row": "CW-001",
+      "source": {
+        "file": "source.txt",
+        "line": 1
+      },
+      "text_sha256": "5f20bb85cd22d88b6518b365708b17f6682a4b710198c457032a4e3b6af11573",
+      "status": "exact",
+      "mappings": [
+        {
+          "kind": "scenario",
+          "id": "scenario:US-16.SCN-16-01"
+        }
+      ]
+    },
+    {
+      "id": "CW-002",
+      "crosswalk_row": "CW-002",
+      "source": {
+        "file": "source.txt",
+        "line": 2
+      },
+      "text_sha256": "86d40ff24ba16df85cb065c7255e50540fd4ea8337bcdffadf1ed614f5964e5a",
+      "status": "partial",
+      "mappings": [
+        {
+          "kind": "screen-state",
+          "id": "screen-state:S01"
+        }
+      ],
+      "reason": "Only the normal screen state has a typed mapping."
+    },
+    {
+      "id": "CW-003",
+      "crosswalk_row": "CW-003",
+      "source": {
+        "file": "source.txt",
+        "line": 3
+      },
+      "text_sha256": "e66b9b5727b82443798a84b07adc7ea32cfe9c592a8e192601b96e59d2ead4a8",
+      "status": "exact",
+      "mappings": [
+        {
+          "kind": "ac",
+          "id": "ac:US-16.AC-01"
+        }
+      ]
+    },
+    {
+      "id": "CW-004",
+      "crosswalk_row": "CW-004",
+      "source": {
+        "file": "source.txt",
+        "line": 4
+      },
+      "text_sha256": "8c70df7c1b0d48aa1427fa9f52073c19650d6d450becd8ada1fb3d9b5ed43ce6",
+      "status": "conflicting",
+      "mappings": [
+        {
+          "kind": "ac",
+          "id": "ac:US-16.AC-02"
+        }
+      ],
+      "reason": "The source contradicts the active control requirement."
+    },
+    {
+      "id": "CW-005",
+      "crosswalk_row": "CW-005",
+      "source": {
+        "file": "source.txt",
+        "line": 5
+      },
+      "text_sha256": "671f34aaaf8ac87128abe5868a8d2d2b9949847ba85620561efe4687f313b92c",
+      "status": "no-demo",
+      "mappings": [],
+      "reason": "The feedback has no typed demo implementation."
+    }
+  ],
+  "summary": {
+    "source_preservation": {
+      "total": 5,
+      "preserved": 5
+    },
+    "typed_coverage": {
+      "total": 5,
+      "mapped": 4
+    },
+    "demo_coverage": {
+      "total": 5,
+      "passed": 0
+    }
+  }
+}

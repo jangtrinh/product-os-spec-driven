@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec-driven.local/format/v2/rounds-ledger.schema.json",
+  "title": "Round counter ledger per gate (AM-6)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["gate","limits","cycles"],
+  "properties": {
+    "gate": {"type":"string","minLength":1,"x-spec-ref":"rounds-ledger-gate"},
+    "limits": {"type":"object","additionalProperties":false,"required":["max_fix_rounds","max_review_rounds"],"properties":{"max_fix_rounds":{"type":"integer","minimum":0},"max_review_rounds":{"type":"integer","minimum":0}}},
+    "cycles": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["cycle","started_at","eval_rounds","review_rounds","ended"],
+        "properties": {
+          "cycle": {"type":"integer","minimum":1},
+          "started_at": {"type":"string","format":"date-time","x-spec-ref":false,"x-spec-ref-reason":"Timestamp/date value, not a dependency identity.","x-spec-exclusion":{"category":"format-value"}},
+          "eval_rounds": {"type":"integer","minimum":0},
+          "review_rounds": {"type":"integer","minimum":0},
+          "ended": {"enum":["running","passed","failed","cap-reached","continued"],"x-spec-ref":false,"x-spec-ref-reason":"Closed ended selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},
+          "continuation_ref": {"type":"string","minLength":1,"x-spec-ref":"rounds-ledger-cycles-continuation-ref"},
+          "authorized_by": {"type":"string","format":"email","x-spec-ref":false,"x-spec-ref-reason":"Actor identity/role, not an artifact dependency.","x-spec-exclusion":{"category":"format-value"}}
+        },
+        "allOf": [
+          {
+            "if": {"properties":{"cycle":{"type":"integer","minimum":2}},"required":["cycle"],"type":"object"},
+            "then": {"required":["continuation_ref","authorized_by"],"type":"object","properties":{"continuation_ref":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"rounds-ledger.schema.json#/properties/cycles/items/properties/continuation_ref"}},"authorized_by":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"rounds-ledger.schema.json#/properties/cycles/items/properties/authorized_by"}}}},
+            "x-spec-ref": false,
+            "x-spec-ref-reason": "Constraint refinement; extraction belongs to the owning field."
+          ,"x-spec-exclusion":{"category":"refinement-of","owner":"rounds-ledger.schema.json#/properties/cycles/items"}}
+        ]
+      }
+    }
+  }
+}

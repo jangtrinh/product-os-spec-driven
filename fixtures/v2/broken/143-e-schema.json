@@ -1,0 +1,6 @@
+{
+  "code": "E-SCHEMA",
+  "severity": "error",
+  "fault": "missing-schema",
+  "changes": []
+}

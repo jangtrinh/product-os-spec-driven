@@ -1,0 +1,6 @@
+{
+  "name": "product-os-spec-driven",
+  "owner": {"name": "Jang"},
+  "metadata": {"description": "PRODUCT:OS Spec Driven commands and embedded kit."},
+  "plugins": [{"name": "spec", "source": "./", "version": "2.3.0", "description": "PRODUCT:OS Spec Driven", "category": "development"}]
+}

@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec-driven.local/format/v2/packet-data.schema.json",
+  "title": "Review packet data",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {"const":"1","x-spec-ref":false,"x-spec-ref-reason":"Closed version selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},
+    "product": {"const":"PRODUCT:OS Spec Driven","x-spec-ref":false,"x-spec-ref-reason":"Display brand; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},
+    "scope": {"$ref":"https://spec-driven.local/format/v2/batch-decision.schema.json#/properties/scope","x-spec-ref":"packet-data-scope"},
+    "baseline": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/pins","x-spec-ref":"packet-data-baseline"},
+    "candidate": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/pins","x-spec-ref":"packet-data-candidate"},
+    "membership": {"$ref":"https://spec-driven.local/format/v2/candidate-manifest.schema.json"},
+    "change": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type":"string","minLength":1,"x-spec-ref":"packet-data-change-id"},
+        "source": {"type":"string","minLength":1,"x-spec-ref":"packet-data-change-source"},
+        "reason": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal reason value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+        "rules": {
+          "type": "array",
+          "items": {"type":"object","additionalProperties":false,"properties":{"source":{"type":"string","minLength":1,"x-spec-ref":"packet-data-change-rules-source"},"before":{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal before value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},"after":{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal after value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}}},"required":["source","before","after"]},
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "impact": {"type":"array","items":{"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/impact"},"minItems":1,"uniqueItems":true},
+        "closure": {"type":"object","additionalProperties":false,"properties":{"complete":{"type":"boolean"},"fallback":{"anyOf":[{"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/stage","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"packet-data.schema.json#/properties/change/properties/closure/properties/fallback"}},{"type":"null"}],"x-spec-ref":false,"x-spec-ref-reason":"Literal fallback value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}}},"required":["complete","fallback"]},
+        "propagation": {"$ref":"https://spec-driven.local/format/v2/change-set.schema.json#/properties/propagation"}
+      },
+      "required": ["id","source","reason","rules","impact","closure","propagation"]
+    },
+    "screens": {"type":"array","items":{"$ref":"https://spec-driven.local/format/v2/screen-inventory.schema.json#/properties/screens/items"},"minItems":0,"uniqueItems":true},
+    "evidence": {"type":"array","items":{"$ref":"https://spec-driven.local/format/v2/evidence-receipt.schema.json"},"minItems":0,"uniqueItems":true},
+    "findings": {"type":"array","items":{"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/finding"},"minItems":0,"uniqueItems":true},
+    "open": {"type":"array","items":{"type":"object","additionalProperties":false,"properties":{"id":{"type":"string","minLength":1,"x-spec-ref":"packet-data-open-id"},"text":{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal text value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},"blocking":{"type":"boolean"}},"required":["id","text","blocking"]},"minItems":0,"uniqueItems":true},
+    "exceptions": {"type":"array","items":{"$ref":"https://spec-driven.local/format/v2/exception.schema.json"},"minItems":0,"uniqueItems":true},
+    "unaffected": {"type":"array","items":{"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/ac","x-spec-ref":"packet-data-unaffected"},"minItems":0,"uniqueItems":true,"x-spec-ref":false,"x-spec-ref-reason":"Literal unaffected value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"packet-data.schema.json#/properties/unaffected/items"}},
+    "aggregate_checks": {"type":"array","items":{"type":"string","minLength":1,"x-spec-ref":"packet-data-aggregate-checks"},"minItems":0,"uniqueItems":true,"x-spec-ref":false,"x-spec-ref-reason":"Literal aggregate_checks value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"packet-data.schema.json#/properties/aggregate_checks/items"}},
+    "requests": {"type":"array","items":{"type":"object","additionalProperties":false,"properties":{"id":{"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/ac","x-spec-ref":"packet-data-requests-id"},"reason":{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal reason value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}}},"required":["id","reason"]},"minItems":1,"uniqueItems":true},
+    "assets": {"type":"object","propertyNames":{"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/path","x-spec-ref":"packet-data-assets-key"},"additionalProperties":{"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/hash","x-spec-ref":"packet-data-assets"},"x-spec-ref":false,"x-spec-ref-reason":"Literal assets value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"packet-data.schema.json#/properties/assets/propertyNames"}},
+    "decisions": {"type":"array","items":{"type":"object","additionalProperties":false,"required":["id","text","source"],"properties":{"id":{"type":"string","minLength":1,"x-spec-ref":"packet-data-decisions-id"},"text":{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal text value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},"source":{"type":"string","minLength":1,"x-spec-ref":"packet-data-decisions-source"}}},"minItems":0,"uniqueItems":true},
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id","text","source","confidence","what_would_flip"],
+        "properties": {
+          "id": {"type":"string","minLength":1,"x-spec-ref":"packet-data-assumptions-id"},
+          "text": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal text value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+          "source": {"type":"string","minLength":1,"x-spec-ref":"packet-data-assumptions-source"},
+          "confidence": {"enum":["low","medium","high"],"x-spec-ref":false,"x-spec-ref-reason":"Closed confidence selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},
+          "what_would_flip": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal what_would_flip value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}}
+        }
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    }
+  },
+  "required": ["version","product","scope","baseline","candidate","membership","change","screens","evidence","findings","open","exceptions","unaffected","aggregate_checks","requests","assets","decisions","assumptions"]
+}

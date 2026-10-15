@@ -1,0 +1,12 @@
+{
+  "code": "DS-BOARD",
+  "severity": "error",
+  "fault": null,
+  "changes": [
+    {
+      "path": "ux/wireframes/html/W-01-saved-filters-list.html",
+      "before": "ea292e4ae2e2f34ca972d6fff8adfdc27656c2a9502bf9c0b2ec0c89354378b5",
+      "after": null
+    }
+  ]
+}

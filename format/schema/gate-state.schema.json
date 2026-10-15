@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec-driven.local/format/v2/gate-state.schema.json",
+  "title": "Gate State",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "definition": {"type":"object","additionalProperties":false,"properties":{"id":{"type":"string","minLength":1,"x-spec-ref":"gate-state-definition-id"},"version":{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Content/version pin; binding context, not a separate reference.","x-spec-exclusion":{"category":"free-text"}}},"required":["id","version"]},
+    "scope": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/scope","x-spec-ref":"gate-state-scope"},
+    "states": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "eval": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/eval","x-spec-ref":false,"x-spec-ref-reason":"Shared value grammar; not a separate dependency at this alias.","x-spec-exclusion":{"category":"alias-of","owner":"model-common.schema.json#/$defs/eval"}},
+        "review": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/review","x-spec-ref":false,"x-spec-ref-reason":"Shared value grammar; not a separate dependency at this alias.","x-spec-exclusion":{"category":"alias-of","owner":"model-common.schema.json#/$defs/review"}},
+        "human": {"enum":["PENDING","APPROVED","CHANGES_REQUESTED","NOT_REQUIRED"],"x-spec-ref":false,"x-spec-ref-reason":"Closed human selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},
+        "freshness": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/freshness","x-spec-ref":false,"x-spec-ref-reason":"Shared value grammar; not a separate dependency at this alias.","x-spec-exclusion":{"category":"alias-of","owner":"model-common.schema.json#/$defs/freshness"}},
+        "progress": {"enum":["draft","in-review","accepted","implemented","retired"],"x-spec-ref":false,"x-spec-ref-reason":"Closed progress selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},
+        "delivery": {"enum":["draft","published","acknowledged","switched"],"x-spec-ref":false,"x-spec-ref-reason":"Closed delivery selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}}
+      },
+      "required": ["eval","review","human","freshness","progress","delivery"]
+    },
+    "receipts": {"type":"array","items":{"type":"string","minLength":1,"x-spec-ref":"gate-state-receipts"},"minItems":0,"uniqueItems":true,"x-spec-ref":false,"x-spec-ref-reason":"Literal receipts value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"gate-state.schema.json#/properties/receipts/items"}},
+    "rounds": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "cycle": {"type":"string","minLength":1,"x-spec-ref":"gate-state-rounds-cycle"},
+        "eval_fix": {"type":"integer","minimum":0},
+        "review": {"type":"integer","minimum":0},
+        "max_fix": {"type":"integer","minimum":0},
+        "max_review": {"type":"integer","minimum":1},
+        "continuation": {"anyOf":[{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"gate-state.schema.json#/properties/rounds/properties/continuation"}},{"type":"null","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"gate-state.schema.json#/properties/rounds/properties/continuation"}}],"x-spec-ref":"gate-state-rounds-continuation"}
+      },
+      "required": ["cycle","eval_fix","review","max_fix","max_review","continuation"]
+    },
+    "decision": {"anyOf":[{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"gate-state.schema.json#/properties/decision"}},{"type":"null","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"gate-state.schema.json#/properties/decision"}}],"x-spec-ref":"gate-state-decision"},
+    "exception_ids": {"type":"array","items":{"type":"string","minLength":1,"x-spec-ref":"gate-state-exception-ids"},"minItems":0,"uniqueItems":true,"x-spec-ref":false,"x-spec-ref-reason":"Literal exception_ids value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"gate-state.schema.json#/properties/exception_ids/items"}},
+    "candidate": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/pins","x-spec-ref":"gate-state-candidate"}
+  },
+  "required": ["definition","scope","states","receipts","rounds","decision","exception_ids","candidate"],
+  "allOf": [
+    {
+      "if": {"type":"object","properties":{"states":{"type":"object","properties":{"human":{"const":"APPROVED","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"gate-state.schema.json#/properties/states/properties/human"}}},"required":["human"]}},"required":["states"]},
+      "then": {
+        "properties": {
+          "decision": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"gate-state.schema.json#/properties/decision"}},
+          "states": {"type":"object","properties":{"eval":{"enum":["PASS","NA"],"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"gate-state.schema.json#/properties/states/properties/eval"}},"review":{"enum":["PASS","NEEDS_CHANGES"],"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"gate-state.schema.json#/properties/states/properties/review"}},"freshness":{"const":"CURRENT","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"gate-state.schema.json#/properties/states/properties/freshness"}}}}
+        },
+        "x-spec-ref": false,
+        "x-spec-ref-reason": "Constraint refinement; extraction belongs to the owning field."
+      ,"x-spec-exclusion":{"category":"refinement-of","owner":"gate-state.schema.json#"}},
+      "x-spec-ref": false,
+      "x-spec-ref-reason": "Constraint refinement; extraction belongs to the owning field."
+    ,"x-spec-exclusion":{"category":"refinement-of","owner":"gate-state.schema.json#"}}
+  ]
+}

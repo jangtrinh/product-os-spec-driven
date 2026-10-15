@@ -1,0 +1,102 @@
+{
+  "code": "E-INPUT",
+  "severity": "error",
+  "fault": null,
+  "changes": [
+    {
+      "path": "README.md",
+      "before": "643e4b1bde92df958deeea6019da3a0091c75245b5438cc88e3cd046567366b1",
+      "after": null
+    },
+    {
+      "path": "contract/FC-001.md",
+      "before": "164002ff83bfb51aa77f2b2a1ffec38f318eae0a20d35bb09ed144a25c1dd732",
+      "after": null
+    },
+    {
+      "path": "decisions/decision-log.md",
+      "before": "32bcca4fed8621e924ba457a8f039a465e97ccb03cdae2acb240e142b131add6",
+      "after": null
+    },
+    {
+      "path": "decisions/glossary.md",
+      "before": "1019331ee31a291308a61a246594e5f9a529b7ae62ce74357e10538bc03d6e81",
+      "after": null
+    },
+    {
+      "path": "delivery/wave-1.md",
+      "before": "58e80fef836250db858ea6cf7287128cdc3bfc43ab91a4b9443beffe416a3872",
+      "after": null
+    },
+    {
+      "path": "intake/BRD.md",
+      "before": "11776ee2acb42e26a64305efa7b01d84a01f2872c1a7f586e41962e7a139f883",
+      "after": null
+    },
+    {
+      "path": "prd/PRD.md",
+      "before": "29bbc7bea3f0d3f400885fd00af901ea4f3e5ac6a6527d9939745c47051a7135",
+      "after": null
+    },
+    {
+      "path": "readable/00-overview.md",
+      "before": "4f4c1823d7ded1e4042ae30f3d70a2bc42990f3ff480edb2deeef85550b86c49",
+      "after": null
+    },
+    {
+      "path": "readable/epic-1-reuse-my-filters.md",
+      "before": "a98931b06a3fadb1de79327a86b5669949fafcce8120ccfc2c1c96dd2423c61a",
+      "after": null
+    },
+    {
+      "path": "reviews/review-r1.md",
+      "before": "3f5f303baac3d6e9f25ced5cb1fed9de9e0278bd716f6ad60176464f59f4f4ac",
+      "after": null
+    },
+    {
+      "path": "us/INDEX.md",
+      "before": "d42f8c9306083de3008102c702fee47a78ce04cca3e195e15c1465c048ef3dcd",
+      "after": null
+    },
+    {
+      "path": "us/US-01.md",
+      "before": "3aff2f28d75dd505783fc144478025d15c95c213077b3897ca8a7bd0ba872bfb",
+      "after": null
+    },
+    {
+      "path": "us/US-02.md",
+      "before": "96a7c48cf87a6e365dae867ae92a0b0fa9e3471acda621418292ba4f57d18a56",
+      "after": null
+    },
+    {
+      "path": "us/US-03.md",
+      "before": "a353ceb2d58120fa862e4071790de3db7140fb50aeb28786cbc74ed1e7885e1a",
+      "after": null
+    },
+    {
+      "path": "ux/flows.md",
+      "before": "6d77b29567f07ab370c3a6cab6f74952bfc6392cc7be7586d9486e906aaabc1a",
+      "after": null
+    },
+    {
+      "path": "ux/inventory.md",
+      "before": "6d45417fb5d3e30bd32c428de9bed5bc2815530829ce2ebebdf32227106edde3",
+      "after": null
+    },
+    {
+      "path": "ux/screen-inventory.md",
+      "before": "2dea7b58850f5ac1de4a073fd249e5f0cb5205eb0b19ae34bdfbf433c069ff43",
+      "after": null
+    },
+    {
+      "path": "ux/ui-contract.md",
+      "before": "d14be41a8f009c8a7e851d197f46b9a9eecb638c54889f1f63aac70d64d7f8cc",
+      "after": null
+    },
+    {
+      "path": "ux/wireframes/INDEX.md",
+      "before": "4e669e6153bc8e5316e35896a684229f0e28f54ca81d41b7c5fb6247e3063511",
+      "after": null
+    }
+  ]
+}

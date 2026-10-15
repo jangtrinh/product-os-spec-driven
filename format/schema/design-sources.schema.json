@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec-driven.local/format/v2/design-sources.schema.json",
+  "title": "Design Sources",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "generated": {"const":true},
+    "generator": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal generator value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+    "version": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Content/version pin; binding context, not a separate reference.","x-spec-exclusion":{"category":"free-text"}},
+    "at": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/utc","x-spec-ref":false,"x-spec-ref-reason":"Timestamp/date value, not a dependency identity.","x-spec-exclusion":{"category":"alias-of","owner":"model-common.schema.json#/$defs/utc"}},
+    "inputs": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/hashes","x-spec-ref":"design-sources-inputs"},
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {"type":"string","minLength":1,"pattern":"^source-[a-z][a-z0-9-]*$","x-spec-ref":"design-sources-entries-id"},
+          "tool": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal tool value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+          "locator": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "url": {"type":"string","minLength":1,"pattern":"^https?://","x-spec-ref":false,"x-spec-ref-reason":"Generated adapter external locator; navigation only, never a local dependency node.","x-spec-exclusion":{"category":"regex"}},
+              "file_key": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Generated adapter external locator; navigation only, never a local dependency node.","x-spec-exclusion":{"category":"free-text"}},
+              "node_id": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Generated adapter external locator; navigation only, never a local dependency node.","x-spec-exclusion":{"category":"free-text"}}
+            },
+            "required": [],
+            "anyOf": [{"required":["url"],"type":"object","properties":{"url":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"design-sources.schema.json#/properties/entries/items/properties/locator/properties/url"}}}},{"required":["file_key"],"type":"object","properties":{"file_key":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"design-sources.schema.json#/properties/entries/items/properties/locator/properties/file_key"}}}}]
+          },
+          "revision": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Content/version pin; binding context, not a separate reference.","x-spec-exclusion":{"category":"free-text"}},
+          "snapshot": {"anyOf":[{"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/path","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"design-sources.schema.json#/properties/entries/items/properties/snapshot"}},{"type":"null","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"design-sources.schema.json#/properties/entries/items/properties/snapshot"}}],"x-spec-ref":"design-sources-entries-snapshot"},
+          "at": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/utc","x-spec-ref":false,"x-spec-ref-reason":"Timestamp/date value, not a dependency identity.","x-spec-exclusion":{"category":"alias-of","owner":"model-common.schema.json#/$defs/utc"}},
+          "authority": {"type":"string","minLength":1,"x-spec-ref":"design-sources-entries-authority"},
+          "freshness": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/freshness","x-spec-ref":false,"x-spec-ref-reason":"Shared value grammar; not a separate dependency at this alias.","x-spec-exclusion":{"category":"alias-of","owner":"model-common.schema.json#/$defs/freshness"}},
+          "status": {"enum":["active","retired","unverified","missing"],"x-spec-ref":false,"x-spec-ref-reason":"Closed status selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}}
+        },
+        "required": ["id","tool","locator","revision","snapshot","at","authority","freshness","status"],
+        "allOf": [
+          {
+            "if": {"properties":{"status":{"enum":["unverified","missing"],"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"design-sources.schema.json#/properties/entries/items/properties/status"}}},"required":["status"],"type":"object"},
+            "then": {"properties":{"freshness":{"enum":["STALE","MISSING"],"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"design-sources.schema.json#/properties/entries/items/properties/freshness"}}},"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"design-sources.schema.json#/properties/entries/items"}},
+            "x-spec-ref": false,
+            "x-spec-ref-reason": "Constraint refinement; extraction belongs to the owning field."
+          ,"x-spec-exclusion":{"category":"refinement-of","owner":"design-sources.schema.json#/properties/entries/items"}}
+        ]
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    }
+  },
+  "required": ["generated","generator","version","at","inputs","entries"]
+}

@@ -1,0 +1,12 @@
+# Shared PRODUCT:OS Spec Driven rules
+
+- Resolve the installed plugin root, quote every path, and always supply `--project`. Project output belongs outside the kit. Never write into a plugin cache.
+- Use the host's actual ask-user tool: Claude Code `AskUserQuestion`; Codex `request_user_input` when available, otherwise `request_user_input_async`; Grok `ask_user_question` when exposed. Ask at most four questions per round, one decision per question; recommended option first with its source reason. A missing tool is NOT a tool confirmation: ask numbered questions in chat and wait. Never assume a timeout, a preselected option or silence is an answer.
+- Gate exception: an agent may run `decide.mjs` only after an explicit same-session PO choice through the host ask-user tool, using `--confirmed-via ask-user` and the PO's configured email. A chat-only fallback keeps the gate pending and prints the personal PO command. Outside this exception agents never run decide, import a decision, supply `--as`, or approve on the PO's behalf.
+- `--confirmed-via` records an asserted input channel, not authentication or proof the tool ran. Do not invent PO identity, answers, reason, follow-up or approvals. Existing records without a channel mean `direct`.
+- Only append answers the PO just supplied through the ask-user tool to `input/answers.md`. Chat-only fallback: wait for explicit text, then tell the PO how to write their answer source personally. Never edit generated `spec/decisions/decisions.md` to answer questions. Do not overwrite an earlier answer.
+- Preserve config, source, gates, receipts and counters. Never reset `review/`, increase caps, invent evidence or run concurrent upgrades. Preview an upgrade, explain it, then wait for the PO choice.
+- Exit codes: runner 0 = enabled stages settled (not production acceptance), 2 = waiting, 3 = bad input/config, 4 = tool failure. Init/status 3 = refusal. Doctor 0/1/2 has its own meanings. Capture the actual exit; failed/NOT RUN checks stay explicit.
+- Writer/reviewer must be different vendors, reviewer fresh and read-only. Grok is reviewer-only. No automatic login, secret display, external publication, repository rename or fabricated source.
+- New projects need real `roles.po.approvers`; G5 needs a real immutable baseline. Intake alone is proven with real models; later stages remain unproven even when fixture tests pass.
+- If the skill or tool is unavailable, state NOT RUN and the exact recovery. Do not claim installation or host support from documentation alone.

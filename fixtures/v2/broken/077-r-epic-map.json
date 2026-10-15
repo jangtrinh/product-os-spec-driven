@@ -1,0 +1,12 @@
+{
+  "code": "R-EPIC-MAP",
+  "severity": "error",
+  "fault": null,
+  "changes": [
+    {
+      "path": "readable/epic-map.json",
+      "before": "11a6d1c10438ee318c99709c22e8a80a7d2f532b709fcec2a6e36fa2187e77d1",
+      "after": null
+    }
+  ]
+}

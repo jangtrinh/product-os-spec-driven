@@ -1,0 +1,6 @@
+{
+  "name": "complete-scope-graph",
+  "title": "Complete scope graph",
+  "ui": false,
+  "behavior": "complete-graph"
+}

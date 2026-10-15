@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec-driven.local/format/v2/design-profile.schema.json",
+  "title": "Design Profile",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "id": {"type":"string","minLength":1,"pattern":"^[a-z][a-z0-9-]*$","x-spec-ref":"design-profile-id"},
+    "version": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Content/version pin; binding context, not a separate reference.","x-spec-exclusion":{"category":"free-text"}},
+    "authority": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {"type":"string","minLength":1,"x-spec-ref":"design-profile-authority-id"},
+          "path": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/path","x-spec-ref":"design-profile-authority-path"},
+          "revision": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Content/version pin; binding context, not a separate reference.","x-spec-exclusion":{"category":"free-text"}},
+          "kind": {"enum":["identity","principle","ruling","contract","ds","copy","default"],"x-spec-ref":false,"x-spec-ref-reason":"Closed kind selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},
+          "non_waivable": {"type":"boolean"}
+        },
+        "required": ["id","path","revision","kind","non_waivable"]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "tokens": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "owner": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/actor","x-spec-ref":false,"x-spec-ref-reason":"Actor identity/role, not an artifact dependency.","x-spec-exclusion":{"category":"alias-of","owner":"model-common.schema.json#/$defs/actor"}},
+        "source": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/path","x-spec-ref":"design-profile-tokens-source"},
+        "revision": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Content/version pin; binding context, not a separate reference.","x-spec-exclusion":{"category":"free-text"}},
+        "generated": {"type":"array","items":{"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/path","x-spec-ref":"design-profile-tokens-generated"},"minItems":0,"uniqueItems":true,"x-spec-ref":false,"x-spec-ref-reason":"Literal generated value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"design-profile.schema.json#/properties/tokens/properties/generated/items"}},
+        "sync_direction": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal sync_direction value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}}
+      },
+      "required": ["owner","source","revision","generated","sync_direction"]
+    },
+    "catalogs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {"type":"string","minLength":1,"x-spec-ref":"design-profile-catalogs-id"},
+          "path": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/path","x-spec-ref":"design-profile-catalogs-path"},
+          "revision": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Content/version pin; binding context, not a separate reference.","x-spec-exclusion":{"category":"free-text"}},
+          "kind": {"enum":["component","pattern","copy"],"x-spec-ref":false,"x-spec-ref-reason":"Closed kind selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},
+          "locale": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal locale value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}}
+        },
+        "required": ["id","path","revision","kind"],
+        "allOf": [
+          {
+            "if": {"type":"object","properties":{"kind":{"const":"copy","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"design-profile.schema.json#/properties/catalogs/items/properties/kind"}}},"required":["kind"]},
+            "then": {"type":"object","required":["locale"],"properties":{"locale":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"design-profile.schema.json#/properties/catalogs/items/properties/locale"}}}},
+            "else": {"not":{"type":"object","properties":{"locale":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"design-profile.schema.json#/properties/catalogs/items/properties/locale"}}},"required":["locale"]},"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"design-profile.schema.json#/properties/catalogs/items"}},
+            "x-spec-ref": false,
+            "x-spec-ref-reason": "Constraint refinement; extraction belongs to the owning field."
+          ,"x-spec-exclusion":{"category":"refinement-of","owner":"design-profile.schema.json#/properties/catalogs/items"}}
+        ]
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "capabilities": {
+      "type": "array",
+      "items": {"type":"object","additionalProperties":false,"properties":{"id":{"type":"string","minLength":1,"x-spec-ref":"design-profile-capabilities-id"},"status":{"enum":["available","missing","unverified"],"x-spec-ref":false,"x-spec-ref-reason":"Closed status selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},"reason":{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal reason value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}}},"required":["id","status","reason"]},
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "rubrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {"core":{"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/path","x-spec-ref":"design-profile-rubrics-core"},"adapter":{"type":"array","items":{"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/path","x-spec-ref":"design-profile-rubrics-adapter"},"minItems":0,"uniqueItems":true,"x-spec-ref":false,"x-spec-ref-reason":"Literal adapter value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"design-profile.schema.json#/properties/rubrics/properties/adapter/items"}}},
+      "required": ["core","adapter"]
+    },
+    "evidence_providers": {"type":"array","items":{"type":"object","additionalProperties":false,"properties":{"id":{"type":"string","minLength":1,"x-spec-ref":"design-profile-evidence-providers-id"},"version":{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Content/version pin; binding context, not a separate reference.","x-spec-exclusion":{"category":"free-text"}},"capability":{"type":"string","minLength":1,"x-spec-ref":"design-profile-evidence-providers-capability"}},"required":["id","version","capability"]},"minItems":0,"uniqueItems":true},
+    "locales": {"type":"array","items":{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal items value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},"minItems":1,"uniqueItems":true},
+    "viewports": {"type":"array","items":{"type":"object","additionalProperties":false,"properties":{"width":{"type":"integer","minimum":1},"height":{"type":"integer","minimum":1}},"required":["width","height"]},"minItems":1,"uniqueItems":true},
+    "modes": {"type":"array","items":{"enum":["light","dark"],"x-spec-ref":false,"x-spec-ref-reason":"Closed items selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},"minItems":1,"uniqueItems":true},
+    "inputs": {"type":"array","items":{"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/path","x-spec-ref":"design-profile-inputs"},"minItems":1,"uniqueItems":true,"x-spec-ref":false,"x-spec-ref-reason":"Literal inputs value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"design-profile.schema.json#/properties/inputs/items"}}
+  },
+  "required": ["id","version","authority","tokens","catalogs","capabilities","rubrics","evidence_providers","locales","viewports","modes","inputs"]
+}

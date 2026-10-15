@@ -1,0 +1,6 @@
+{
+  "name": "role-toggle-manual",
+  "title": "Role toggle and manual independence",
+  "ui": false,
+  "behavior": "role-manual"
+}

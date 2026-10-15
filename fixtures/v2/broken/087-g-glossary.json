@@ -1,0 +1,12 @@
+{
+  "code": "G-GLOSSARY",
+  "severity": "error",
+  "fault": null,
+  "changes": [
+    {
+      "path": "decisions/glossary.md",
+      "before": "1019331ee31a291308a61a246594e5f9a529b7ae62ce74357e10538bc03d6e81",
+      "after": null
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec-driven.local/format/v2/feedback-record.schema.json",
+  "title": "Owner feedback record (AM-5)",
+  "description": "Path of one owner correction from verbatim feedback to an enforced, tested invariant.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id","received_at","from","verbatim","scope","disposition"],
+  "properties": {
+    "id": {"type":"string","pattern":"^FB-[0-9]{3,}$","x-spec-ref":"feedback-record-id"},
+    "received_at": {"type":"string","format":"date-time","x-spec-ref":false,"x-spec-ref-reason":"Timestamp/date value, not a dependency identity.","x-spec-exclusion":{"category":"format-value"}},
+    "from": {"type":"string","format":"email","x-spec-ref":false,"x-spec-ref-reason":"Actor identity/role, not an artifact dependency.","x-spec-exclusion":{"category":"format-value"}},
+    "verbatim": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal verbatim value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+    "scope": {"enum":["shared-rule","one-off"],"x-spec-ref":false,"x-spec-ref-reason":"Closed scope selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},
+    "disposition": {"enum":["open","ruled","enforced","rejected"],"x-spec-ref":false,"x-spec-ref-reason":"Closed disposition selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},
+    "ruling_ref": {"type":"string","minLength":1,"x-spec-ref":"feedback-record-ruling-ref"},
+    "invariant": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal invariant value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+    "negative_control": {"type":"object","additionalProperties":false,"required":["check","red_receipt"],"properties":{"check":{"type":"string","minLength":1,"x-spec-ref":"feedback-record-negative-control-check"},"red_receipt":{"type":"string","minLength":1,"x-spec-ref":"feedback-record-negative-control-red-receipt"}}},
+    "suite_wired": {"type":"boolean"},
+    "reason": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal reason value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}}
+  },
+  "allOf": [
+    {"if":{"properties":{"disposition":{"const":"ruled","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"feedback-record.schema.json#/properties/disposition"}}},"required":["disposition"],"type":"object"},"then":{"required":["ruling_ref"],"type":"object","properties":{"ruling_ref":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"feedback-record.schema.json#/properties/ruling_ref"}}}},"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"feedback-record.schema.json#"}},
+    {
+      "if": {"properties":{"disposition":{"const":"enforced","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"feedback-record.schema.json#/properties/disposition"}}},"required":["disposition"],"type":"object"},
+      "then": {"required":["ruling_ref","invariant","negative_control","suite_wired"],"properties":{"suite_wired":{"const":true},"ruling_ref":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"feedback-record.schema.json#/properties/ruling_ref"}},"invariant":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"feedback-record.schema.json#/properties/invariant"}},"negative_control":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"feedback-record.schema.json#/properties/negative_control"}}},"type":"object"},
+      "x-spec-ref": false,
+      "x-spec-ref-reason": "Constraint refinement; extraction belongs to the owning field."
+    ,"x-spec-exclusion":{"category":"refinement-of","owner":"feedback-record.schema.json#"}},
+    {"if":{"properties":{"disposition":{"const":"rejected","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"feedback-record.schema.json#/properties/disposition"}}},"required":["disposition"],"type":"object"},"then":{"required":["reason"],"type":"object","properties":{"reason":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"feedback-record.schema.json#/properties/reason"}}}},"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"feedback-record.schema.json#"}}
+  ]
+}

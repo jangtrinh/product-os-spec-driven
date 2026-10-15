@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec-driven.local/format/v2/reference-registry.schema.json",
+  "title": "Closed reference-field registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version","direction","entries"],
+  "properties": {"version":{"const":"1","x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"enum-literal"}},"direction":{"const":"prerequisite → dependent","x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"enum-literal"}},"entries":{"type":"array","minItems":1,"items":{"$ref":"#/$defs/entry"}}},
+  "$defs": {
+    "text": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"free-text"}},
+    "node": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kinds","id"],
+      "properties": {
+        "kinds": {"type":"array","minItems":1,"uniqueItems":true,"items":{"enum":["contract","req","us","ac","scenario","screen-state","board","component","pattern","token","rule","test","fixture","environment","build","artifact","gate","receipt","amendment","decision"],"x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"enum-literal"}}},
+        "id": {"$ref":"#/$defs/text","x-spec-ref":false,"x-spec-ref-reason":"Registry extraction metadata, not a reference in a spec bundle instance.","x-spec-exclusion":{"category":"alias-of","owner":"reference-registry.schema.json#/$defs/text"}}
+      }
+    },
+    "grammar": {"type":"object","additionalProperties":false,"required":["file","section"],"properties":{"file":{"enum":["SPEC-FORMAT-v2.md","design-model.md","glossary-grammar.md","reference-registry-grammar.md","packet-interchange.md","gate-model.md"],"x-spec-ref":false,"x-spec-ref-reason":"Registry extraction metadata, not a reference in a spec bundle instance.","x-spec-exclusion":{"category":"enum-literal"}},"section":{"$ref":"#/$defs/text","x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"alias-of","owner":"reference-registry.schema.json#/$defs/text"}}}},
+    "location": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind"],
+      "properties": {
+        "kind": {"enum":["front-matter","body-table","body-heading","json"],"x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"enum-literal"}},
+        "path": {"$ref":"#/$defs/text","x-spec-ref":false,"x-spec-ref-reason":"Registry extraction metadata, not a reference in a spec bundle instance.","x-spec-exclusion":{"category":"alias-of","owner":"reference-registry.schema.json#/$defs/text"}},
+        "heading": {"$ref":"#/$defs/text","x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"alias-of","owner":"reference-registry.schema.json#/$defs/text"}},
+        "column": {"$ref":"#/$defs/text","x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"alias-of","owner":"reference-registry.schema.json#/$defs/text"}},
+        "pattern": {"$ref":"#/$defs/text","x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"alias-of","owner":"reference-registry.schema.json#/$defs/text"}},
+        "capture": {"type":"string","pattern":"^[1-9][0-9]*$","x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"regex"}}
+      },
+      "allOf": [
+        {
+          "if": {"properties":{"kind":{"enum":["front-matter","json"],"x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"refinement-of","owner":"reference-registry.schema.json#/$defs/location/properties/kind"}}},"required":["kind"],"x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"refinement-of","owner":"reference-registry.schema.json#/$defs/location"}},
+          "then": {"required":["path"],"properties":{"path":{"x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"refinement-of","owner":"reference-registry.schema.json#/$defs/location/properties/path"}}},"x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"refinement-of","owner":"reference-registry.schema.json#/$defs/location"}},
+          "x-spec-ref": false,
+          "x-spec-ref-reason": "Registry control grammar, not a spec-instance dependency."
+        ,"x-spec-exclusion":{"category":"refinement-of","owner":"reference-registry.schema.json#/$defs/location"}},
+        {
+          "if": {"properties":{"kind":{"const":"body-table","x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"refinement-of","owner":"reference-registry.schema.json#/$defs/location/properties/kind"}}},"required":["kind"],"x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"refinement-of","owner":"reference-registry.schema.json#/$defs/location"}},
+          "then": {"required":["heading","column","pattern"],"properties":{"heading":{"x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"refinement-of","owner":"reference-registry.schema.json#/$defs/location/properties/heading"}},"column":{"x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"refinement-of","owner":"reference-registry.schema.json#/$defs/location/properties/column"}},"pattern":{"x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"refinement-of","owner":"reference-registry.schema.json#/$defs/location/properties/pattern"}}},"x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"refinement-of","owner":"reference-registry.schema.json#/$defs/location"}},
+          "x-spec-ref": false,
+          "x-spec-ref-reason": "Registry control grammar, not a spec-instance dependency."
+        ,"x-spec-exclusion":{"category":"refinement-of","owner":"reference-registry.schema.json#/$defs/location"}},
+        {
+          "if": {"properties":{"kind":{"const":"body-heading","x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"refinement-of","owner":"reference-registry.schema.json#/$defs/location/properties/kind"}}},"required":["kind"],"x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"refinement-of","owner":"reference-registry.schema.json#/$defs/location"}},
+          "then": {"required":["pattern"],"properties":{"pattern":{"x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"refinement-of","owner":"reference-registry.schema.json#/$defs/location/properties/pattern"}}},"x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"refinement-of","owner":"reference-registry.schema.json#/$defs/location"}},
+          "x-spec-ref": false,
+          "x-spec-ref-reason": "Registry control grammar, not a spec-instance dependency."
+        ,"x-spec-exclusion":{"category":"refinement-of","owner":"reference-registry.schema.json#/$defs/location"}}
+      ]
+    },
+    "entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id","doc_type","location","source","target","relation","edge","causal","effect","grammar","parse"],
+      "properties": {
+        "certification_boundary": {
+          "const": "terminal-graph-only-candidate",
+          "x-spec-ref": false,
+          "x-spec-ref-reason": "Closed graph certification control rule, not an instance dependency.",
+          "x-spec-exclusion": {"category": "enum-literal"}
+        },
+        "id": {"$ref":"#/$defs/text","x-spec-ref":false,"x-spec-ref-reason":"Registry extraction metadata, not a reference in a spec bundle instance.","x-spec-exclusion":{"category":"alias-of","owner":"reference-registry.schema.json#/$defs/text"}},
+        "doc_type": {"$ref":"#/$defs/text","x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"alias-of","owner":"reference-registry.schema.json#/$defs/text"}},
+        "location": {"$ref":"#/$defs/location"},
+        "source": {"$ref":"#/$defs/node","x-spec-ref":false,"x-spec-ref-reason":"Registry extraction metadata, not a reference in a spec bundle instance.","x-spec-exclusion":{"category":"alias-of","owner":"reference-registry.schema.json#/$defs/node"}},
+        "target": {"$ref":"#/$defs/node","x-spec-ref":false,"x-spec-ref-reason":"Registry extraction metadata, not a reference in a spec bundle instance.","x-spec-exclusion":{"category":"alias-of","owner":"reference-registry.schema.json#/$defs/node"}},
+        "relation": {"enum":["derives","implements","verifies","uses","governs","renders","supersedes","mentions"],"x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"enum-literal"}},
+        "edge": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["from","to"],
+          "properties": {"from":{"enum":["source","target"],"x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"enum-literal"}},"to":{"enum":["source","target"],"x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"enum-literal"}}},
+          "oneOf": [
+            {"properties":{"from":{"const":"source","x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"refinement-of","owner":"reference-registry.schema.json#/$defs/entry/properties/edge/properties/from"}},"to":{"const":"target","x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"refinement-of","owner":"reference-registry.schema.json#/$defs/entry/properties/edge/properties/to"}}},"x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"refinement-of","owner":"reference-registry.schema.json#/$defs/entry/properties/edge"}},
+            {"properties":{"from":{"const":"target","x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"refinement-of","owner":"reference-registry.schema.json#/$defs/entry/properties/edge/properties/from"}},"to":{"const":"source","x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"refinement-of","owner":"reference-registry.schema.json#/$defs/entry/properties/edge/properties/to"}}},"x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"refinement-of","owner":"reference-registry.schema.json#/$defs/entry/properties/edge"}}
+          ]
+        },
+        "causal": {"type":"boolean"},
+        "effect": {"enum":["edge","declare","context","projection"],"x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"enum-literal"}},
+        "grammar": {"$ref":"#/$defs/grammar"},
+        "parse": {"$ref":"#/$defs/text","x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"alias-of","owner":"reference-registry.schema.json#/$defs/text"}},
+        "schema": {"type":"object","additionalProperties":false,"required":["file","pointer"],"properties":{"file":{"$ref":"#/$defs/text","x-spec-ref":false,"x-spec-ref-reason":"Registry extraction metadata, not a reference in a spec bundle instance.","x-spec-exclusion":{"category":"alias-of","owner":"reference-registry.schema.json#/$defs/text"}},"pointer":{"$ref":"#/$defs/text","x-spec-ref":false,"x-spec-ref-reason":"Registry extraction metadata, not a reference in a spec bundle instance.","x-spec-exclusion":{"category":"alias-of","owner":"reference-registry.schema.json#/$defs/text"}}}},
+        "ownership": {"$ref":"#/$defs/node","x-spec-ref":false,"x-spec-ref-reason":"Registry extraction metadata for the declaring document; no payload reference.","x-spec-exclusion":{"category":"alias-of","owner":"reference-registry.schema.json#/$defs/node"}},
+        "cases": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["when","target","relation","edge","causal"],
+            "properties": {
+              "when": {"type":"object","additionalProperties":false,"required":["path","value"],"properties":{"path":{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Discriminator instance path in registry control metadata, not a spec file reference.","x-spec-exclusion":{"category":"free-text"}},"value":{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"free-text"}}}},
+              "target": {"$ref":"#/$defs/node"},
+              "relation": {"enum":["derives","implements","verifies","uses","governs","renders","mentions","supersedes"],"x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"enum-literal"}},
+              "edge": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["from","to"],
+                "properties": {"from":{"enum":["source","target"],"x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"enum-literal"}},"to":{"enum":["source","target"],"x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"enum-literal"}}},
+                "oneOf": [
+                  {"properties":{"from":{"const":"source","x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"refinement-of","owner":"reference-registry.schema.json#/$defs/entry/properties/cases/items/properties/edge/properties/from"}},"to":{"const":"target","x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"refinement-of","owner":"reference-registry.schema.json#/$defs/entry/properties/cases/items/properties/edge/properties/to"}}},"x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"refinement-of","owner":"reference-registry.schema.json#/$defs/entry/properties/cases/items/properties/edge"}},
+                  {"properties":{"from":{"const":"target","x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"refinement-of","owner":"reference-registry.schema.json#/$defs/entry/properties/cases/items/properties/edge/properties/from"}},"to":{"const":"source","x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"refinement-of","owner":"reference-registry.schema.json#/$defs/entry/properties/cases/items/properties/edge/properties/to"}}},"x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"refinement-of","owner":"reference-registry.schema.json#/$defs/entry/properties/cases/items/properties/edge"}}
+                ]
+              },
+              "causal": {"type":"boolean"}
+            }
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {"properties":{"causal":{"const":true}},"required":["causal"],"x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"refinement-of","owner":"reference-registry.schema.json#/$defs/entry"}},
+          "then": {"properties":{"effect":{"const":"edge","x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"refinement-of","owner":"reference-registry.schema.json#/$defs/entry/properties/effect"}},"relation":{"enum":["derives","implements","verifies","uses","governs","renders"],"x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"refinement-of","owner":"reference-registry.schema.json#/$defs/entry/properties/relation"}}},"x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"refinement-of","owner":"reference-registry.schema.json#/$defs/entry"}},
+          "x-spec-ref": false,
+          "x-spec-ref-reason": "Registry control grammar, not a spec-instance dependency."
+        ,"x-spec-exclusion":{"category":"refinement-of","owner":"reference-registry.schema.json#/$defs/entry"}},
+        {
+          "if": {"properties":{"effect":{"enum":["declare","context","projection"],"x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"refinement-of","owner":"reference-registry.schema.json#/$defs/entry/properties/effect"}}},"required":["effect"],"x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"refinement-of","owner":"reference-registry.schema.json#/$defs/entry"}},
+          "then": {"properties":{"causal":{"const":false}},"x-spec-ref":false,"x-spec-ref-reason":"Registry control grammar, not a spec-instance dependency.","x-spec-exclusion":{"category":"refinement-of","owner":"reference-registry.schema.json#/$defs/entry"}},
+          "x-spec-ref": false,
+          "x-spec-ref-reason": "Registry control grammar, not a spec-instance dependency."
+        ,"x-spec-exclusion":{"category":"refinement-of","owner":"reference-registry.schema.json#/$defs/entry"}}
+      ]
+    }
+  }
+}

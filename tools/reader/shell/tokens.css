@@ -1,0 +1,130 @@
+/* THEME TOKENS (default look). Everything the reader draws comes from these variables, so another project swaps this one file.
+   Layout of the file: light values inside the first :root block, then one line holding only the dark marker comment, then the
+   dark declarations alone (no selector). render and make-shell wrap the dark part for prefers-color-scheme and [data-theme="dark"].
+   To use another theme set the manifest field theme.tokens to your file; start from shell/theme.default.css and keep every
+   variable name. */
+:root {
+  --font-sans: 'Be Vietnam Pro', 'Be Vietnam Pro Fallback', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+
+  --color-bg: #F7F7F8;
+  --color-surface: #FFFFFF;
+  --surface-2: #F0F1F2;
+  --surface-3: #FBFBFC;
+  --color-border: #E9EAEC;
+  --color-border-subtle: #F0F1F2;
+  --color-outline: #D8D8D8;           /* color.neutral-200 */
+  --color-text: #1A1B1E;
+  --color-text-muted: #5B5E66;
+  --color-text-subtle: #8A8D95;
+  --color-primary: #202020;
+  --color-primary-hover: #000000;
+  --color-primary-active: #000000;
+  --color-primary-soft: #EDEDEE;
+  --color-link: #202020;
+  --color-border-focus: #202020;
+  --color-ok-ink: #166B46; --color-warn-ink: #7A4D00; --color-info-ink: #1D4ED8; --color-bad-ink: #A8122A;
+  --color-ok: #1F8A5B;   --color-ok-soft: #E8F4EE;   --color-ok-border: #BCDDCE;
+  --color-warn: #9A6200; --color-warn-soft: #F5EDDB; --color-warn-border: #E1CEAB;
+  --color-info: #1D4ED8; --color-info-soft: #EFF6FF; --color-info-border: #BFDBFE;
+  --color-bad: #C0152F;  --color-bad-soft: #FCEBED;  --color-bad-border: #EFBCC3;
+  --code-bg: #1F2024;    /* panel-800 */
+  --code-text: #E8E9EC;
+  --code-head: #26272C;  /* panel-700 */
+  --mark-bg: #FAD71E;    /* color.amber-200 */
+  --mark-text: #1A1B1E;
+
+  --radius-sm: 4px; --radius-md: 6px; --radius-lg: 8px; --radius-xl: 12px; --radius-full: 9999px;
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px; --space-5: 20px; --space-6: 24px; --space-8: 32px; --space-10: 40px;
+  --text-2xs: 11px; --text-xs: 12px; --text-sm: 13px; --text-base: 14px; --text-md: 15px; --text-lg: 17px; --text-xl: 19px; --text-2xl: 24px;
+  --weight-regular: 400; --weight-medium: 500; --weight-semibold: 600; --weight-bold: 700;
+  --leading-tight: 1.14; --leading-snug: 1.25; --leading-normal: 1.5; --leading-relaxed: 1.55;
+  --tracking-tight: -0.018em; --tracking-snug: -0.01em;
+  --spacing-page-x: 32px; --spacing-card-inset: 24px; --spacing-card-header-x: 24px; --spacing-card-header-y: 16px;
+  --topbar-height: 64px; --gap-cards: 16px;
+  --pages-w: clamp(248px, 19vw, 288px); --toc-w: clamp(208px, 16vw, 240px);
+  --duration-fast: 150ms; --duration-medium: 260ms;
+  --space-12: 48px; --space-16: 64px; --text-3xl: 30px; --text-4xl: 42px;
+  --radius-2xl: 16px; --radius-3xl: 24px;
+  --panel-700: #26272C; --panel-800: #1F2024; --panel-900: #16171B; --color-text-on-dark: #FFFFFF;
+  --ease-standard: cubic-bezier(0.23, 1, 0.32, 1);
+  --reader-card-elevation: 0 1px 2px 0 rgba(26,27,30,.04);
+  /* Control layer: radius and shadow steps for buttons, popovers and tooltips. --shadow-red keeps its name for
+     existing project themes; the default look draws no primary glow. */
+  --radius-xs: 2px; --radius-4xl: 32px; --radius-pill: 8px;
+  --shadow-sm: 0 1px 2px 0 rgba(26,27,30,.04);
+  --shadow-red: none;
+  --shadow-popover: 0 8px 24px 0 rgba(16,17,20,.12);
+  --shadow-tooltip: 0 4px 6px rgba(16,17,20,.18);
+  --color-on-primary: #FFFFFF; --color-pending: #C9B27A; --status-planned: #6B6E76;
+  --control-h: 40px; --table-head-h: 38px; --table-cell-x: 16px; --table-cell-y: 8px;
+}
+@media (width < 640px) {
+  :root { --spacing-page-x: 16px; --spacing-card-inset: 16px; --spacing-card-header-x: 16px; --gap-cards: 12px; }
+}
+@media (prefers-color-scheme: dark) {
+:root:not([data-theme="light"]) {
+  --color-bg: #16171B;
+  --color-surface: #1F2024;
+  --surface-2: #26272C;
+  --surface-3: #1B1C20;
+  --color-border: #2E2F36;
+  --color-border-subtle: #2A2B31;
+  --color-outline: #3E3F47;
+  --color-text: #ECEDEF;
+  --color-text-muted: #B4B7BF;
+  --color-text-subtle: #8F929B;
+  --color-primary: #EDEDED;
+  --color-primary-hover: #FFFFFF;
+  --color-primary-active: #FFFFFF;
+  --color-primary-soft: #2A2B30;
+  --color-link: #EDEDED;
+  --color-border-focus: #EDEDED;
+  --color-ok-ink: #4CC58B; --color-warn-ink: #E0A53C; --color-info-ink: #8FB0FF; --color-bad-ink: #FF7A8C;
+  --color-ok: #4CC58B;   --color-ok-soft: #17302A;   --color-ok-border: #2C5F4A;
+  --color-warn: #E0A53C; --color-warn-soft: #35291A; --color-warn-border: #5C4720;
+  --color-info: #8FB0FF; --color-info-soft: #1B2640; --color-info-border: #2F4577;
+  --color-bad: #FF7A8C;  --color-bad-soft: #3B1D23;  --color-bad-border: #6A2E39;
+  --code-bg: #121316;
+  --code-text: #E8E9EC;
+  --code-head: #26272C;
+  --mark-bg: #8E7900;
+  --mark-text: #FFFFFF;
+  --color-on-primary: #16171B;
+  --shadow-red: 0 1px 2px 0 rgba(0,0,0,.4);
+  --shadow-popover: 0 8px 24px 0 rgba(0,0,0,.45);
+  color-scheme: dark;
+}
+}
+:root[data-theme="dark"] {
+  --color-bg: #16171B;
+  --color-surface: #1F2024;
+  --surface-2: #26272C;
+  --surface-3: #1B1C20;
+  --color-border: #2E2F36;
+  --color-border-subtle: #2A2B31;
+  --color-outline: #3E3F47;
+  --color-text: #ECEDEF;
+  --color-text-muted: #B4B7BF;
+  --color-text-subtle: #8F929B;
+  --color-primary: #EDEDED;
+  --color-primary-hover: #FFFFFF;
+  --color-primary-active: #FFFFFF;
+  --color-primary-soft: #2A2B30;
+  --color-link: #EDEDED;
+  --color-border-focus: #EDEDED;
+  --color-ok-ink: #4CC58B; --color-warn-ink: #E0A53C; --color-info-ink: #8FB0FF; --color-bad-ink: #FF7A8C;
+  --color-ok: #4CC58B;   --color-ok-soft: #17302A;   --color-ok-border: #2C5F4A;
+  --color-warn: #E0A53C; --color-warn-soft: #35291A; --color-warn-border: #5C4720;
+  --color-info: #8FB0FF; --color-info-soft: #1B2640; --color-info-border: #2F4577;
+  --color-bad: #FF7A8C;  --color-bad-soft: #3B1D23;  --color-bad-border: #6A2E39;
+  --code-bg: #121316;
+  --code-text: #E8E9EC;
+  --code-head: #26272C;
+  --mark-bg: #8E7900;
+  --mark-text: #FFFFFF;
+  --color-on-primary: #16171B;
+  --shadow-red: 0 1px 2px 0 rgba(0,0,0,.4);
+  --shadow-popover: 0 8px 24px 0 rgba(0,0,0,.45);
+  color-scheme: dark;
+}

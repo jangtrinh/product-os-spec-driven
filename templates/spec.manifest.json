@@ -1,0 +1,63 @@
+{
+  "format": "2",
+  "title": "Ví dụ cú pháp — hoãn duyệt",
+  "language": "vi",
+  "date": "2026-10-07",
+  "tests_root": "tests",
+  "glossary": {
+    "document": "glossary.md"
+  },
+  "ui_contract": "optional",
+  "artifacts": [
+    {
+      "id": "intake",
+      "folder": "intake",
+      "name": "Đầu vào"
+    },
+    {
+      "id": "contract",
+      "folder": "contract",
+      "name": "Contract"
+    },
+    {
+      "id": "prd",
+      "folder": "prd",
+      "name": "Yêu cầu"
+    },
+    {
+      "id": "us",
+      "folder": "us",
+      "name": "US"
+    },
+    {
+      "id": "ux",
+      "folder": "ux",
+      "name": "Thiết kế"
+    },
+    {
+      "id": "decisions",
+      "folder": "decisions",
+      "name": "Quyết định"
+    },
+    {
+      "id": "delivery",
+      "folder": "delivery",
+      "name": "Bàn giao"
+    },
+    {
+      "id": "reviews",
+      "folder": "reviews",
+      "name": "Review"
+    }
+  ],
+  "readable": {
+    "epics": {
+      "min": 1,
+      "max": 8
+    },
+    "capabilities": {
+      "min": 1,
+      "max": 7
+    }
+  }
+}

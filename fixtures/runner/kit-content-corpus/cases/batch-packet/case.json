@@ -1,0 +1,6 @@
+{
+  "name": "batch-packet",
+  "title": "Batch packet",
+  "ui": false,
+  "behavior": "batch"
+}

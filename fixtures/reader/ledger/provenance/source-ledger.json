@@ -1,0 +1,100 @@
+{
+  "version": 1,
+  "normalization": "nfc-lf-trim-trailing-v1",
+  "crosswalk": "id-crosswalk.json",
+  "summary": {
+    "source_preservation": {
+      "total": 5,
+      "preserved": 5
+    },
+    "typed_coverage": {
+      "total": 5,
+      "mapped": 4
+    },
+    "demo_coverage": {
+      "total": 5,
+      "passed": 0
+    }
+  },
+  "items": [
+    {
+      "id": "CW-1",
+      "source": {
+        "file": "source/legacy.md",
+        "line": 3
+      },
+      "text_sha256": "2cafb192a0dbfecce40a4274510a421396f52de0b50a269b72e7bbfe4bc1d9d5",
+      "status": "exact",
+      "mappings": [
+        {
+          "kind": "scenario",
+          "id": "US-01.SCN-01-01"
+        }
+      ],
+      "crosswalk_row": "CW-1"
+    },
+    {
+      "id": "SRC-2",
+      "source": {
+        "file": "source/legacy.md",
+        "line": 3
+      },
+      "text_sha256": "a2235c4d9cf14f0733b272261c603ff81cdf184641dd161d648bfb4df639aa90",
+      "status": "partial",
+      "mappings": [
+        {
+          "kind": "screen-state",
+          "id": "S01/normal"
+        }
+      ],
+      "reason": "Fixture: the source wording only partly survives."
+    },
+    {
+      "id": "SRC-3",
+      "source": {
+        "file": "source/legacy.md",
+        "line": 3
+      },
+      "text_sha256": "c751b3bf85bdf3dbb9d50251619df7d6d5cac64d44e01da12a2c1bd5c4b08a6b",
+      "status": "partial",
+      "mappings": [
+        {
+          "kind": "ac",
+          "id": "US-01.AC-01"
+        }
+      ],
+      "reason": "Fixture: the source wording only partly survives."
+    },
+    {
+      "id": "SRC-4",
+      "source": {
+        "file": "source/legacy.md",
+        "line": 3
+      },
+      "text_sha256": "9801d9160adf671ec7af69639d7a3d9c47e5cf915246fadc0dbd444c1c131ac2",
+      "status": "no-demo",
+      "mappings": [],
+      "reason": "Fixture: the source wording only partly survives."
+    },
+    {
+      "id": "SRC-5",
+      "source": {
+        "file": "source/legacy.md",
+        "line": 3
+      },
+      "text_sha256": "b450c037cde22f3d8f5a1044c5c2e43d23ea93d2af1b0f1af1b6a2a1613b418e",
+      "status": "conflicting",
+      "mappings": [
+        {
+          "kind": "ac",
+          "id": "US-02.AC-01"
+        },
+        {
+          "kind": "screen-state",
+          "id": "S01/empty"
+        }
+      ],
+      "reason": "Fixture: the source wording only partly survives."
+    }
+  ]
+}

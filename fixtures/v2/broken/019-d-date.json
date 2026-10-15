@@ -1,0 +1,12 @@
+{
+  "code": "D-DATE",
+  "severity": "error",
+  "fault": null,
+  "changes": [
+    {
+      "path": "intake/BRD.md",
+      "before": "11776ee2acb42e26a64305efa7b01d84a01f2872c1a7f586e41962e7a139f883",
+      "after": "LS0tCmlkOiBicmQtc2F2ZWQtZmlsdGVycwp0eXBlOiBpbnRha2UKdGl0bGU6ICJCUkQ6IGzGsHUgYuG7mSBs4buNYyIKc3RhdHVzOiBEb25lCnVwZGF0ZWQ6IDIwMjYtMDItMzAKZ3JvdXA6IEJyaWVmCnRyYWNlOgogIHJlcTogW1JFUS0wMV0KLS0tCgojIyBW4bqlbiDEkeG7gQoKTmfGsOG7nWkgZMO5bmcgcGjhuqNpIGNo4buNbiBs4bqhaSBjw7luZyBt4buZdCBi4buZIGzhu41jIG3hu5dpIGzhuqduIG3hu58gZGFuaCBzw6FjaC4gUE8gbXXhu5FuIGzGsHUgdsOgIG3hu58gbOG6oWkgYuG7mSBs4buNYyB0cm9uZyBt4buZdCBixrDhu5tjLgoKIyMgTmd14buTbgoKLSBFbWFpbCBj4bunYSBQTywgMjAyNi0wMS0wMiAoYG93bmVyQGV4YW1wbGUudGVzdGApLgotIFhlbSBbZmVhdHVyZSBjb250cmFjdF0oLi4vY29udHJhY3QvRkMtMDAxLm1kIzMtc2NvcGUtYW5kLWJ1c2luZXNzLXJ1bGVzKSBjaG8gcGjhuqFtIHZpIMSRw6Mga2hvw6EuCg=="
+    }
+  ]
+}

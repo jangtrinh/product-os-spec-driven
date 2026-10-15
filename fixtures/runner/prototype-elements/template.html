@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Saved filters prototype</title>
+<style>
+:root { color-scheme: light; }
+* { box-sizing: border-box; }
+body { font: 16px/1.5 system-ui, sans-serif; margin: 0; background: #f5f5f5; color: #222; }
+main { max-width: 1040px; padding: 32px; margin: auto; }
+h1 { font-size: 32px; line-height: 1.25; }
+h2 { font-size: 24px; line-height: 1.25; }
+h3 { font-size: 20px; line-height: 1.25; margin: 0; }
+section { padding: 24px 0 40px; scroll-margin-top: 16px; }
+.trace { margin: 8px 0 16px; max-width: 720px; }
+.screen { width: 100%; max-width: 720px; border: 1px solid #777; background: #fafafa; }
+.screen-header { padding: 16px 24px; background: #e5e5e5; border-bottom: 1px solid #777; }
+.screen-body { padding: 24px; }
+.screen-body > label { display: block; font-weight: 600; margin-bottom: 8px; }
+.screen-body > input { width: 100%; min-width: 0; height: 44px; border: 1px solid #777; padding: 8px 12px; font: inherit; color: #222; background: #fafafa; }
+.screen-body > input:disabled { opacity: 1; background: #e5e5e5; color: #555; }
+.actions, .state-nav { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+a { display: inline-flex; align-items: center; min-height: 44px; padding: 8px 16px; color: #222; text-underline-offset: 4px; }
+a.button { border: 1px solid #777; background: #e5e5e5; text-decoration: none; justify-content: center; }
+a:focus-visible, input:focus-visible { outline: 2px solid #222; outline-offset: 2px; }
+@media (hover: hover) { a:hover { background: #ddd; } }
+a:active { background: #ddd; }
+.rows { list-style: none; margin: 24px 0 0; padding: 0; }
+.rows li { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-top: 1px solid #777; }
+.state-message { margin: 16px 0; }
+::selection { background: #ddd; color: #222; }
+@media (max-width: 600px) { main { padding: 16px; } .screen-header, .screen-body { padding: 16px; } }
+</style></head><body>
+<template>
+<main>
+<section id="start"><h1>Saved filters prototype</h1><p>Explore saving, opening and deleting a saved filter.</p><nav class="actions" aria-label="Start a user story"><a class="button" href="#SCR-001--normal">US-01: save a filter</a><a class="button" href="#SCR-001--normal">US-02: open a filter</a><a class="button" href="#SCR-001--normal">US-03: delete a filter</a></nav></section>
+<section id="SCR-001--normal"><h2>SCR-001: normal</h2><p class="trace">US-01 · US-02 · US-03 · US-01.AC-01 · US-01.AC-02 · US-02.AC-01 · US-03.AC-01 · US-03.AC-02</p>
+<div class="screen" role="group" aria-labelledby="SCR-001--normal-title"><header class="screen-header"><h3 id="SCR-001--normal-title">Saved filters</h3></header><div class="screen-body">
+<label for="SCR-001--normal-name">Filter name</label><input id="SCR-001--normal-name" type="text" inputmode="text" autocomplete="off" value="My reviews" readonly>
+<p class="state-message" id="SCR-001--normal-message">Save a name up to 40 characters, open a saved filter, or choose delete.</p>
+<ul class="rows" aria-label="Saved filters"><li><span>Open bugs</span><span>Saved</span></li></ul>
+<nav class="actions" aria-label="SCR-001 normal actions"><a class="button" href="#SCR-002--normal">Save filter</a><a class="button" href="#SCR-002--normal">Open filter</a><a class="button" href="#SCR-002--normal">Confirm delete</a><a class="button" href="#SCR-001--normal">Cancel delete</a></nav>
+</div></div><nav class="state-nav" aria-label="SCR-001 normal preview states"><a href="#SCR-001--empty">View empty state</a><a href="#SCR-001--error">View error state</a><a href="#SCR-001--loading">View loading state</a><a href="#start">Return to start</a></nav></section>
+<section id="SCR-001--empty"><h2>SCR-001: empty</h2><p class="trace">US-01 · US-02 · US-03 · US-01.AC-01 · US-01.AC-02 · US-02.AC-01 · US-03.AC-01 · US-03.AC-02</p>
+<div class="screen" role="group" aria-labelledby="SCR-001--empty-title"><header class="screen-header"><h3 id="SCR-001--empty-title">Saved filters</h3></header><div class="screen-body">
+<label for="SCR-001--empty-name">Filter name</label><input id="SCR-001--empty-name" type="text" inputmode="text" autocomplete="off" value="" readonly>
+<p class="state-message" id="SCR-001--empty-message">No saved filters. Save a filter from the current list.</p>
+
+<nav class="actions" aria-label="SCR-001 empty actions"><a class="button" href="#SCR-001--normal">Return to filters</a></nav>
+</div></div><nav class="state-nav" aria-label="SCR-001 empty preview states"><a href="#SCR-001--normal">View normal state</a><a href="#SCR-001--error">View error state</a><a href="#SCR-001--loading">View loading state</a><a href="#start">Return to start</a></nav></section>
+<section id="SCR-001--error"><h2>SCR-001: error</h2><p class="trace">US-01 · US-02 · US-03 · US-01.AC-01 · US-01.AC-02 · US-02.AC-01 · US-03.AC-01 · US-03.AC-02</p>
+<div class="screen" role="group" aria-labelledby="SCR-001--error-title"><header class="screen-header"><h3 id="SCR-001--error-title">Saved filters</h3></header><div class="screen-body">
+<label for="SCR-001--error-name">Filter name</label><input id="SCR-001--error-name" type="text" inputmode="text" autocomplete="off" value="Open bugs" readonly aria-invalid="true" aria-describedby="SCR-001--error-message">
+<p class="state-message" id="SCR-001--error-message" role="alert">A filter with this name exists. Choose a different name.</p>
+
+<nav class="actions" aria-label="SCR-001 error actions"><a class="button" href="#SCR-001--normal">Return to filters</a></nav>
+</div></div><nav class="state-nav" aria-label="SCR-001 error preview states"><a href="#SCR-001--normal">View normal state</a><a href="#SCR-001--empty">View empty state</a><a href="#SCR-001--loading">View loading state</a><a href="#start">Return to start</a></nav></section>
+<section id="SCR-001--loading"><h2>SCR-001: loading</h2><p class="trace">US-01 · US-02 · US-03 · US-01.AC-01 · US-01.AC-02 · US-02.AC-01 · US-03.AC-01 · US-03.AC-02</p>
+<div class="screen" role="group" aria-labelledby="SCR-001--loading-title" aria-busy="true"><header class="screen-header"><h3 id="SCR-001--loading-title">Saved filters</h3></header><div class="screen-body">
+<label for="SCR-001--loading-name">Filter name</label><input id="SCR-001--loading-name" type="text" inputmode="text" autocomplete="off" value="My reviews" readonly disabled>
+<p class="state-message" id="SCR-001--loading-message" role="status">Loading saved filters.</p>
+
+<nav class="actions" aria-label="SCR-001 loading actions"><a class="button" href="#SCR-001--normal">Return to filters</a></nav>
+</div></div><nav class="state-nav" aria-label="SCR-001 loading preview states"><a href="#SCR-001--normal">View normal state</a><a href="#SCR-001--empty">View empty state</a><a href="#SCR-001--error">View error state</a><a href="#start">Return to start</a></nav></section>
+<section id="SCR-002--normal"><h2>SCR-002: normal</h2><p class="trace">US-01 · US-02 · US-03 · US-01.AC-01 · US-01.AC-02 · US-02.AC-01 · US-03.AC-01 · US-03.AC-02</p>
+<div class="screen" role="group" aria-labelledby="SCR-002--normal-title"><header class="screen-header"><h3 id="SCR-002--normal-title">Filter result</h3></header><div class="screen-body">
+<label for="SCR-002--normal-name">Filter name</label><input id="SCR-002--normal-name" type="text" inputmode="text" autocomplete="off" value="My reviews" readonly>
+<p class="state-message" id="SCR-002--normal-message">My reviews appears after save. Opening restores its filtered rows. Confirming delete removes it; cancel keeps it.</p>
+<ul class="rows" aria-label="Saved filters"><li><span>My reviews</span><span>Saved</span></li></ul>
+<nav class="actions" aria-label="SCR-002 normal actions"><a class="button" href="#SCR-002--normal">Return to filters</a></nav>
+</div></div><nav class="state-nav" aria-label="SCR-002 normal preview states"><a href="#SCR-002--empty">View empty state</a><a href="#SCR-002--error">View error state</a><a href="#SCR-002--loading">View loading state</a><a href="#start">Return to start</a></nav></section>
+<section id="SCR-002--empty"><h2>SCR-002: empty</h2><p class="trace">US-01 · US-02 · US-03 · US-01.AC-01 · US-01.AC-02 · US-02.AC-01 · US-03.AC-01 · US-03.AC-02</p>
+<div class="screen" role="group" aria-labelledby="SCR-002--empty-title"><header class="screen-header"><h3 id="SCR-002--empty-title">Filter result</h3></header><div class="screen-body">
+<label for="SCR-002--empty-name">Filter name</label><input id="SCR-002--empty-name" type="text" inputmode="text" autocomplete="off" value="" readonly>
+<p class="state-message" id="SCR-002--empty-message">No saved filters. Save a filter from the current list.</p>
+
+<nav class="actions" aria-label="SCR-002 empty actions"><a class="button" href="#SCR-002--normal">Return to filters</a></nav>
+</div></div><nav class="state-nav" aria-label="SCR-002 empty preview states"><a href="#SCR-002--normal">View normal state</a><a href="#SCR-002--error">View error state</a><a href="#SCR-002--loading">View loading state</a><a href="#start">Return to start</a></nav></section>
+<section id="SCR-002--error"><h2>SCR-002: error</h2><p class="trace">US-01 · US-02 · US-03 · US-01.AC-01 · US-01.AC-02 · US-02.AC-01 · US-03.AC-01 · US-03.AC-02</p>
+<div class="screen" role="group" aria-labelledby="SCR-002--error-title"><header class="screen-header"><h3 id="SCR-002--error-title">Filter result</h3></header><div class="screen-body">
+<label for="SCR-002--error-name">Filter name</label><input id="SCR-002--error-name" type="text" inputmode="text" autocomplete="off" value="Open bugs" readonly aria-invalid="true" aria-describedby="SCR-002--error-message">
+<p class="state-message" id="SCR-002--error-message" role="alert">A filter with this name exists. Choose a different name.</p>
+
+<nav class="actions" aria-label="SCR-002 error actions"><a class="button" href="#SCR-002--normal">Return to filters</a></nav>
+</div></div><nav class="state-nav" aria-label="SCR-002 error preview states"><a href="#SCR-002--normal">View normal state</a><a href="#SCR-002--empty">View empty state</a><a href="#SCR-002--loading">View loading state</a><a href="#start">Return to start</a></nav></section>
+<section id="SCR-002--loading"><h2>SCR-002: loading</h2><p class="trace">US-01 · US-02 · US-03 · US-01.AC-01 · US-01.AC-02 · US-02.AC-01 · US-03.AC-01 · US-03.AC-02</p>
+<div class="screen" role="group" aria-labelledby="SCR-002--loading-title" aria-busy="true"><header class="screen-header"><h3 id="SCR-002--loading-title">Filter result</h3></header><div class="screen-body">
+<label for="SCR-002--loading-name">Filter name</label><input id="SCR-002--loading-name" type="text" inputmode="text" autocomplete="off" value="My reviews" readonly disabled>
+<p class="state-message" id="SCR-002--loading-message" role="status">Loading saved filters.</p>
+
+<nav class="actions" aria-label="SCR-002 loading actions"><a class="button" href="#SCR-002--normal">Return to filters</a></nav>
+</div></div><nav class="state-nav" aria-label="SCR-002 loading preview states"><a href="#SCR-002--normal">View normal state</a><a href="#SCR-002--empty">View empty state</a><a href="#SCR-002--error">View error state</a><a href="#start">Return to start</a></nav></section>
+</main>
+</template>
+</body></html>

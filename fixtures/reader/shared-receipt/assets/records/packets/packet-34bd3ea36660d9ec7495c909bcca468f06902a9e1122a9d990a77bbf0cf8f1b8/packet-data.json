@@ -1,0 +1,109 @@
+{
+  "version": "1",
+  "product": "PRODUCT:OS Spec Driven",
+  "scope": {
+    "kind": "ac",
+    "ids": [
+      "US-01.AC-01"
+    ],
+    "revision": "49ab152c81062c0a429dd64b78c59ca1ec070f58f1c52823a36a7011906e3402"
+  },
+  "baseline": {
+    "head": "fixture-base",
+    "base": "fixture-base",
+    "manifest": "4b7775b8e926745757bd6e1f594a7532bcc27376404e81918d15c95bf028b25a",
+    "build": "not-built"
+  },
+  "candidate": {
+    "head": "fixture-head",
+    "base": "fixture-base",
+    "manifest": "4b7775b8e926745757bd6e1f594a7532bcc27376404e81918d15c95bf028b25a",
+    "build": "not-built"
+  },
+  "membership": {
+    "version": "1",
+    "members": [
+      {
+        "kind": "ac",
+        "id": "US-01.AC-01",
+        "artifacts": {
+          "us/US-01.md": "3aff2f28d75dd505783fc144478025d15c95c213077b3897ca8a7bd0ba872bfb"
+        },
+        "revision": "c428c4b93f9859b9ac0c3d010ed09d2e195361b6f006f902e4e7d234c9f81011"
+      }
+    ]
+  },
+  "change": {
+    "id": "CS-filter",
+    "source": "A-01",
+    "reason": "Fixture repair",
+    "rules": [
+      {
+        "source": "fc-001.A-01",
+        "before": "Delete directly",
+        "after": "Confirm before delete"
+      }
+    ],
+    "impact": [
+      {
+        "node": "ac:US-01.AC-01",
+        "domain": "spec",
+        "classification": "direct",
+        "reason": "Rule changed",
+        "path": [
+          "us:US-01",
+          "ac:US-01.AC-01"
+        ]
+      }
+    ],
+    "closure": {
+      "complete": true,
+      "fallback": null
+    },
+    "propagation": [
+      {
+        "behavior": "Require confirmation",
+        "ac": [
+          "US-01.AC-01"
+        ],
+        "scenario": [
+          "US-01.SCN-01-01"
+        ],
+        "ui": [
+          "S01/normal"
+        ],
+        "evidence": [],
+        "status": "not-run",
+        "review": "QC must inspect semantics"
+      }
+    ]
+  },
+  "screens": [],
+  "evidence": [],
+  "findings": [],
+  "open": [
+    {
+      "id": "open-1",
+      "text": "Review scope before approval",
+      "blocking": false
+    }
+  ],
+  "exceptions": [],
+  "unaffected": [],
+  "aggregate_checks": [],
+  "requests": [
+    {
+      "id": "US-01.AC-01",
+      "reason": "Review confirmation rule"
+    }
+  ],
+  "assets": {},
+  "decisions": [
+    {
+      "id": "D1",
+      "text": "Personal filters",
+      "source": "D1"
+    }
+  ],
+  "assumptions": []
+}

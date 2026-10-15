@@ -1,0 +1,8 @@
+{
+  "name": "spec-driven-tools",
+  "version": "2.3.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=18" },
+  "scripts": { "test": "node --test lint/test/", "lint:self-test": "node lint/lint.mjs --self-test" }
+}

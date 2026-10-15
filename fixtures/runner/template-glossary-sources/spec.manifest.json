@@ -1,0 +1,67 @@
+{
+  "format": "2",
+  "title": "Saved filters",
+  "language": "vi",
+  "date": "2026-10-14",
+  "tests_root": "tests",
+  "glossary": {
+    "document": "glossary.md"
+  },
+  "ui_contract": "optional",
+  "artifacts": [
+    {
+      "id": "intake",
+      "folder": "intake",
+      "name": "Đầu vào",
+      "status": "draft",
+      "owner_role": "po"
+    },
+    {
+      "id": "contract",
+      "name": "Contract",
+      "status": "planned"
+    },
+    {
+      "id": "prd",
+      "name": "Yêu cầu",
+      "status": "planned"
+    },
+    {
+      "id": "us",
+      "name": "Câu chuyện người dùng",
+      "status": "planned"
+    },
+    {
+      "id": "ux",
+      "name": "Thiết kế",
+      "status": "planned"
+    },
+    {
+      "id": "decisions",
+      "folder": "decisions",
+      "name": "Quyết định",
+      "status": "draft",
+      "owner_role": "po"
+    },
+    {
+      "id": "delivery",
+      "name": "Bàn giao",
+      "status": "planned"
+    },
+    {
+      "id": "reviews",
+      "name": "Nhận xét",
+      "status": "planned"
+    }
+  ],
+  "readable": {
+    "epics": {
+      "min": 1,
+      "max": 8
+    },
+    "capabilities": {
+      "min": 1,
+      "max": 7
+    }
+  }
+}

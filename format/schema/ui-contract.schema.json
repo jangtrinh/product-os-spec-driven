@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec-driven.local/format/v2/ui-contract.schema.json",
+  "title": "Ui Contract",
+  "type": "object",
+  "required": ["screen","route","us","element","kind","used_by"],
+  "additionalProperties": false,
+  "properties": {
+    "screen": {"type":"string","pattern":"^S\\d{2}(-[a-z])?$","x-spec-ref":"ui-contract-screen"},
+    "route": {"type":"string","minLength":1,"pattern":"^/[^\\s]*$","x-spec-ref":false,"x-spec-ref-reason":"Declared application route is an availability context, not a spec-file path.","x-spec-exclusion":{"category":"regex"}},
+    "us": {"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string","pattern":"^(US-(\\d+|P\\d+)|NF-\\d+)$","x-spec-ref":"ui-contract-us"},"x-spec-ref":false,"x-spec-ref-reason":"Literal us value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"ui-contract.schema.json#/properties/us/items"}},
+    "element": {
+      "oneOf": [
+        {"type":"object","required":["role","name"],"additionalProperties":false,"properties":{"role":{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"free-text"}},"name":{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"free-text"}}}},
+        {"type":"object","required":["test_id"],"additionalProperties":false,"properties":{"test_id":{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Coded selector scoped by screen/state/role/scope, not a test or document id.","x-spec-exclusion":{"category":"free-text"}}}}
+      ]
+    },
+    "kind": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal kind value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+    "used_by": {"type":"array","minItems":0,"uniqueItems":true,"items":{"type":"string","pattern":"^SCN-[A-Z0-9]+-\\d+$","x-spec-ref":"ui-contract-used-by"},"x-spec-ref":false,"x-spec-ref-reason":"Literal used_by value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"ui-contract.schema.json#/properties/used_by/items"}},
+    "state": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/state","x-spec-ref":"ui-contract-state"},
+    "roles": {"type":"array","items":{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal items value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},"minItems":1,"uniqueItems":true},
+    "scope": {"type":"array","items":{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal items value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},"minItems":1,"uniqueItems":true},
+    "components": {"type":"array","items":{"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/handle","x-spec-ref":"ui-contract-components"},"minItems":0,"uniqueItems":true,"x-spec-ref":false,"x-spec-ref-reason":"Literal components value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"ui-contract.schema.json#/properties/components/items"}},
+    "patterns": {"type":"array","items":{"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/handle","x-spec-ref":"ui-contract-patterns"},"minItems":0,"uniqueItems":true,"x-spec-ref":false,"x-spec-ref-reason":"Literal patterns value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"ui-contract.schema.json#/properties/patterns/items"}},
+    "target": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal target value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}}
+  },
+  "allOf": [
+    {
+      "if": {
+        "anyOf": [
+          {"required":["state"],"type":"object","properties":{"state":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"ui-contract.schema.json#/properties/state"}}}},
+          {"required":["roles"],"type":"object","properties":{"roles":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"ui-contract.schema.json#/properties/roles"}}}},
+          {"required":["scope"],"type":"object","properties":{"scope":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"ui-contract.schema.json#/properties/scope"}}}},
+          {"required":["components"],"type":"object","properties":{"components":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"ui-contract.schema.json#/properties/components"}}}},
+          {"required":["patterns"],"type":"object","properties":{"patterns":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"ui-contract.schema.json#/properties/patterns"}}}},
+          {"required":["target"],"type":"object","properties":{"target":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"ui-contract.schema.json#/properties/target"}}}}
+        ]
+      },
+      "then": {
+        "required": ["state","roles","scope","components","patterns","target"],
+        "type": "object",
+        "properties": {
+          "state": {"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"ui-contract.schema.json#/properties/state"}},
+          "roles": {"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"ui-contract.schema.json#/properties/roles"}},
+          "scope": {"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"ui-contract.schema.json#/properties/scope"}},
+          "components": {"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"ui-contract.schema.json#/properties/components"}},
+          "patterns": {"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"ui-contract.schema.json#/properties/patterns"}},
+          "target": {"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"ui-contract.schema.json#/properties/target"}}
+        }
+      },
+      "x-spec-ref": false,
+      "x-spec-ref-reason": "Constraint refinement; extraction belongs to the owning field."
+    ,"x-spec-exclusion":{"category":"refinement-of","owner":"ui-contract.schema.json#"}}
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "code": "D-PLACEMENT",
+  "severity": "error",
+  "fault": null,
+  "changes": [
+    {
+      "path": "wrong/place.md",
+      "before": null,
+      "after": "LS0tCmlkOiBtaXNwbGFjZWQKdHlwZTogaW50YWtlCnRpdGxlOiAiQlJEOiBsxrB1IGLhu5kgbOG7jWMiCnN0YXR1czogRG9uZQp1cGRhdGVkOiAyMDI2LTAxLTAyCmdyb3VwOiBCcmllZgp0cmFjZToKICByZXE6IFtSRVEtMDFdCi0tLQoKIyMgVuG6pW4gxJHhu4EKCk5nxrDhu51pIGTDuW5nIHBo4bqjaSBjaOG7jW4gbOG6oWkgY8O5bmcgbeG7mXQgYuG7mSBs4buNYyBt4buXaSBs4bqnbiBt4bufIGRhbmggc8OhY2guIFBPIG114buRbiBsxrB1IHbDoCBt4bufIGzhuqFpIGLhu5kgbOG7jWMgdHJvbmcgbeG7mXQgYsaw4bubYy4KCiMjIE5ndeG7k24KCi0gRW1haWwgY+G7p2EgUE8sIDIwMjYtMDEtMDIgKGBvd25lckBleGFtcGxlLnRlc3RgKS4KLSBYZW0gW2ZlYXR1cmUgY29udHJhY3RdKC4uL2NvbnRyYWN0L0ZDLTAwMS5tZCMzLXNjb3BlLWFuZC1idXNpbmVzcy1ydWxlcykgY2hvIHBo4bqhbSB2aSDEkcOjIGtob8OhLgo="
+    }
+  ]
+}

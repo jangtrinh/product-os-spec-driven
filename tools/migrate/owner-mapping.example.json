@@ -1,0 +1,13 @@
+{
+ "version": 1,
+ "source_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+ "mappings": [
+  {
+   "row": "CW-001",
+   "owner": "US-01",
+   "source": {"file": "provenance/input-snapshot/us/US-01.md.txt", "line": 24},
+   "authority": "owner@example.test",
+   "reason": "Example only: replace with the authoritative owner ruling and the exact pending row source locator."
+  }
+ ]
+}

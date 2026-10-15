@@ -1,0 +1,136 @@
+{
+  "format": "2",
+  "title": "Saved filters spec (example)",
+  "language": "vi (EN product terms kept)",
+  "date": "2026-01-10",
+  "artifacts": [
+    {
+      "id": "intake",
+      "folder": "intake",
+      "name": "Intake",
+      "status": "Done",
+      "owner_role": "Product Owner"
+    },
+    {
+      "id": "contract",
+      "folder": "contract",
+      "name": "Scope contract",
+      "status": "Locked",
+      "owner_role": "Product Owner"
+    },
+    {
+      "id": "prd",
+      "folder": "prd",
+      "name": "PRD",
+      "status": "Written",
+      "owner_role": "Business Analyst"
+    },
+    {
+      "id": "us",
+      "folder": "us",
+      "name": "User stories",
+      "status": "Written",
+      "owner_role": "Business Analyst"
+    },
+    {
+      "id": "ux",
+      "folder": "ux",
+      "name": "UI/UX",
+      "status": "Part 1 reviewed",
+      "owner_role": "Designer"
+    },
+    {
+      "id": "delivery",
+      "folder": "delivery",
+      "name": "Concept build",
+      "status": "Waves in progress",
+      "owner_role": "Delivery lead"
+    },
+    {
+      "id": "reviews",
+      "folder": "reviews",
+      "name": "Reviews",
+      "status": "Per wave",
+      "owner_role": "Reviewer"
+    },
+    {
+      "id": "decisions",
+      "folder": "decisions",
+      "name": "Decision log",
+      "status": "Current to D4",
+      "owner_role": "Product Owner"
+    },
+    {
+      "id": "handoff",
+      "name": "Handoff manifest",
+      "status": "Planned"
+    }
+  ],
+  "readable": {
+    "epics": {
+      "min": 1,
+      "max": 8
+    },
+    "capabilities": {
+      "min": 1,
+      "max": 7
+    }
+  },
+  "images": {
+    "deny": [
+      "assets/shots/old-search.png"
+    ]
+  },
+  "reading_order": [
+    {
+      "pages": [
+        "fc-001"
+      ],
+      "note": "what is in and out"
+    },
+    {
+      "pages": [
+        "prd-ex-01",
+        "us-index"
+      ],
+      "note": "the requirements, then the stories"
+    },
+    {
+      "pages": [
+        "ux-flows",
+        "wireframe-index"
+      ],
+      "note": "how it looks"
+    },
+    {
+      "pages": [
+        "decision-log"
+      ],
+      "note": "rulings that override earlier text"
+    }
+  ],
+  "tests_root": "tests",
+  "glossary": {
+    "document": "decisions/glossary.md"
+  },
+  "ui_contract": "required",
+  "design": {
+    "profile": "assets/profile.json",
+    "inventory": "assets/inventory.json",
+    "sources": "assets/sources.json",
+    "evidence": [
+      "assets/receipt.json"
+    ]
+  },
+  "gate_model": {
+    "graph": "assets/graph.json",
+    "changes": [
+      "assets/change.json"
+    ],
+    "receipts": [
+      "assets/receipt.json",
+      "assets/red-receipt.json"
+    ],
+    "records": "assets/records"
+  }
+}

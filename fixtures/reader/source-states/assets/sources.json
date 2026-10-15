@@ -1,0 +1,71 @@
+{
+  "generated": true,
+  "generator": "fixture-generator",
+  "version": "1",
+  "at": "2026-01-09T00:00:00Z",
+  "inputs": {
+    "README.md": "643e4b1bde92df958deeea6019da3a0091c75245b5438cc88e3cd046567366b1"
+  },
+  "entries": [
+    {
+      "id": "source-live",
+      "tool": "design-tool",
+      "locator": {
+        "url": "https://design.example.test/file/source-live",
+        "file_key": "FILE1",
+        "node_id": "1:2"
+      },
+      "revision": "r7",
+      "snapshot": null,
+      "at": "2026-01-09T00:00:00Z",
+      "authority": "design owner",
+      "freshness": "CURRENT",
+      "status": "active"
+    },
+    {
+      "id": "source-old",
+      "tool": "design-tool",
+      "locator": {
+        "url": "https://design.example.test/file/source-old",
+        "file_key": "FILE1",
+        "node_id": "1:2"
+      },
+      "revision": "r7",
+      "snapshot": null,
+      "at": "2026-01-09T00:00:00Z",
+      "authority": "design owner",
+      "freshness": "STALE",
+      "status": "retired"
+    },
+    {
+      "id": "source-unchecked",
+      "tool": "design-tool",
+      "locator": {
+        "url": "https://design.example.test/file/source-unchecked",
+        "file_key": "FILE1",
+        "node_id": "1:2"
+      },
+      "revision": "r7",
+      "snapshot": null,
+      "at": "2026-01-09T00:00:00Z",
+      "authority": "design owner",
+      "freshness": "STALE",
+      "status": "unverified"
+    },
+    {
+      "id": "source-gone",
+      "tool": "design-tool",
+      "locator": {
+        "url": "https://design.example.test/file/source-gone",
+        "file_key": "FILE1",
+        "node_id": "1:2"
+      },
+      "revision": "r7",
+      "snapshot": null,
+      "at": "2026-01-09T00:00:00Z",
+      "authority": "design owner",
+      "freshness": "MISSING",
+      "status": "missing"
+    }
+  ]
+}

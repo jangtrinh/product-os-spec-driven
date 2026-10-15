@@ -1,0 +1,76 @@
+/* THEME TOKENS (default look). Everything the reader draws comes from these variables, so another project swaps this one file.
+   Layout of the file: light values inside the first :root block, then one line holding only the dark marker comment, then the
+   dark declarations alone (no selector). render and make-shell wrap the dark part for prefers-color-scheme and [data-theme="dark"].
+   To use another theme set the manifest field theme.tokens to your file; start from shell/theme.default.css and keep every
+   variable name. */
+:root {
+  --font-sans: 'Be Vietnam Pro', 'Be Vietnam Pro Fallback', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+
+  --color-bg: #F7F7F8;
+  --color-surface: #FFFFFF;
+  --surface-2: #F0F1F2;
+  --surface-3: #FBFBFC;
+  --color-border: #E9EAEC;
+  --color-border-subtle: #F0F1F2;
+  --color-outline: #D8D8D8;           /* color.neutral-200 */
+  --color-text: #1A1B1E;
+  --color-text-muted: #5B5E66;
+  --color-text-subtle: #8A8D95;
+  --color-primary: #E00026;
+  --color-primary-hover: #C30019;
+  --color-primary-active: #A50016;
+  --color-primary-soft: #FDEEF0;
+  --color-link: #A50016;
+  --color-border-focus: #E00026;
+  --color-ok: #1F8A5B;   --color-ok-soft: #E8F4EE;   --color-ok-border: #BCDDCE;
+  --color-warn: #9A6200; --color-warn-soft: #F5EDDB; --color-warn-border: #E1CEAB;
+  --color-info: #1D4ED8; --color-info-soft: #EFF6FF; --color-info-border: #BFDBFE;
+  --color-bad: #C0152F;  --color-bad-soft: #FCEBED;  --color-bad-border: #EFBCC3;
+  --code-bg: #1F2024;    /* panel-800 */
+  --code-text: #E8E9EC;
+  --code-head: #26272C;  /* panel-700 */
+  --mark-bg: #FAD71E;    /* color.amber-200 */
+  --mark-text: #1A1B1E;
+
+  --radius-sm: 4px; --radius-md: 6px; --radius-lg: 8px; --radius-xl: 12px; --radius-full: 9999px;
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px; --space-5: 20px; --space-6: 24px; --space-8: 32px; --space-10: 40px;
+  --text-2xs: 11px; --text-xs: 12px; --text-sm: 13px; --text-base: 14px; --text-md: 15px; --text-lg: 17px; --text-xl: 19px; --text-2xl: 24px;
+  --weight-regular: 400; --weight-medium: 500; --weight-semibold: 600; --weight-bold: 700;
+  --leading-tight: 1.14; --leading-snug: 1.25; --leading-normal: 1.5; --leading-relaxed: 1.55;
+  --tracking-tight: -0.018em; --tracking-snug: -0.01em;
+  --spacing-page-x: 32px; --spacing-card-inset: 24px; --spacing-card-header-x: 24px; --spacing-card-header-y: 16px;
+  --topbar-height: 56px; --gap-cards: 16px;
+  --pages-w: clamp(248px, 19vw, 288px); --toc-w: clamp(208px, 16vw, 240px);
+  --duration-fast: 150ms; --duration-medium: 260ms;
+}
+@media (width < 640px) {
+  :root { --spacing-page-x: 16px; --spacing-card-inset: 16px; --spacing-card-header-x: 16px; --gap-cards: 12px; }
+}
+/* @dark */
+  --color-bg: #16171B;
+  --color-surface: #1F2024;
+  --surface-2: #26272C;
+  --surface-3: #1B1C20;
+  --color-border: #2E2F36;
+  --color-border-subtle: #2A2B31;
+  --color-outline: #3E3F47;
+  --color-text: #ECEDEF;
+  --color-text-muted: #B4B7BF;
+  --color-text-subtle: #8F929B;
+  --color-primary: #FF5C72;
+  --color-primary-hover: #FF7F90;
+  --color-primary-active: #FFA1AE;
+  --color-primary-soft: #3A1B21;
+  --color-link: #FF8FA0;
+  --color-border-focus: #FF8FA0;
+  --color-ok: #4CC58B;   --color-ok-soft: #17302A;   --color-ok-border: #2C5F4A;
+  --color-warn: #E0A53C; --color-warn-soft: #35291A; --color-warn-border: #5C4720;
+  --color-info: #8FB0FF; --color-info-soft: #1B2640; --color-info-border: #2F4577;
+  --color-bad: #FF7A8C;  --color-bad-soft: #3B1D23;  --color-bad-border: #6A2E39;
+  --code-bg: #121316;
+  --code-text: #E8E9EC;
+  --code-head: #26272C;
+  --mark-bg: #8E7900;
+  --mark-text: #FFFFFF;
+  color-scheme: dark;

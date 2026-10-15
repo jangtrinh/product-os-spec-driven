@@ -1,0 +1,953 @@
+{
+  "version": "1",
+  "screens": [
+    {
+      "screen": "S01",
+      "state": "normal",
+      "route": "/filters/s01",
+      "roles": [
+        "Dev"
+      ],
+      "scope": [
+        "workspace"
+      ],
+      "us": [
+        "US-01"
+      ],
+      "ac": [
+        "US-01.AC-01",
+        "US-01.AC-02"
+      ],
+      "scenarios": [
+        "US-01.SCN-01-01",
+        "US-01.SCN-01-02"
+      ],
+      "flow": "not-applicable: fixture flow described in US",
+      "boards": [],
+      "components": [
+        "example/Button"
+      ],
+      "patterns": [],
+      "data": "not-applicable: local sample inputs",
+      "source": {
+        "kind": "figma",
+        "ref": "source-live"
+      },
+      "availability": "all local demo users",
+      "overlay": "none",
+      "consequences": [
+        "Complete the requested filter action"
+      ],
+      "evidence": [
+        "receipt-spec"
+      ]
+    },
+    {
+      "screen": "S01",
+      "state": "empty",
+      "route": "/filters/s01",
+      "roles": [
+        "Dev"
+      ],
+      "scope": [
+        "workspace"
+      ],
+      "us": [
+        "US-01"
+      ],
+      "ac": [
+        "US-01.AC-01",
+        "US-01.AC-02"
+      ],
+      "scenarios": [
+        "US-01.SCN-01-01",
+        "US-01.SCN-01-02"
+      ],
+      "flow": "not-applicable: fixture flow described in US",
+      "boards": [],
+      "components": [
+        "example/Button"
+      ],
+      "patterns": [],
+      "data": "not-applicable: local sample inputs",
+      "source": {
+        "kind": "figma",
+        "ref": "source-old"
+      },
+      "availability": "all local demo users",
+      "overlay": "none",
+      "consequences": [
+        "Complete the requested filter action"
+      ],
+      "evidence": [
+        "receipt-stale"
+      ]
+    },
+    {
+      "screen": "S01",
+      "state": "loading",
+      "route": "/filters/s01",
+      "roles": [
+        "Dev"
+      ],
+      "scope": [
+        "workspace"
+      ],
+      "us": [
+        "US-01"
+      ],
+      "ac": [
+        "US-01.AC-01",
+        "US-01.AC-02"
+      ],
+      "scenarios": [
+        "US-01.SCN-01-01",
+        "US-01.SCN-01-02"
+      ],
+      "flow": "not-applicable: fixture flow described in US",
+      "boards": [],
+      "components": [
+        "example/Button"
+      ],
+      "patterns": [],
+      "data": "not-applicable: local sample inputs",
+      "source": {
+        "kind": "figma",
+        "ref": "source-unchecked"
+      },
+      "availability": "all local demo users",
+      "overlay": "none",
+      "consequences": [
+        "Complete the requested filter action"
+      ],
+      "evidence": [
+        "receipt-notrun"
+      ]
+    },
+    {
+      "screen": "S01",
+      "state": "error",
+      "route": "/filters/s01",
+      "roles": [
+        "Dev"
+      ],
+      "scope": [
+        "workspace"
+      ],
+      "us": [
+        "US-01"
+      ],
+      "ac": [
+        "US-01.AC-01",
+        "US-01.AC-02"
+      ],
+      "scenarios": [
+        "US-01.SCN-01-01",
+        "US-01.SCN-01-02"
+      ],
+      "flow": "not-applicable: fixture flow described in US",
+      "boards": [],
+      "components": [
+        "example/Button"
+      ],
+      "patterns": [],
+      "data": "not-applicable: local sample inputs",
+      "source": {
+        "kind": "figma",
+        "ref": "source-gone"
+      },
+      "availability": "all local demo users",
+      "overlay": "none",
+      "consequences": [
+        "Complete the requested filter action"
+      ],
+      "evidence": [
+        "receipt-ghost"
+      ]
+    },
+    {
+      "screen": "S01",
+      "state": "disabled",
+      "route": "/filters/s01",
+      "roles": [
+        "Dev"
+      ],
+      "scope": [
+        "workspace"
+      ],
+      "us": [
+        "US-01"
+      ],
+      "ac": [
+        "US-01.AC-01",
+        "US-01.AC-02"
+      ],
+      "scenarios": [
+        "US-01.SCN-01-01",
+        "US-01.SCN-01-02"
+      ],
+      "flow": "not-applicable: fixture flow described in US",
+      "boards": [],
+      "components": [
+        "example/Button"
+      ],
+      "patterns": [],
+      "data": "not-applicable: local sample inputs",
+      "source": {
+        "kind": "not-created",
+        "ref": null,
+        "reason": "No external canvas selected"
+      },
+      "availability": "all local demo users",
+      "overlay": "none",
+      "consequences": [
+        "Complete the requested filter action"
+      ],
+      "evidence": []
+    },
+    {
+      "screen": "S01",
+      "state": "focus",
+      "route": "/filters/s01",
+      "roles": [
+        "Dev"
+      ],
+      "scope": [
+        "workspace"
+      ],
+      "us": [
+        "US-01"
+      ],
+      "ac": [
+        "US-01.AC-01",
+        "US-01.AC-02"
+      ],
+      "scenarios": [
+        "US-01.SCN-01-01",
+        "US-01.SCN-01-02"
+      ],
+      "flow": "not-applicable: fixture flow described in US",
+      "boards": [],
+      "components": [
+        "example/Button"
+      ],
+      "patterns": [],
+      "data": "not-applicable: local sample inputs",
+      "source": {
+        "kind": "not-created",
+        "ref": null,
+        "reason": "No external canvas selected"
+      },
+      "availability": "all local demo users",
+      "overlay": "none",
+      "consequences": [
+        "Complete the requested filter action"
+      ],
+      "evidence": []
+    },
+    {
+      "screen": "S01",
+      "state": "long-content",
+      "route": "/filters/s01",
+      "roles": [
+        "Dev"
+      ],
+      "scope": [
+        "workspace"
+      ],
+      "us": [
+        "US-01"
+      ],
+      "ac": [
+        "US-01.AC-01",
+        "US-01.AC-02"
+      ],
+      "scenarios": [
+        "US-01.SCN-01-01",
+        "US-01.SCN-01-02"
+      ],
+      "flow": "not-applicable: fixture flow described in US",
+      "boards": [],
+      "components": [
+        "example/Button"
+      ],
+      "patterns": [],
+      "data": "not-applicable: local sample inputs",
+      "source": {
+        "kind": "not-created",
+        "ref": null,
+        "reason": "No external canvas selected"
+      },
+      "availability": "all local demo users",
+      "overlay": "none",
+      "consequences": [
+        "Complete the requested filter action"
+      ],
+      "evidence": []
+    },
+    {
+      "screen": "S01",
+      "state": "no-permission",
+      "route": "/filters/s01",
+      "roles": [
+        "Dev"
+      ],
+      "scope": [
+        "workspace"
+      ],
+      "us": [
+        "US-01"
+      ],
+      "ac": [
+        "US-01.AC-01",
+        "US-01.AC-02"
+      ],
+      "scenarios": [
+        "US-01.SCN-01-01",
+        "US-01.SCN-01-02"
+      ],
+      "flow": "not-applicable: fixture flow described in US",
+      "boards": [],
+      "components": [
+        "example/Button"
+      ],
+      "patterns": [],
+      "data": "not-applicable: local sample inputs",
+      "source": {
+        "kind": "not-created",
+        "ref": null,
+        "reason": "No external canvas selected"
+      },
+      "availability": "all local demo users",
+      "overlay": "none",
+      "consequences": [
+        "Complete the requested filter action"
+      ],
+      "evidence": []
+    },
+    {
+      "screen": "S02",
+      "state": "normal",
+      "route": "/filters/s02",
+      "roles": [
+        "Dev"
+      ],
+      "scope": [
+        "workspace"
+      ],
+      "us": [
+        "US-02"
+      ],
+      "ac": [
+        "US-02.AC-01"
+      ],
+      "scenarios": [
+        "US-02.SCN-02-01"
+      ],
+      "flow": "not-applicable: fixture flow described in US",
+      "boards": [],
+      "components": [
+        "example/Button"
+      ],
+      "patterns": [],
+      "data": "not-applicable: local sample inputs",
+      "source": {
+        "kind": "not-created",
+        "ref": null,
+        "reason": "No external canvas selected"
+      },
+      "availability": "all local demo users",
+      "overlay": "none",
+      "consequences": [
+        "Complete the requested filter action"
+      ],
+      "evidence": []
+    },
+    {
+      "screen": "S02",
+      "state": "empty",
+      "route": "/filters/s02",
+      "roles": [
+        "Dev"
+      ],
+      "scope": [
+        "workspace"
+      ],
+      "us": [
+        "US-02"
+      ],
+      "ac": [
+        "US-02.AC-01"
+      ],
+      "scenarios": [
+        "US-02.SCN-02-01"
+      ],
+      "flow": "not-applicable: fixture flow described in US",
+      "boards": [],
+      "components": [
+        "example/Button"
+      ],
+      "patterns": [],
+      "data": "not-applicable: local sample inputs",
+      "source": {
+        "kind": "not-created",
+        "ref": null,
+        "reason": "No external canvas selected"
+      },
+      "availability": "all local demo users",
+      "overlay": "none",
+      "consequences": [
+        "Complete the requested filter action"
+      ],
+      "evidence": []
+    },
+    {
+      "screen": "S02",
+      "state": "loading",
+      "route": "/filters/s02",
+      "roles": [
+        "Dev"
+      ],
+      "scope": [
+        "workspace"
+      ],
+      "us": [
+        "US-02"
+      ],
+      "ac": [
+        "US-02.AC-01"
+      ],
+      "scenarios": [
+        "US-02.SCN-02-01"
+      ],
+      "flow": "not-applicable: fixture flow described in US",
+      "boards": [],
+      "components": [
+        "example/Button"
+      ],
+      "patterns": [],
+      "data": "not-applicable: local sample inputs",
+      "source": {
+        "kind": "not-created",
+        "ref": null,
+        "reason": "No external canvas selected"
+      },
+      "availability": "all local demo users",
+      "overlay": "none",
+      "consequences": [
+        "Complete the requested filter action"
+      ],
+      "evidence": []
+    },
+    {
+      "screen": "S02",
+      "state": "error",
+      "route": "/filters/s02",
+      "roles": [
+        "Dev"
+      ],
+      "scope": [
+        "workspace"
+      ],
+      "us": [
+        "US-02"
+      ],
+      "ac": [
+        "US-02.AC-01"
+      ],
+      "scenarios": [
+        "US-02.SCN-02-01"
+      ],
+      "flow": "not-applicable: fixture flow described in US",
+      "boards": [],
+      "components": [
+        "example/Button"
+      ],
+      "patterns": [],
+      "data": "not-applicable: local sample inputs",
+      "source": {
+        "kind": "not-created",
+        "ref": null,
+        "reason": "No external canvas selected"
+      },
+      "availability": "all local demo users",
+      "overlay": "none",
+      "consequences": [
+        "Complete the requested filter action"
+      ],
+      "evidence": []
+    },
+    {
+      "screen": "S02",
+      "state": "disabled",
+      "route": "/filters/s02",
+      "roles": [
+        "Dev"
+      ],
+      "scope": [
+        "workspace"
+      ],
+      "us": [
+        "US-02"
+      ],
+      "ac": [
+        "US-02.AC-01"
+      ],
+      "scenarios": [
+        "US-02.SCN-02-01"
+      ],
+      "flow": "not-applicable: fixture flow described in US",
+      "boards": [],
+      "components": [
+        "example/Button"
+      ],
+      "patterns": [],
+      "data": "not-applicable: local sample inputs",
+      "source": {
+        "kind": "not-created",
+        "ref": null,
+        "reason": "No external canvas selected"
+      },
+      "availability": "all local demo users",
+      "overlay": "none",
+      "consequences": [
+        "Complete the requested filter action"
+      ],
+      "evidence": []
+    },
+    {
+      "screen": "S02",
+      "state": "focus",
+      "route": "/filters/s02",
+      "roles": [
+        "Dev"
+      ],
+      "scope": [
+        "workspace"
+      ],
+      "us": [
+        "US-02"
+      ],
+      "ac": [
+        "US-02.AC-01"
+      ],
+      "scenarios": [
+        "US-02.SCN-02-01"
+      ],
+      "flow": "not-applicable: fixture flow described in US",
+      "boards": [],
+      "components": [
+        "example/Button"
+      ],
+      "patterns": [],
+      "data": "not-applicable: local sample inputs",
+      "source": {
+        "kind": "not-created",
+        "ref": null,
+        "reason": "No external canvas selected"
+      },
+      "availability": "all local demo users",
+      "overlay": "none",
+      "consequences": [
+        "Complete the requested filter action"
+      ],
+      "evidence": []
+    },
+    {
+      "screen": "S02",
+      "state": "long-content",
+      "route": "/filters/s02",
+      "roles": [
+        "Dev"
+      ],
+      "scope": [
+        "workspace"
+      ],
+      "us": [
+        "US-02"
+      ],
+      "ac": [
+        "US-02.AC-01"
+      ],
+      "scenarios": [
+        "US-02.SCN-02-01"
+      ],
+      "flow": "not-applicable: fixture flow described in US",
+      "boards": [],
+      "components": [
+        "example/Button"
+      ],
+      "patterns": [],
+      "data": "not-applicable: local sample inputs",
+      "source": {
+        "kind": "not-created",
+        "ref": null,
+        "reason": "No external canvas selected"
+      },
+      "availability": "all local demo users",
+      "overlay": "none",
+      "consequences": [
+        "Complete the requested filter action"
+      ],
+      "evidence": []
+    },
+    {
+      "screen": "S02",
+      "state": "no-permission",
+      "route": "/filters/s02",
+      "roles": [
+        "Dev"
+      ],
+      "scope": [
+        "workspace"
+      ],
+      "us": [
+        "US-02"
+      ],
+      "ac": [
+        "US-02.AC-01"
+      ],
+      "scenarios": [
+        "US-02.SCN-02-01"
+      ],
+      "flow": "not-applicable: fixture flow described in US",
+      "boards": [],
+      "components": [
+        "example/Button"
+      ],
+      "patterns": [],
+      "data": "not-applicable: local sample inputs",
+      "source": {
+        "kind": "not-created",
+        "ref": null,
+        "reason": "No external canvas selected"
+      },
+      "availability": "all local demo users",
+      "overlay": "none",
+      "consequences": [
+        "Complete the requested filter action"
+      ],
+      "evidence": []
+    },
+    {
+      "screen": "S03",
+      "state": "normal",
+      "route": "/filters/s03",
+      "roles": [
+        "Dev"
+      ],
+      "scope": [
+        "workspace"
+      ],
+      "us": [
+        "US-03"
+      ],
+      "ac": [
+        "US-03.AC-01",
+        "US-03.AC-02"
+      ],
+      "scenarios": [
+        "US-03.SCN-03-01",
+        "US-03.SCN-03-02"
+      ],
+      "flow": "not-applicable: fixture flow described in US",
+      "boards": [],
+      "components": [
+        "example/Button"
+      ],
+      "patterns": [],
+      "data": "not-applicable: local sample inputs",
+      "source": {
+        "kind": "not-created",
+        "ref": null,
+        "reason": "No external canvas selected"
+      },
+      "availability": "all local demo users",
+      "overlay": "none",
+      "consequences": [
+        "Complete the requested filter action"
+      ],
+      "evidence": []
+    },
+    {
+      "screen": "S03",
+      "state": "empty",
+      "route": "/filters/s03",
+      "roles": [
+        "Dev"
+      ],
+      "scope": [
+        "workspace"
+      ],
+      "us": [
+        "US-03"
+      ],
+      "ac": [
+        "US-03.AC-01",
+        "US-03.AC-02"
+      ],
+      "scenarios": [
+        "US-03.SCN-03-01",
+        "US-03.SCN-03-02"
+      ],
+      "flow": "not-applicable: fixture flow described in US",
+      "boards": [],
+      "components": [
+        "example/Button"
+      ],
+      "patterns": [],
+      "data": "not-applicable: local sample inputs",
+      "source": {
+        "kind": "not-created",
+        "ref": null,
+        "reason": "No external canvas selected"
+      },
+      "availability": "all local demo users",
+      "overlay": "none",
+      "consequences": [
+        "Complete the requested filter action"
+      ],
+      "evidence": []
+    },
+    {
+      "screen": "S03",
+      "state": "loading",
+      "route": "/filters/s03",
+      "roles": [
+        "Dev"
+      ],
+      "scope": [
+        "workspace"
+      ],
+      "us": [
+        "US-03"
+      ],
+      "ac": [
+        "US-03.AC-01",
+        "US-03.AC-02"
+      ],
+      "scenarios": [
+        "US-03.SCN-03-01",
+        "US-03.SCN-03-02"
+      ],
+      "flow": "not-applicable: fixture flow described in US",
+      "boards": [],
+      "components": [
+        "example/Button"
+      ],
+      "patterns": [],
+      "data": "not-applicable: local sample inputs",
+      "source": {
+        "kind": "not-created",
+        "ref": null,
+        "reason": "No external canvas selected"
+      },
+      "availability": "all local demo users",
+      "overlay": "none",
+      "consequences": [
+        "Complete the requested filter action"
+      ],
+      "evidence": []
+    },
+    {
+      "screen": "S03",
+      "state": "error",
+      "route": "/filters/s03",
+      "roles": [
+        "Dev"
+      ],
+      "scope": [
+        "workspace"
+      ],
+      "us": [
+        "US-03"
+      ],
+      "ac": [
+        "US-03.AC-01",
+        "US-03.AC-02"
+      ],
+      "scenarios": [
+        "US-03.SCN-03-01",
+        "US-03.SCN-03-02"
+      ],
+      "flow": "not-applicable: fixture flow described in US",
+      "boards": [],
+      "components": [
+        "example/Button"
+      ],
+      "patterns": [],
+      "data": "not-applicable: local sample inputs",
+      "source": {
+        "kind": "not-created",
+        "ref": null,
+        "reason": "No external canvas selected"
+      },
+      "availability": "all local demo users",
+      "overlay": "none",
+      "consequences": [
+        "Complete the requested filter action"
+      ],
+      "evidence": []
+    },
+    {
+      "screen": "S03",
+      "state": "disabled",
+      "route": "/filters/s03",
+      "roles": [
+        "Dev"
+      ],
+      "scope": [
+        "workspace"
+      ],
+      "us": [
+        "US-03"
+      ],
+      "ac": [
+        "US-03.AC-01",
+        "US-03.AC-02"
+      ],
+      "scenarios": [
+        "US-03.SCN-03-01",
+        "US-03.SCN-03-02"
+      ],
+      "flow": "not-applicable: fixture flow described in US",
+      "boards": [],
+      "components": [
+        "example/Button"
+      ],
+      "patterns": [],
+      "data": "not-applicable: local sample inputs",
+      "source": {
+        "kind": "not-created",
+        "ref": null,
+        "reason": "No external canvas selected"
+      },
+      "availability": "all local demo users",
+      "overlay": "none",
+      "consequences": [
+        "Complete the requested filter action"
+      ],
+      "evidence": []
+    },
+    {
+      "screen": "S03",
+      "state": "focus",
+      "route": "/filters/s03",
+      "roles": [
+        "Dev"
+      ],
+      "scope": [
+        "workspace"
+      ],
+      "us": [
+        "US-03"
+      ],
+      "ac": [
+        "US-03.AC-01",
+        "US-03.AC-02"
+      ],
+      "scenarios": [
+        "US-03.SCN-03-01",
+        "US-03.SCN-03-02"
+      ],
+      "flow": "not-applicable: fixture flow described in US",
+      "boards": [],
+      "components": [
+        "example/Button"
+      ],
+      "patterns": [],
+      "data": "not-applicable: local sample inputs",
+      "source": {
+        "kind": "not-created",
+        "ref": null,
+        "reason": "No external canvas selected"
+      },
+      "availability": "all local demo users",
+      "overlay": "none",
+      "consequences": [
+        "Complete the requested filter action"
+      ],
+      "evidence": []
+    },
+    {
+      "screen": "S03",
+      "state": "long-content",
+      "route": "/filters/s03",
+      "roles": [
+        "Dev"
+      ],
+      "scope": [
+        "workspace"
+      ],
+      "us": [
+        "US-03"
+      ],
+      "ac": [
+        "US-03.AC-01",
+        "US-03.AC-02"
+      ],
+      "scenarios": [
+        "US-03.SCN-03-01",
+        "US-03.SCN-03-02"
+      ],
+      "flow": "not-applicable: fixture flow described in US",
+      "boards": [],
+      "components": [
+        "example/Button"
+      ],
+      "patterns": [],
+      "data": "not-applicable: local sample inputs",
+      "source": {
+        "kind": "not-created",
+        "ref": null,
+        "reason": "No external canvas selected"
+      },
+      "availability": "all local demo users",
+      "overlay": "none",
+      "consequences": [
+        "Complete the requested filter action"
+      ],
+      "evidence": []
+    },
+    {
+      "screen": "S03",
+      "state": "no-permission",
+      "route": "/filters/s03",
+      "roles": [
+        "Dev"
+      ],
+      "scope": [
+        "workspace"
+      ],
+      "us": [
+        "US-03"
+      ],
+      "ac": [
+        "US-03.AC-01",
+        "US-03.AC-02"
+      ],
+      "scenarios": [
+        "US-03.SCN-03-01",
+        "US-03.SCN-03-02"
+      ],
+      "flow": "not-applicable: fixture flow described in US",
+      "boards": [],
+      "components": [
+        "example/Button"
+      ],
+      "patterns": [],
+      "data": "not-applicable: local sample inputs",
+      "source": {
+        "kind": "not-created",
+        "ref": null,
+        "reason": "No external canvas selected"
+      },
+      "availability": "all local demo users",
+      "overlay": "none",
+      "consequences": [
+        "Complete the requested filter action"
+      ],
+      "evidence": []
+    }
+  ]
+}

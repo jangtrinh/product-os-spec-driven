@@ -1,0 +1,12 @@
+{
+  "code": "U-CONTRACT-REQUIRED",
+  "severity": "error",
+  "fault": null,
+  "changes": [
+    {
+      "path": "ux/ui-contract.md",
+      "before": "d14be41a8f009c8a7e851d197f46b9a9eecb638c54889f1f63aac70d64d7f8cc",
+      "after": null
+    }
+  ]
+}

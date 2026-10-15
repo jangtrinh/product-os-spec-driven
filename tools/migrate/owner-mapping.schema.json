@@ -1,0 +1,23 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "type": "object", "additionalProperties": false,
+ "required": ["version", "source_sha256", "mappings"],
+ "properties": {
+  "version": {"const": 1},
+  "source_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+  "mappings": {"type": "array", "items": {
+   "type": "object", "additionalProperties": false,
+   "required": ["row", "owner", "source", "authority", "reason"],
+   "properties": {
+    "row": {"type": "string", "pattern": "^CW-[0-9]+$"},
+    "owner": {"type": "string", "pattern": "^(?:US-(?:[0-9]+|P[0-9]+)|NF-[0-9]+)$"},
+    "source": {"type": "object", "additionalProperties": false, "required": ["file", "line"], "properties": {
+     "file": {"type": "string", "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\)(?!.*:)[^\\s#]+$"},
+     "line": {"type": "integer", "minimum": 1}
+    }},
+    "authority": {"type": "string", "pattern": "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$"},
+    "reason": {"type": "string", "minLength": 1, "pattern": "\\S"}
+   }
+  }}
+ }
+}

@@ -1,0 +1,3 @@
+#!/usr/bin/env node
+import {agentCli} from './agent-cli.mjs';
+process.exitCode = await agentCli('claude', 'writer');

@@ -1,0 +1,12 @@
+{
+  "code": "G-TERM-REF",
+  "severity": "error",
+  "fault": null,
+  "changes": [
+    {
+      "path": "decisions/glossary.md",
+      "before": "1019331ee31a291308a61a246594e5f9a529b7ae62ce74357e10538bc03d6e81",
+      "after": "LS0tCmlkOiBnbG9zc2FyeQp0eXBlOiBnbG9zc2FyeQp0aXRsZTogVGVybXMgYW5kIGJhbm5lZCB3b3JkaW5nCnVwZGF0ZWQ6IDIwMjYtMDEtMDkKLS0tCgojIyBUZXJtcwoKfCBUZXJtIHwgQW5jaG9yIHwgRGVmaW5pdGlvbiB8IFNvdXJjZSB8CnwtLS18LS0tfC0tLXwtLS18CnwgU2F2ZWQgZmlsdGVyIHwgc2F2ZWQtZmlsdGVyIHwgQSBzYXZlZCByZXVzYWJsZSBzZWxlY3Rpb24uIHwgRDk5OSB8CgojIyBCYW4gbGlzdAoKfCBCYW5uZWQgfCBSZXBsYWNlbWVudCB8IFJlYXNvbiB8CnwtLS18LS0tfC0tLXwKfCBzZWFtbGVzcyB8IFN0YXRlIG9ic2VydmFibGUgc3RlcHMgfCBObyBtZWFzdXJlZCBiZWhhdmlvciB8Cg=="
+    }
+  ]
+}

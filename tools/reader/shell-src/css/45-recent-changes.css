@@ -1,0 +1,8 @@
+.change-chip { color: var(--color-info); background: var(--color-info-soft); border-color: var(--color-info-border); gap: var(--space-1); white-space: nowrap; font-weight: var(--weight-medium); }
+.change-chip .ico { width: var(--text-xs); height: var(--text-xs); }
+.page-meta > .change-chip { align-self: center; }
+.tree-link { display: flex; align-items: flex-start; gap: var(--space-2); }
+.tree-link > .change-chip { display: inline-flex; flex-shrink: 0; margin-left: auto; }
+.tree-link > span:first-child { min-width: 0; }
+.id-cell > .change-chip { display: flex; width: max-content; margin-top: var(--space-1); }
+.changes-entry { display: flex; align-items: center; gap: var(--space-2); }

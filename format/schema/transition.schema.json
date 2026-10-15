@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec-driven.local/format/v2/transition.schema.json",
+  "title": "Transition",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "id": {"type":"string","minLength":1,"x-spec-ref":"transition-id"},
+    "kind": {"enum":["backward","repair","recovery","exception","change-set"],"x-spec-ref":false,"x-spec-ref-reason":"Closed kind selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},
+    "opener": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/actor","x-spec-ref":false,"x-spec-ref-reason":"Actor identity/role, not an artifact dependency.","x-spec-exclusion":{"category":"alias-of","owner":"model-common.schema.json#/$defs/actor"}},
+    "at": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/utc","x-spec-ref":false,"x-spec-ref-reason":"Timestamp/date value, not a dependency identity.","x-spec-exclusion":{"category":"alias-of","owner":"model-common.schema.json#/$defs/utc"}},
+    "source": {"type":"string","minLength":1,"x-spec-ref":"transition-source"},
+    "reason": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal reason value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+    "from": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {"stage":{"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/stage","x-spec-ref":false,"x-spec-ref-reason":"Shared value grammar; not a separate dependency at this alias.","x-spec-exclusion":{"category":"alias-of","owner":"model-common.schema.json#/$defs/stage"}},"scope":{"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/scope","x-spec-ref":"transition-from-scope"},"revision":{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Content/version pin; binding context, not a separate reference.","x-spec-exclusion":{"category":"free-text"}}},
+      "required": ["stage","scope","revision"]
+    },
+    "to": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {"stage":{"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/stage","x-spec-ref":false,"x-spec-ref-reason":"Shared value grammar; not a separate dependency at this alias.","x-spec-exclusion":{"category":"alias-of","owner":"model-common.schema.json#/$defs/stage"}},"scope":{"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/scope","x-spec-ref":"transition-to-scope"},"revision":{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Content/version pin; binding context, not a separate reference.","x-spec-exclusion":{"category":"free-text"}}},
+      "required": ["stage","scope","revision"]
+    },
+    "impact": {"type":"array","items":{"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/impact"},"minItems":1,"uniqueItems":true},
+    "authority": {"enum":["po","qc","dev"],"x-spec-ref":false,"x-spec-ref-reason":"Closed authority selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},
+    "decision": {"anyOf":[{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"transition.schema.json#/properties/decision"}},{"type":"null"}],"x-spec-ref":"transition-decision"},
+    "regates": {"type":"array","items":{"type":"string","minLength":1,"x-spec-ref":"transition-regates"},"minItems":1,"uniqueItems":true,"x-spec-ref":false,"x-spec-ref-reason":"Literal regates value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"transition.schema.json#/properties/regates/items"}}
+  },
+  "required": ["id","kind","opener","at","source","reason","from","to","impact","authority","decision","regates"]
+}

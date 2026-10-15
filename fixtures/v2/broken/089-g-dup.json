@@ -1,0 +1,12 @@
+{
+  "code": "G-DUP",
+  "severity": "error",
+  "fault": null,
+  "changes": [
+    {
+      "path": "decisions/glossary.md",
+      "before": "1019331ee31a291308a61a246594e5f9a529b7ae62ce74357e10538bc03d6e81",
+      "after": "LS0tCmlkOiBnbG9zc2FyeQp0eXBlOiBnbG9zc2FyeQp0aXRsZTogVGVybXMgYW5kIGJhbm5lZCB3b3JkaW5nCnVwZGF0ZWQ6IDIwMjYtMDEtMDkKLS0tCgojIyBUZXJtcwoKfCBUZXJtIHwgQW5jaG9yIHwgRGVmaW5pdGlvbiB8IFNvdXJjZSB8CnwtLS18LS0tfC0tLXwtLS18CnwgU2F2ZWQgZmlsdGVyIHwgc2F2ZWQtZmlsdGVyIHwgQSBzYXZlZCByZXVzYWJsZSBzZWxlY3Rpb24uIHwgRDEgfAp8IFNhdmVkIGZpbHRlciB8IHNhdmVkLWZpbHRlci0yIHwgRHVwbGljYXRlIHRlcm0uIHwgRDEgfAoKIyMgQmFuIGxpc3QKCnwgQmFubmVkIHwgUmVwbGFjZW1lbnQgfCBSZWFzb24gfAp8LS0tfC0tLXwtLS18Cnwgc2VhbWxlc3MgfCBTdGF0ZSBvYnNlcnZhYmxlIHN0ZXBzIHwgTm8gbWVhc3VyZWQgYmVoYXZpb3IgfAo="
+    }
+  ]
+}

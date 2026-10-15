@@ -1,0 +1,18 @@
+# PRODUCT:OS Spec Driven
+
+> A source-available, local-first kit for PO-guided product specification stages, independent review, explicit gates, and offline reader output.
+
+## Start here
+
+- [README](README.md): installation, operating guide, and kit-owner checks.
+- [PO guide](docs/po-guide.md): PO workflow and decision guidance.
+- [Architecture](docs/architecture.md): runtime layers, stage flow, and boundaries.
+- [Known limits](docs/known-limits.md): current constraints and safe recovery steps.
+- [Cookbook](docs/cookbook.md): command recipes for POs and kit owners.
+
+## Reference
+
+- [Specification](SPEC.md): kit contracts and stage requirements.
+- [Changelog](CHANGELOG.md): release history.
+- [License](LICENSE): PolyForm Noncommercial 1.0.0 terms.
+

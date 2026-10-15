@@ -1,0 +1,12 @@
+{
+  "code": "Q-DEFINITION",
+  "severity": "error",
+  "fault": null,
+  "changes": [
+    {
+      "path": "assets/records/definitions/story/1.json",
+      "before": "387fb4ff7a6027e431ec1abb97139b1ff67b430665949a372dc748687885e24e",
+      "after": "ewogICJpZCI6ICJzdG9yeSIsCiAgInZlcnNpb24iOiAiMSIsCiAgInN0YWdlIjogInVzIiwKICAic2NvcGUiOiB7CiAgICAia2luZCI6ICJhYyIsCiAgICAiaWRzIjogWwogICAgICAiVVMtMDEuQUMtMDEiCiAgICBdLAogICAgInJldmlzaW9uIjogIjkxNjBjOGRhMzRhYTA4Y2JiN2U1MDdjNWViMWY5ODAxMzRkZDBkOTg5OTNhYzU2M2EzNzVlZDQ1NzkwNDRjNjQiCiAgfSwKICAiaW5wdXRzIjogWwogICAgInVzL1VTLTAxLm1kIgogIF0sCiAgIm91dHB1dHMiOiBbCiAgICAiYXNzZXRzL3JlY2VpcHQuanNvbiIKICBdLAogICJjaGVja3MiOiBbXSwKICAicmV2aWV3ZXIiOiAiUUMiLAogICJkZWNpZGVyIjogInBvIiwKICAidHJhbnNpdGlvbnMiOiBbCiAgICAiYWR2YW5jZSIsCiAgICAicmVwYWlyIgogIF0sCiAgImludmFsaWRhdGlvbiI6ICJ0eXBlZCBjbG9zdXJlOyBCUi0xNCBmYWxsYmFjayIsCiAgImV4Y2VwdGlvbnMiOiBbXSwKICAidmVyc2lvbnMiOiB7CiAgICAid29ya2Zsb3ciOiAiMSIsCiAgICAidGVtcGxhdGVzIjogIjEiLAogICAgInJ1bGVzZXQiOiAiMSIsCiAgICAic2tpbGwiOiAibm9uZSIKICB9Cn0K"
+    }
+  ]
+}

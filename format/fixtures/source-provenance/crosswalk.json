@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "rows": [
+    {
+      "id": "CW-001",
+      "legacy_id": "SCN-PUB-01-01",
+      "family": "scn-pub",
+      "canonical_kind": "scenario",
+      "canonical_id": "US-16.SCN-16-01",
+      "source": {
+        "file": "source.txt",
+        "line": 1
+      },
+      "assignment_rule": "scenario-next",
+      "owner": "US-16"
+    },
+    {
+      "id": "CW-002",
+      "legacy_id": "SCR-PUB-01",
+      "family": "scr-pub",
+      "canonical_kind": "screen-state",
+      "canonical_id": "S01",
+      "source": {
+        "file": "source.txt",
+        "line": 2
+      },
+      "assignment_rule": "screen-next"
+    },
+    {
+      "id": "CW-003",
+      "legacy_id": "EMAIL-01",
+      "family": "email",
+      "canonical_kind": "ac",
+      "canonical_id": "US-16.AC-01",
+      "source": {
+        "file": "source.txt",
+        "line": 3
+      },
+      "assignment_rule": "ac-next",
+      "owner": "US-16"
+    },
+    {
+      "id": "CW-004",
+      "legacy_id": "CTRL-01",
+      "family": "ctrl",
+      "canonical_kind": "ac",
+      "canonical_id": "US-16.AC-02",
+      "source": {
+        "file": "source.txt",
+        "line": 4
+      },
+      "assignment_rule": "ac-next",
+      "owner": "US-16"
+    },
+    {
+      "id": "CW-005",
+      "legacy_id": "PD-01",
+      "family": "pd-feedback",
+      "canonical_kind": "artifact",
+      "canonical_id": "FB-01",
+      "source": {
+        "file": "source.txt",
+        "line": 5
+      },
+      "assignment_rule": "feedback-next"
+    }
+  ]
+}

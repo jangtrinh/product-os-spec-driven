@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec-driven.local/format/v2/candidate-manifest.schema.json",
+  "title": "Candidate member manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {"const":"1","x-spec-ref":false,"x-spec-ref-reason":"Closed version selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},
+    "members": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "kind": {"enum":["stage","artifact","bundle","us","ac"],"x-spec-ref":false,"x-spec-ref-reason":"Closed kind selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},
+          "id": {"type":"string","minLength":1,"x-spec-ref":"candidate-manifest-members-id"},
+          "revision": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/hash","x-spec-ref":false,"x-spec-ref-reason":"Content/version pin; binding context, not a separate reference.","x-spec-exclusion":{"category":"alias-of","owner":"model-common.schema.json#/$defs/hash"}},
+          "artifacts": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/hashes","x-spec-ref":"candidate-manifest-members-artifacts"}
+        },
+        "required": ["kind","id","revision","artifacts"]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    }
+  },
+  "required": ["version","members"]
+}

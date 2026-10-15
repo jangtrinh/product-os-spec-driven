@@ -1,0 +1,1 @@
+{"id":"event-1","at":"2026-01-09T00:00:00Z","actor":"PO","type":"decision","scope":{"kind":"ac","ids":["US-01.AC-01"],"revision":"fixture-revision"},"before":null,"after":"1","refs":["D1"],"reason":"fixture","previous_sha256":null}

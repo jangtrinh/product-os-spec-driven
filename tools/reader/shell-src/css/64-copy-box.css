@@ -1,0 +1,18 @@
+/* Copy cho AI box: a popover (12px radius, 1px border, surface, 16px padding, soft shadow). */
+.copy-box {
+  position: absolute; z-index: 80; width: min(400px, calc(100vw - 16px)); display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-4);
+  background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-xl); box-shadow: var(--shadow-popover, 0 8px 24px 0 rgba(16,17,20,.12));
+}
+.copy-box[hidden] { display: none; }
+.copy-box > * { margin: 0; }
+.copy-box-kicker { font-size: var(--text-xs); font-weight: var(--weight-semibold); color: var(--color-text-muted); }
+.copy-box-loc { display: block; padding: var(--space-2) var(--space-3); border-radius: var(--radius-lg); background: var(--surface-2); border: 0; font: var(--weight-regular) var(--text-xs)/1.5 var(--font-mono); color: var(--color-text); overflow-wrap: anywhere; white-space: normal; }
+.copy-box-field { display: block; }
+.copy-box-field .input { width: 100%; }
+.copy-box-actions { display: flex; align-items: center; gap: var(--space-2); flex-wrap: wrap; }
+.copy-box-keys { margin-left: auto; display: inline-flex; gap: var(--space-1); }
+.copy-box-manual p { margin: 0 0 var(--space-2); font-size: var(--text-xs); color: var(--color-text-muted); }
+.copy-box-manual .input { width: 100%; }
+.copy-box-manual[hidden] { display: none; }
+.copy-box-status { min-height: 0; font-size: var(--text-xs); color: var(--color-ok-ink); }
+.copy-box-status:empty { display: none; }

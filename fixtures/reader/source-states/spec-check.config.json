@@ -1,0 +1,15 @@
+{
+  "epics": {
+    "min": 1,
+    "max": 8
+  },
+  "capabilities": {
+    "min": 1,
+    "max": 7
+  },
+  "build": {
+    "storiesDir": "us",
+    "indexFile": "us/INDEX.md",
+    "prdFile": "prd/PRD.md"
+  }
+}

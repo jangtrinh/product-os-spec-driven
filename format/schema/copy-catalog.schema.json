@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec-driven.local/format/v2/copy-catalog.schema.json",
+  "title": "Locale copy catalog",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["locale","entries"],
+  "properties": {"locale":{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal locale value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},"entries":{"type":"object","minProperties":1,"propertyNames":{"type":"string","minLength":1,"x-spec-ref":"copy-catalog-entry-key"},"additionalProperties":{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal additionalProperties value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}}}}
+}

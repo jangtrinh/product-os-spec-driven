@@ -1,0 +1,45 @@
+{
+  "version": "1.0",
+  "date": "2026-10-14",
+  "language": "vi",
+  "statuses": {
+    "Built": "đã merge vào nhánh chính",
+    "In review": "đang review",
+    "Planned": "chưa bắt đầu triển khai code",
+    "Backlog": "tạm hoãn"
+  },
+  "epics": [
+    {
+      "id": "E1",
+      "slug": "saved-filters",
+      "title": "Lưu và dùng lại bộ lọc",
+      "title_en": "Save and reuse filters",
+      "page": "epic-1.md",
+      "goal": "Lưu tổ hợp điều kiện lọc thành bộ lọc có tên, áp dụng lại bằng một lần bấm và xóa bộ lọc không còn dùng.",
+      "roles": ["Operator"],
+      "status": "Planned",
+      "screens": ["SCR-001", "SCR-002"],
+      "capabilities": [
+        {
+          "id": "C-01",
+          "title": "Lưu bộ lọc hiện tại với tên",
+          "text": "Nhập tên dài từ 1 đến 40 ký tự và lưu tối đa 20 bộ lọc cho mỗi người dùng.",
+          "done_when": "Bộ lọc hợp lệ xuất hiện trong danh sách; tên không hợp lệ hoặc vượt 20 bộ lọc bị từ chối kèm lý do.",
+          "us": ["US-01"],
+          "status": "Planned",
+          "req": ["REQ-01", "REQ-02"]
+        },
+        {
+          "id": "C-02",
+          "title": "Áp dụng lại và xóa bộ lọc đã lưu",
+          "text": "Bấm tên bộ lọc để áp dụng điều kiện đã lưu hoặc xóa bộ lọc sau khi xác nhận.",
+          "done_when": "Danh sách đơn áp dụng đúng điều kiện đã lưu và bộ lọc đã xóa không còn trong danh sách.",
+          "us": ["US-02"],
+          "status": "Planned",
+          "req": ["REQ-03"]
+        }
+      ]
+    }
+  ],
+  "hidden": []
+}

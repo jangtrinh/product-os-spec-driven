@@ -1,0 +1,8 @@
+.block-history { margin-block: var(--space-2); font-size: var(--text-sm); line-height: 1.5; overflow-wrap: anywhere; }
+.block-history .change-chip { vertical-align: middle; }
+.block-history > a { white-space: nowrap; }
+.history-label { color: var(--color-text-muted); font-size: var(--text-xs); }
+.previous-wording { color: var(--color-text-muted); text-decoration-thickness: 1px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.previous-cell { padding-bottom: var(--space-2); border-bottom: 1px solid var(--color-border); }
+.changed-block > .block-history { display: block; }
+.removed-block { padding: var(--space-3); border-left: 2px solid var(--color-border); }

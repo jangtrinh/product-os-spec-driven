@@ -1,0 +1,18 @@
+{
+  "code": "Q-STATE",
+  "severity": "error",
+  "fault": null,
+  "checkpoint": "handoff",
+  "changes": [
+    {
+      "path": "assets/records/definitions/story/1.json",
+      "before": "387fb4ff7a6027e431ec1abb97139b1ff67b430665949a372dc748687885e24e",
+      "after": "ewogICJpZCI6ICJzdG9yeSIsCiAgInZlcnNpb24iOiAiMSIsCiAgInN0YWdlIjogInVzIiwKICAic2NvcGUiOiB7CiAgICAia2luZCI6ICJhYyIsCiAgICAiaWRzIjogWwogICAgICAiVVMtMDEuQUMtMDEiCiAgICBdLAogICAgInJldmlzaW9uIjogIjkxNjBjOGRhMzRhYTA4Y2JiN2U1MDdjNWViMWY5ODAxMzRkZDBkOTg5OTNhYzU2M2EzNzVlZDQ1NzkwNDRjNjQiCiAgfSwKICAiaW5wdXRzIjogWwogICAgInVzL1VTLTAxLm1kIgogIF0sCiAgIm91dHB1dHMiOiBbCiAgICAiYXNzZXRzL3JlY2VpcHQuanNvbiIKICBdLAogICJjaGVja3MiOiBbCiAgICB7CiAgICAgICJpZCI6ICJsaW50IiwKICAgICAgImNvbW1hbmQiOiAibm9kZSBsaW50IiwKICAgICAgIm1hbmRhdG9yeSI6IHRydWUsCiAgICAgICJibG9ja2VyX3BvbGljeSI6ICJhbnkgZXJyb3IgYmxvY2tzIgogICAgfSwKICAgIHsKICAgICAgImlkIjogIlEtU1RBVEUiLAogICAgICAiY29tbWFuZCI6ICJyZWNvcmQgbGludCIsCiAgICAgICJtYW5kYXRvcnkiOiB0cnVlLAogICAgICAiYmxvY2tlcl9wb2xpY3kiOiAiUHJpb3Igc3RhZ2UgcmVjb3JkcyByZXF1aXJlZCIKICAgIH0KICBdLAogICJyZXZpZXdlciI6ICJRQyIsCiAgImRlY2lkZXIiOiAicG8iLAogICJ0cmFuc2l0aW9ucyI6IFsKICAgICJhZHZhbmNlIiwKICAgICJyZXBhaXIiCiAgXSwKICAiaW52YWxpZGF0aW9uIjogInR5cGVkIGNsb3N1cmU7IEJSLTE0IGZhbGxiYWNrIiwKICAiZXhjZXB0aW9ucyI6IFtdLAogICJ2ZXJzaW9ucyI6IHsKICAgICJ3b3JrZmxvdyI6ICIxIiwKICAgICJ0ZW1wbGF0ZXMiOiAiMSIsCiAgICAicnVsZXNldCI6ICIxIiwKICAgICJza2lsbCI6ICJub25lIgogIH0KfQo="
+    },
+    {
+      "path": "assets/records/gates/story.json",
+      "before": "222553b1e9fc12bf2bfdc1d15ce0c13e67b76d3e7f0f7d3ea290c3df3bed42d3",
+      "after": null
+    }
+  ]
+}

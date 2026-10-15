@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec-driven.local/format/v2/expected-change.schema.json",
+  "title": "Expected-result change record (AM-4)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id","target","before","after","reason","requested_by","requested_at","status","red_history"],
+  "properties": {
+    "id": {"type":"string","pattern":"^XC-[0-9]{3,}$","x-spec-ref":"expected-change-id"},
+    "target": {"type":"object","additionalProperties":false,"required":["kind","id"],"properties":{"kind":{"enum":["ac","scn","threshold"],"x-spec-ref":false,"x-spec-ref-reason":"Closed kind selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},"id":{"type":"string","minLength":1,"x-spec-ref":"expected-change-target-id"}}},
+    "before": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal before value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+    "after": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal after value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+    "reason": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal reason value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+    "requested_by": {"type":"string","format":"email","x-spec-ref":false,"x-spec-ref-reason":"Actor identity/role, not an artifact dependency.","x-spec-exclusion":{"category":"format-value"}},
+    "requested_at": {"type":"string","format":"date-time","x-spec-ref":false,"x-spec-ref-reason":"Timestamp/date value, not a dependency identity.","x-spec-exclusion":{"category":"format-value"}},
+    "status": {"enum":["pending","approved","rejected"],"x-spec-ref":false,"x-spec-ref-reason":"Closed status selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},
+    "decided_by": {"type":"string","format":"email","x-spec-ref":false,"x-spec-ref-reason":"Actor identity/role, not an artifact dependency.","x-spec-exclusion":{"category":"format-value"}},
+    "decided_at": {"type":"string","format":"date-time","x-spec-ref":false,"x-spec-ref-reason":"Timestamp/date value, not a dependency identity.","x-spec-exclusion":{"category":"format-value"}},
+    "amendment_ref": {"type":"string","minLength":1,"x-spec-ref":"expected-change-amendment-ref"},
+    "red_history": {
+      "type": "array",
+      "items": {"type":"object","additionalProperties":false,"required":["receipt","result"],"properties":{"receipt":{"type":"string","minLength":1,"x-spec-ref":"expected-change-red-history-receipt"},"result":{"enum":["FAIL","BLOCKED","NOT_RUN"],"x-spec-ref":false,"x-spec-ref-reason":"Closed result selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}}}},
+      "description": "History of attempts. BLOCKED/NOT_RUN entries are kept as harness history but never count as behavioral RED; an approved change needs at least one FAIL (AM-8)."
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties":{"status":{"enum":["approved","rejected"],"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"expected-change.schema.json#/properties/status"}}},"required":["status"],"type":"object"},
+      "then": {"required":["decided_by","decided_at"],"type":"object","properties":{"decided_by":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"expected-change.schema.json#/properties/decided_by"}},"decided_at":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"expected-change.schema.json#/properties/decided_at"}}}},
+      "x-spec-ref": false,
+      "x-spec-ref-reason": "Constraint refinement; extraction belongs to the owning field."
+    ,"x-spec-exclusion":{"category":"refinement-of","owner":"expected-change.schema.json#"}},
+    {"if":{"properties":{"status":{"const":"approved","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"expected-change.schema.json#/properties/status"}}},"required":["status"],"type":"object"},"then":{"required":["amendment_ref"],"type":"object","properties":{"amendment_ref":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"expected-change.schema.json#/properties/amendment_ref"}}}},"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"expected-change.schema.json#"}},
+    {
+      "if": {"type":"object","properties":{"status":{"const":"approved","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"expected-change.schema.json#/properties/status"}}},"required":["status"]},
+      "then": {"type":"object","required":["red_history"],"properties":{"red_history":{"type":"array","contains":{"type":"object","required":["result"],"properties":{"result":{"const":"FAIL","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"enum-literal"}}}}}}},
+      "x-spec-ref": false,
+      "x-spec-ref-reason": "Constraint refinement; extraction belongs to the owning field."
+    ,"x-spec-exclusion":{"category":"refinement-of","owner":"expected-change.schema.json#"}}
+  ]
+}

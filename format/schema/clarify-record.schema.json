@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec-driven.local/format/v2/clarify-record.schema.json",
+  "title": "Clarification question record (AM-4)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id","stage","round","question","options","recommended","depends_on","status","asked_at"],
+  "properties": {
+    "id": {"type":"string","pattern":"^Q-[0-9]{3,}$","x-spec-ref":"clarify-record-id"},
+    "stage": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal stage value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+    "round": {"type":"integer","minimum":1},
+    "question": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal question value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+    "group": {"enum":["contradiction","ambiguity","conflicting-constraint","unstated-assumption","missing-edge-case","other"],"x-spec-ref":false,"x-spec-ref-reason":"Closed group selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},
+    "options": {"type":"array","minItems":2,"items":{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal items value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}}},
+    "recommended": {"type":"integer","minimum":0},
+    "depends_on": {"type":"array","items":{"type":"string","minLength":1,"x-spec-ref":"clarify-record-depends-on"},"x-spec-ref":false,"x-spec-ref-reason":"Literal depends_on value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"clarify-record.schema.json#/properties/depends_on/items"}},
+    "duplicate_of": {"type":"string","pattern":"^Q-[0-9]{3,}$","x-spec-ref":"clarify-record-duplicate-of"},
+    "status": {"enum":["open","answered","superseded","deferred"],"x-spec-ref":false,"x-spec-ref-reason":"Closed status selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},
+    "asked_at": {"type":"string","format":"date-time","x-spec-ref":false,"x-spec-ref-reason":"Timestamp/date value, not a dependency identity.","x-spec-exclusion":{"category":"format-value"}},
+    "answer": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal answer value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+    "decided_by": {"type":"string","format":"email","x-spec-ref":false,"x-spec-ref-reason":"Actor identity/role, not an artifact dependency.","x-spec-exclusion":{"category":"format-value"}},
+    "decided_at": {"type":"string","format":"date-time","x-spec-ref":false,"x-spec-ref-reason":"Timestamp/date value, not a dependency identity.","x-spec-exclusion":{"category":"format-value"}},
+    "decision_ref": {"type":"string","minLength":1,"x-spec-ref":"clarify-record-decision-ref"},
+    "superseded_by": {"type":"string","minLength":1,"x-spec-ref":"clarify-record-superseded-by"},
+    "reason": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal reason value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}}
+  },
+  "allOf": [
+    {
+      "if": {"properties":{"status":{"const":"answered","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"clarify-record.schema.json#/properties/status"}}},"required":["status"],"type":"object"},
+      "then": {
+        "required": ["answer","decided_by","decided_at","decision_ref"],
+        "type": "object",
+        "properties": {"answer":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"clarify-record.schema.json#/properties/answer"}},"decided_by":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"clarify-record.schema.json#/properties/decided_by"}},"decided_at":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"clarify-record.schema.json#/properties/decided_at"}},"decision_ref":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"clarify-record.schema.json#/properties/decision_ref"}}}
+      },
+      "x-spec-ref": false,
+      "x-spec-ref-reason": "Constraint refinement; extraction belongs to the owning field."
+    ,"x-spec-exclusion":{"category":"refinement-of","owner":"clarify-record.schema.json#"}},
+    {
+      "if": {"properties":{"status":{"const":"superseded","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"clarify-record.schema.json#/properties/status"}}},"required":["status"],"type":"object"},
+      "then": {"required":["superseded_by","reason"],"type":"object","properties":{"superseded_by":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"clarify-record.schema.json#/properties/superseded_by"}},"reason":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"clarify-record.schema.json#/properties/reason"}}}},
+      "x-spec-ref": false,
+      "x-spec-ref-reason": "Constraint refinement; extraction belongs to the owning field."
+    ,"x-spec-exclusion":{"category":"refinement-of","owner":"clarify-record.schema.json#"}},
+    {"if":{"properties":{"status":{"const":"deferred","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"clarify-record.schema.json#/properties/status"}}},"required":["status"],"type":"object"},"then":{"required":["reason"],"type":"object","properties":{"reason":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"clarify-record.schema.json#/properties/reason"}}}},"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"clarify-record.schema.json#"}}
+  ]
+}

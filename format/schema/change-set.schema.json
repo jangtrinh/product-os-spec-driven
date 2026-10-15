@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec-driven.local/format/v2/change-set.schema.json",
+  "title": "Change Set",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "id": {"type":"string","minLength":1,"pattern":"^CS-[a-z0-9-]+$","x-spec-ref":"change-set-id"},
+    "baseline": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/pins","x-spec-ref":"change-set-baseline"},
+    "candidate": {"anyOf":[{"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/pins"},{"type":"null"}]},
+    "scope": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/scope","x-spec-ref":"change-set-scope"},
+    "source": {"type":"string","minLength":1,"x-spec-ref":"change-set-source"},
+    "reason": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal reason value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+    "state": {"enum":["Proposed","Authorized","Deferred","Draft","Reviewed","Approved","Published","Acknowledged","Switched"],"x-spec-ref":false,"x-spec-ref-reason":"Closed state selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},
+    "impact": {"type":"array","items":{"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/impact"},"minItems":1,"uniqueItems":true},
+    "propagation": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "behavior": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal behavior value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+          "ac": {"type":"array","items":{"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/ac","x-spec-ref":"change-set-propagation-ac"},"minItems":1,"uniqueItems":true,"x-spec-ref":false,"x-spec-ref-reason":"Literal ac value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"change-set.schema.json#/properties/propagation/items/properties/ac/items"}},
+          "scenario": {"type":"array","items":{"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/scn","x-spec-ref":"change-set-propagation-scenario"},"minItems":1,"uniqueItems":true,"x-spec-ref":false,"x-spec-ref-reason":"Literal scenario value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"change-set.schema.json#/properties/propagation/items/properties/scenario/items"}},
+          "ui": {"type":"array","items":{"type":"string","minLength":1,"x-spec-ref":"change-set-propagation-ui"},"minItems":1,"uniqueItems":true,"x-spec-ref":false,"x-spec-ref-reason":"Literal ui value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"change-set.schema.json#/properties/propagation/items/properties/ui/items"}},
+          "evidence": {"type":"array","items":{"type":"string","minLength":1,"x-spec-ref":"change-set-propagation-evidence"},"minItems":0,"uniqueItems":true,"x-spec-ref":false,"x-spec-ref-reason":"Literal evidence value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"change-set.schema.json#/properties/propagation/items/properties/evidence/items"}},
+          "status": {"enum":["verified","blocked","not-run"],"x-spec-ref":false,"x-spec-ref-reason":"Closed status selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},
+          "review": {"type":"string","minLength":1,"x-spec-ref":"change-set-propagation-review"}
+        },
+        "required": ["behavior","ac","scenario","ui","evidence","status","review"]
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "po_decision": {"anyOf":[{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"change-set.schema.json#/properties/po_decision"}},{"type":"null","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"change-set.schema.json#/properties/po_decision"}}],"x-spec-ref":"change-set-po-decision"},
+    "regates": {"type":"array","items":{"type":"string","minLength":1,"x-spec-ref":"change-set-regates"},"minItems":0,"uniqueItems":true,"x-spec-ref":false,"x-spec-ref-reason":"Literal regates value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"change-set.schema.json#/properties/regates/items"}},
+    "packet": {"anyOf":[{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"change-set.schema.json#/properties/packet"}},{"type":"null","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"change-set.schema.json#/properties/packet"}}],"x-spec-ref":"change-set-packet"},
+    "receivers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "receiver": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/actor","x-spec-ref":false,"x-spec-ref-reason":"Actor identity/role, not an artifact dependency.","x-spec-exclusion":{"category":"alias-of","owner":"model-common.schema.json#/$defs/actor"}},
+          "baseline": {"type":"string","minLength":1,"x-spec-ref":"change-set-receivers-baseline"},
+          "acknowledgment": {"anyOf":[{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"change-set.schema.json#/properties/receivers/items/properties/acknowledgment"}},{"type":"null","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"change-set.schema.json#/properties/receivers/items/properties/acknowledgment"}}],"x-spec-ref":"change-set-receivers-acknowledgment"},
+          "switch": {"anyOf":[{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"change-set.schema.json#/properties/receivers/items/properties/switch"}},{"type":"null","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"change-set.schema.json#/properties/receivers/items/properties/switch"}}],"x-spec-ref":"change-set-receivers-switch"}
+        },
+        "required": ["receiver","baseline","acknowledgment","switch"]
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    }
+  },
+  "required": ["id","baseline","candidate","scope","source","reason","state","impact","propagation","po_decision","regates","packet","receivers"]
+}

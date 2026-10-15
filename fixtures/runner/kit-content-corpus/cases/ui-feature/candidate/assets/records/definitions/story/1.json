@@ -1,0 +1,40 @@
+{
+  "id": "story",
+  "version": "1",
+  "stage": "us",
+  "scope": {
+    "kind": "ac",
+    "ids": [
+      "US-01.AC-01"
+    ],
+    "revision": "49ab152c81062c0a429dd64b78c59ca1ec070f58f1c52823a36a7011906e3402"
+  },
+  "inputs": [
+    "us/US-01.md"
+  ],
+  "outputs": [
+    "assets/receipt.json"
+  ],
+  "checks": [
+    {
+      "id": "lint",
+      "command": "node lint",
+      "mandatory": true,
+      "blocker_policy": "any error blocks"
+    }
+  ],
+  "reviewer": "QC",
+  "decider": "po",
+  "transitions": [
+    "advance",
+    "repair"
+  ],
+  "invalidation": "typed closure; BR-14 fallback",
+  "exceptions": [],
+  "versions": {
+    "workflow": "1",
+    "templates": "1",
+    "ruleset": "1",
+    "skill": "none"
+  }
+}

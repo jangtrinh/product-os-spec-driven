@@ -1,0 +1,10 @@
+[
+{"name":"crosswalk-positive-all-families","fixture":"crosswalk.json","valid":true},
+{"name":"ledger-positive-all-statuses","fixture":"source-ledger.json","valid":true},
+{"name":"crosswalk-unknown-family","fixture":"crosswalk.json","set":["rows",0,"legacy_id"],"value":"OTHER-01","valid":false},
+{"name":"crosswalk-noncanonical-target","fixture":"crosswalk.json","set":["rows",0,"canonical_id"],"value":"SCN-PUB-01-01","valid":false},
+{"name":"ledger-status-without-reason","fixture":"source-ledger.json","delete":["items",1,"reason"],"valid":false},
+{"name":"ledger-merged-numerator","fixture":"source-ledger.json","set":["summary"],"value":{"total":5,"passed":5},"valid":false},
+{"name":"ledger-no-demo-mapping","fixture":"source-ledger.json","set":["items",4,"mappings"],"value":[{"kind":"artifact","id":"artifact:FB-01"}],"valid":false},
+{"name":"ledger-all-declared-typed-kinds","fixture":"typed-items-ledger.json","valid":true}
+]

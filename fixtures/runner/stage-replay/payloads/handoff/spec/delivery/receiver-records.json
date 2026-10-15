@@ -1,0 +1,10 @@
+{
+  "publication": {
+    "status": "pending-g5-approval",
+    "by": "po@example.test"
+  },
+  "receivers": [
+    {"role": "dev", "acknowledgment": null, "switch": null},
+    {"role": "qc", "acknowledgment": null, "switch": null}
+  ]
+}

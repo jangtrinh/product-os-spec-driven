@@ -1,0 +1,46 @@
+{
+  "id": "repair-1",
+  "kind": "repair",
+  "opener": "Dev",
+  "at": "2026-01-09T00:00:00Z",
+  "source": "D1",
+  "reason": "same acceptance repair",
+  "from": {
+    "stage": "us",
+    "scope": {
+      "kind": "ac",
+      "ids": [
+        "US-01.AC-01"
+      ],
+      "revision": "fixture-revision"
+    },
+    "revision": "1"
+  },
+  "to": {
+    "stage": "us",
+    "scope": {
+      "kind": "ac",
+      "ids": [
+        "US-01.AC-01"
+      ],
+      "revision": "fixture-revision"
+    },
+    "revision": "2"
+  },
+  "impact": [
+    {
+      "node": "ac:US-01.AC-01",
+      "domain": "spec",
+      "classification": "direct",
+      "reason": "repair",
+      "path": [
+        "ac:US-01.AC-01"
+      ]
+    }
+  ],
+  "authority": "dev",
+  "decision": "D1",
+  "regates": [
+    "story"
+  ]
+}

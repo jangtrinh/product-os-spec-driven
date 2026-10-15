@@ -1,0 +1,375 @@
+# PRODUCT:OS Spec Driven — cấu hình project mẫu, theo SPEC.md và format/packet-interchange.md.
+# Stage enabled độc lập role enabled. Tắt role chỉ bỏ human stop, không bỏ eval/review floors.
+# intake tạo manifest/glossary/ledger trước clarify; không tự tạo nguồn nghiệp vụ hay phê duyệt.
+# Registry definitions/graph/candidates do setup/runner materialize từ nguồn thật trước chạy.
+# Các path context/design/* là file local project phải chuẩn bị trước khi bật design/UIUX.
+# design_adapter: context/design/profile.json
+# Bật design: khai báo design_adapter, authority/rulings/DS/copy/flow/source và core+adapter rubric.
+# Profile xuất vào spec dùng spec-relative paths, raw-byte hash khớp project inputs; không sửa mirror.
+# Profile phải khai báo viewports 375/768/1440, heights, modes/locales/capabilities/providers.
+# Bật UIUX: design+tdd enabled, design_system khác rỗng, final build/TDD/RED/visual/probe/a11y receipts.
+# Thêm eval Node typecheck/lint/tests/DS của project. Lint tài liệu không đủ để đóng G4.
+# Thiếu nguồn/capability hoặc evidence sai pin giữ NOT_RUN/BLOCKED; file tồn tại chưa chứng minh đạt.
+# Caps 3/3 giữ qua restart/revision; chỉ scoped PO continuation có expiry thêm lượt, giữ prior counters.
+# Không thêm key tùy ý vào config. Path theo project root; context bắt buộc rỗng là exit 3; optional_context rỗng được bỏ qua.
+# G5/import cần review/baseline.json {id,head,manifest} immutable; không đoán base từ branch.
+# Import cần project điền roles.po.approvers bằng email thật. Không có default giả.
+# --build explicit (not-built cho pre-code), --head bắt buộc ngoài Git; --as chỉ PO hoặc /spec:gate sau ask-user trong cùng phiên.
+version: 2
+project:
+  name: PRODUCT:OS Spec Driven
+  doc_language: vi
+  spec_root: spec
+  us_prefix: ''
+roles:
+  po:
+    enabled: true
+    gate: true
+  qc:
+    enabled: false
+    gate: true
+  dev:
+    enabled: false
+    gate: true
+stages:
+  intake:
+    # skill: spec-structure; done/verified -> gates; phân tích/giao việc -> think
+    enabled: true
+    owner: po
+    skill:
+      capability: spec
+      skills:
+        - spec-structure
+    context:
+      - input/po-spec.md
+      - rules/writing-rules.md
+      - templates/intake.md
+      - rules/glossary-template.md
+      - templates/spec.manifest.md
+      - templates/spec.manifest.json
+      - templates/overview.md
+      - templates/glossary.md
+      - templates/decisions.md
+    optional_context:
+      - context/sources/**
+  clarify:
+    # skill: brainstorm; done/verified -> gates; phân tích/giao việc -> think
+    enabled: true
+    owner: po
+    skill:
+      capability: brainstorm
+      skills:
+        - brainstorm
+    context:
+      - input/po-spec.md
+      - spec/decisions/decisions.md
+      - input/answers.md
+      - spec/glossary.md
+      - rules/writing-rules.md
+      - templates/decisions.md
+      - templates/clarify-record.md
+    optional_context:
+      - context/sources/**
+  contract:
+    # skill: spec-structure; done/verified -> gates; phân tích/giao việc -> think
+    enabled: true
+    owner: po
+    skill:
+      capability: spec
+      skills:
+        - spec-structure
+    context:
+      - spec/intake/
+      - spec/decisions/decisions.md
+      - input/answers.md
+      - spec/glossary.md
+      - rules/writing-rules.md
+      - templates/contract.md
+    optional_context:
+      - context/sources/**
+  prd:
+    # skill: spec-structure; done/verified -> gates; phân tích/giao việc -> think
+    enabled: true
+    owner: po
+    skill:
+      capability: spec
+      skills:
+        - spec-structure
+    context:
+      - spec/contract/
+      - spec/decisions/decisions.md
+      - input/answers.md
+      - spec/glossary.md
+      - rules/writing-rules.md
+      - templates/prd.md
+    optional_context:
+      - context/sources/**
+  us:
+    # skill: spec-structure; done/verified -> gates; phân tích/giao việc -> think
+    enabled: true
+    owner: po
+    skill:
+      capability: spec
+      skills:
+        - spec-structure
+    context:
+      - spec/prd/
+      - spec/decisions/decisions.md
+      - input/answers.md
+      - spec/glossary.md
+      - rules/writing-rules.md
+      - templates/us.md
+      - templates/us-index.md
+      - templates/release.md
+      - templates/epic.md
+    optional_context:
+      - context/sources/**
+  wireframe:
+    enabled: true
+    owner: po
+    skill:
+      capability: design
+      skills:
+        - es-designer
+    context:
+      - spec/us/
+      - spec/prd/
+      - spec/decisions/decisions.md
+      - input/answers.md
+      - spec/glossary.md
+      - rules/writing-rules.md
+      - templates/wireframe.md
+    optional_context:
+      - context/ui/**
+  prototype:
+    enabled: true
+    owner: po
+    skill:
+      capability: design
+      skills:
+        - es-designer
+    context:
+      - spec/wireframe/
+      - spec/us/
+      - spec/glossary.md
+      - rules/writing-rules.md
+      - templates/prototype.md
+    optional_context:
+      - context/ui/**
+  design:
+    # skill: es-designer (mặc định) + design khi adapter dự án bật; bằng chứng = gate + ảnh 375/768/1440; done/verified -> gates; phân tích/giao việc -> think
+    enabled: false
+    owner: dev
+    skill:
+      capability: design
+      skills:
+        - es-designer
+    context:
+      - spec/prd/
+      - spec/us/
+      - spec/decisions/decisions.md
+      - input/answers.md
+      - context/tech.md
+      - spec/glossary.md
+      - rules/writing-rules.md
+      - templates/ux.md
+      - templates/ui-contract.md
+      - input/po-spec.md
+      - spec/contract/
+      - context/design/authority.md
+      - context/design/rulings.md
+      - context/design/profile.json
+      - context/design/tokens.json
+      - context/design/components.json
+      - context/design/patterns.json
+      - context/design/copy-vi.json
+      - context/design/screen-source.md
+      - context/design/flow-data.md
+      - context/design/ux-writing.md
+      - rules/review-rubric.md
+      - rules/uiux-rubric.md
+      - context/design/adapter-rubric.md
+      - templates/screen-inventory.md
+      - templates/screen-inventory.json
+      - templates/wireframe-index.md
+      - templates/ds-catalog.md
+    optional_context:
+      - context/ui/**
+  tdd:
+    # skill: dev; done/verified -> gates; phân tích/giao việc -> think
+    enabled: true
+    owner: qc
+    skill:
+      capability: dev
+      skills:
+        - dev
+    context:
+      - spec/wireframe/
+      - spec/prototype/
+      - spec/us/
+      - spec/ux/design.md
+      - spec/ux/ui-contract.md
+      - spec/decisions/decisions.md
+      - input/answers.md
+      - spec/glossary.md
+      - rules/writing-rules.md
+      - templates/scenario-case.md
+      - templates/expected-change.md
+  uiux:
+    # skill: es-designer (mặc định) + design khi adapter dự án bật; bằng chứng = gate + ảnh 375/768/1440; done/verified -> gates; phân tích/giao việc -> think
+    enabled: false
+    owner: po
+    skill:
+      capability: design
+      skills:
+        - es-designer
+    context:
+      - spec/ux/design.md
+      - spec/ux/ui-contract.md
+      - spec/us/
+      - spec/tests/
+      - context/tech.md
+      - spec/glossary.md
+      - rules/writing-rules.md
+      - input/po-spec.md
+      - spec/contract/
+      - context/design/authority.md
+      - context/design/rulings.md
+      - context/design/profile.json
+      - context/design/tokens.json
+      - context/design/components.json
+      - context/design/patterns.json
+      - context/design/copy-vi.json
+      - context/design/screen-source.md
+      - context/design/flow-data.md
+      - context/design/ux-writing.md
+      - rules/review-rubric.md
+      - rules/uiux-rubric.md
+      - context/design/adapter-rubric.md
+      - spec/ux/screens.md
+      - spec/ux/screens.json
+      - context/design/final-build.json
+      - review/evidence/tdd.json
+      - review/evidence/uiux/
+    design_system: ''
+    optional_context:
+      - context/ui/**
+  handoff:
+    # skill: spec-structure + gates; done/verified -> gates; phân tích/giao việc -> think
+    enabled: true
+    owner: po
+    skill:
+      capability: spec
+      skills:
+        - spec-structure
+        - gates
+    context:
+      - spec/wireframe/
+      - spec/prototype/
+      - spec/contract/
+      - spec/prd/
+      - spec/us/
+      - spec/readable/
+      - spec/reviews/
+      - review/gates/
+      - templates/handoff.md
+      - spec/decisions/decisions.md
+      - input/answers.md
+      - spec/glossary.md
+      - rules/writing-rules.md
+      - rules/review-rubric.md
+agents:
+  writer:
+    command: manual
+  reviewer:
+    command: manual
+review:
+  enabled: true
+  max_rounds: 3
+  rubric: rules/review-rubric.md
+  log_dir: review/log
+limits:
+  max_fix_rounds: 3
+evals:
+  intake:
+    - run: node tools/lint/lint.mjs spec --pipeline config/pipeline.yaml --stage intake
+  clarify:
+    - run: node tools/lint/lint.mjs spec --pipeline config/pipeline.yaml --stage clarify
+  contract:
+    - run: node tools/lint/lint.mjs spec --pipeline config/pipeline.yaml --stage contract
+  prd:
+    - run: node tools/lint/lint.mjs spec --pipeline config/pipeline.yaml --stage prd
+  us:
+    - run: node tools/lint/lint.mjs spec --pipeline config/pipeline.yaml --stage us
+  wireframe:
+    - run: node tools/lint/lint.mjs spec --pipeline config/pipeline.yaml --stage wireframe
+  prototype:
+    - run: node tools/lint/lint.mjs spec --pipeline config/pipeline.yaml --stage prototype
+  design:
+    - run: node tools/lint/lint.mjs spec --pipeline config/pipeline.yaml --stage design
+  tdd:
+    - run: node tools/lint/lint.mjs spec --pipeline config/pipeline.yaml --stage tdd
+  uiux:
+    - run: node tools/lint/lint.mjs spec --pipeline config/pipeline.yaml --stage uiux
+  handoff:
+    - run: node tools/lint/lint.mjs spec --pipeline config/pipeline.yaml --stage handoff
+versions:
+  workflow: '2'
+  templates: '2'
+  ruleset: '2'
+  skill: none
+gates:
+  dir: review/gates
+  values:
+    - PENDING
+    - APPROVED
+    - CHANGES_REQUESTED
+    - NOT_REQUIRED
+  definitions_dir: review/definitions
+  stage_definitions:
+    intake:
+      id: g1-intake
+      version: '1'
+    clarify:
+      id: clarify
+      version: '1'
+    contract:
+      id: g2-contract
+      version: '1'
+    prd:
+      id: prd
+      version: '1'
+    us:
+      id: g3-us
+      version: '1'
+    wireframe:
+      id: wireframe
+      version: '1'
+    prototype:
+      id: prototype
+      version: '1'
+    design:
+      id: design
+      version: '1'
+    tdd:
+      id: g3-tdd
+      version: '1'
+    uiux:
+      id: g4-uiux
+      version: '1'
+    handoff:
+      id: g5-handoff
+      version: '1'
+  scoped_definitions: []
+  graph: review/dependency-graph.json
+  receipts_dir: review/receipts
+  candidates_dir: review/candidates
+  decisions_dir: review/decisions
+  exceptions_dir: review/exceptions
+  changes_dir: review/changes
+  baseline: review/baseline.json
+exit_codes:
+  done: 0
+  waiting_for_human: 2
+  bad_config_or_artifact: 3
+  environment_error: 4

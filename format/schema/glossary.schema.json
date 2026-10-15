@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec-driven.local/format/v2/glossary.schema.json",
+  "title": "Glossary",
+  "oneOf": [{"$ref":"#/$defs/term"},{"$ref":"#/$defs/ban"}],
+  "$defs": {
+    "term": {
+      "type": "object",
+      "required": ["term","anchor","definition","source"],
+      "additionalProperties": false,
+      "properties": {
+        "term": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal term value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+        "anchor": {"type":"string","minLength":1,"pattern":"^[a-z][a-z0-9-]*$","x-spec-ref":"glossary-defs-term-anchor"},
+        "definition": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal definition value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+        "source": {"type":"string","minLength":1,"x-spec-ref":"glossary-defs-term-source"},
+        "locale": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal locale value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+        "source_key": {"type":"string","minLength":1,"x-spec-ref":"glossary-defs-term-source-key"},
+        "retained_terms": {"type":"array","items":{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal items value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},"minItems":0,"uniqueItems":true},
+        "exceptions": {
+          "type": "array",
+          "items": {"type":"object","additionalProperties":false,"properties":{"text":{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal text value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},"reason":{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal reason value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},"source":{"type":"string","minLength":1,"x-spec-ref":"glossary-defs-term-exceptions-source"}},"required":["text","reason","source"]},
+          "minItems": 0,
+          "uniqueItems": true
+        }
+      }
+    },
+    "ban": {
+      "type": "object",
+      "required": ["banned","replacement","reason"],
+      "additionalProperties": false,
+      "properties": {
+        "banned": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal banned value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+        "replacement": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal replacement value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+        "reason": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal reason value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+        "locale": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal locale value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+        "source_key": {"type":"string","minLength":1,"x-spec-ref":"glossary-defs-ban-source-key"},
+        "retained_terms": {"type":"array","items":{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal items value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},"minItems":0,"uniqueItems":true},
+        "exceptions": {
+          "type": "array",
+          "items": {"type":"object","additionalProperties":false,"properties":{"text":{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal text value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},"reason":{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal reason value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},"source":{"type":"string","minLength":1,"x-spec-ref":"glossary-defs-ban-exceptions-source"}},"required":["text","reason","source"]},
+          "minItems": 0,
+          "uniqueItems": true
+        }
+      }
+    }
+  }
+}

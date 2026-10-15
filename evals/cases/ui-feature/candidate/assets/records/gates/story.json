@@ -1,0 +1,40 @@
+{
+  "definition": {
+    "id": "story",
+    "version": "1"
+  },
+  "scope": {
+    "kind": "ac",
+    "ids": [
+      "US-01.AC-01"
+    ],
+    "revision": "9160c8da34aa08cbb7e507c5eb1f980134dd0d98993ac563a375ed4579044c64"
+  },
+  "states": {
+    "eval": "PASS",
+    "review": "PASS",
+    "human": "PENDING",
+    "freshness": "CURRENT",
+    "progress": "draft",
+    "delivery": "draft"
+  },
+  "receipts": [
+    "receipt-spec"
+  ],
+  "rounds": {
+    "cycle": "cycle-1",
+    "eval_fix": 0,
+    "review": 1,
+    "max_fix": 3,
+    "max_review": 3,
+    "continuation": null
+  },
+  "decision": null,
+  "exception_ids": [],
+  "candidate": {
+    "head": "fixture-head",
+    "base": "fixture-base",
+    "manifest": "4b7775b8e926745757bd6e1f594a7532bcc27376404e81918d15c95bf028b25a",
+    "build": "not-built"
+  }
+}

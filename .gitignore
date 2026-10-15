@@ -1,0 +1,17 @@
+node_modules/
+.DS_Store
+*.log
+/out/
+/tmp/
+.env*
+tmp/
+
+# Project records and evidence stay local (D57)
+plans/
+examples/
+
+# Dev-run records never enter the repo (packers exclude them too)
+evals/results/
+format/evidence/
+tools/lint/evidence/
+tools/migrate/evidence/

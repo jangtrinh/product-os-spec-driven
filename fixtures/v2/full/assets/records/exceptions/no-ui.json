@@ -1,0 +1,24 @@
+{
+  "id": "no-ui",
+  "kind": "applicability",
+  "scope": {
+    "kind": "ac",
+    "ids": [
+      "US-01.AC-01"
+    ],
+    "revision": "fixture-revision"
+  },
+  "source": "D1",
+  "reason": "no UI acceptance at spec stage",
+  "by": "po@example.test",
+  "at": "2026-01-09T00:00:00Z",
+  "expires": "2030-01-09T00:00:00Z",
+  "deferred_gates": [],
+  "compensating_checks": [
+    "spec review"
+  ],
+  "non_waivable": [
+    "mandatory quality"
+  ],
+  "status": "active"
+}

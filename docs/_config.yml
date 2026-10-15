@@ -1,0 +1,27 @@
+title: PRODUCT:OS Spec Driven
+description: A source-available, local-first kit for governed product specifications, independent review, explicit PO gates, and offline reader output.
+url: https://jangtrinh.github.io
+baseurl: /product-os-spec-driven
+lang: en
+repository: jangtrinh/product-os-spec-driven
+repository_url: https://github.com/jangtrinh/product-os-spec-driven
+wordmark: JANG
+wordmark_url: https://github.com/jangtrinh
+eyebrow: PRODUCT SPEC KIT
+nav:
+  - { title: PO guide, url: /po-guide.html }
+  - { title: Architecture, url: /architecture.html }
+  - { title: Known limits, url: /known-limits.html }
+  - { title: Context guide, url: /context-guide.html }
+  - { title: Quickstart, url: /po-quickstart.html }
+  - { title: Cookbook, url: /cookbook.html }
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-relative-links
+relative_links:
+  enabled: true
+  collections: false
+defaults:
+  - scope: { path: "" }
+    values: { layout: default }

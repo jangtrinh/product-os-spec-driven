@@ -1,0 +1,6 @@
+{
+  "code": "E-INPUT",
+  "severity": "error",
+  "fault": "symlink-escape",
+  "changes": []
+}

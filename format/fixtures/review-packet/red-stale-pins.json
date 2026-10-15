@@ -1,0 +1,24 @@
+{
+  "id": "fixture-decision",
+  "packet_id": "packet-45343ec1a3e94993b963ed26c78caa778483cd4830c12399333317bba535775d",
+  "data_sha256": "45343ec1a3e94993b963ed26c78caa778483cd4830c12399333317bba535775d",
+  "scope": {
+    "kind": "ac",
+    "ids": [
+      "US-16.AC-01"
+    ],
+    "revision": "a84645d61daea3988dcb2a2c65a3ccedd8f1a94073e020dbc020b37e28dd2f03"
+  },
+  "pins": {
+    "head": "0000000000000000000000000000000000000000000000000000000000000000",
+    "base": "e7671c1efc6a124d33104ca84c210242d90e447d841ef5bc6203bafba2bff47c",
+    "manifest": "52c669c078d4cb4db756c155c19368843b859bbbc1e78a94da5d1399cecc67db",
+    "build": "not-built"
+  },
+  "by": "po@example.test",
+  "at": "2026-10-07T03:01:00Z",
+  "default": "approve",
+  "reason": "Illustrative contract fixture only",
+  "overrides": [],
+  "exceptions": []
+}

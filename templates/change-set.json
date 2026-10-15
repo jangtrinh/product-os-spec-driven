@@ -1,0 +1,64 @@
+{
+  "id": "CS-example",
+  "baseline": {
+    "head": "example-source-revision",
+    "base": "example-immutable-baseline",
+    "manifest": "c7704c1cc3c6a40400a54174c8d8e02ad6ff6470c692201bc241ff0fb0d25cd9",
+    "build": "not-built"
+  },
+  "candidate": null,
+  "scope": {
+    "kind": "ac",
+    "ids": [
+      "US-01.AC-01"
+    ],
+    "revision": "150f078b912bd41265dbd1c096c0d4eb4be25c674e62e02c0365f410dc66b4ba"
+  },
+  "source": "SPEC.md §4.5.1",
+  "reason": "Đề xuất làm rõ hành vi hoãn; chưa có PO ruling sản phẩm",
+  "state": "Proposed",
+  "impact": [
+    {
+      "node": "ac:US-01.AC-01",
+      "domain": "spec",
+      "classification": "unknown",
+      "reason": "Ví dụ chưa có consumer census/semantic independence proof",
+      "path": []
+    }
+  ],
+  "propagation": [
+    {
+      "behavior": "Hoãn giữ scope chờ; source format/packet-interchange.md §4",
+      "ac": [
+        "US-01.AC-01"
+      ],
+      "scenario": [
+        "US-01.SCN-01-01"
+      ],
+      "ui": [
+        "S01/normal; selector-contract target"
+      ],
+      "evidence": [],
+      "status": "not-run",
+      "review": "Chưa có lượt reviewer semantic propagation"
+    }
+  ],
+  "po_decision": null,
+  "regates": [
+    "g1-intake",
+    "g2-contract",
+    "g3-us",
+    "g3-tdd",
+    "g4-uiux",
+    "g5-handoff"
+  ],
+  "packet": null,
+  "receivers": [
+    {
+      "receiver": "dev",
+      "baseline": "example-immutable-baseline",
+      "acknowledgment": null,
+      "switch": null
+    }
+  ]
+}

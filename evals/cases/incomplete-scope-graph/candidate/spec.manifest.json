@@ -1,0 +1,21 @@
+{
+  "format": "2",
+  "title": "Incomplete scope graph",
+  "tests_root": "tests",
+  "glossary": {
+    "document": "glossary.md"
+  },
+  "ui_contract": "optional",
+  "artifacts": [
+    {
+      "id": "prd",
+      "folder": "prd",
+      "name": "Requirements"
+    },
+    {
+      "id": "us",
+      "folder": "us",
+      "name": "Stories"
+    }
+  ]
+}

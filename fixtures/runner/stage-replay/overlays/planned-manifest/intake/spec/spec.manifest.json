@@ -1,0 +1,23 @@
+{
+  "format": "2",
+  "title": "Orders Console — Bộ lọc đã lưu",
+  "language": "vi",
+  "date": "2026-10-14",
+  "tests_root": "tests",
+  "glossary": {
+    "document": "glossary.md"
+  },
+  "ui_contract": "optional",
+  "artifacts": [
+    {"id": "intake", "folder": "intake", "name": "Đầu vào"},
+    {"id": "decisions", "folder": "decisions", "name": "Quyết định"},
+    {"id": "contract", "name": "Contract", "status": "planned"},
+    {"id": "prd", "name": "Yêu cầu", "status": "planned"},
+    {"id": "us", "name": "US", "status": "planned"},
+    {"id": "delivery", "name": "Bàn giao", "status": "planned"}
+  ],
+  "readable": {
+    "epics": {"min": 1, "max": 8},
+    "capabilities": {"min": 1, "max": 7}
+  }
+}

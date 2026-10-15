@@ -1,0 +1,6 @@
+{
+  "name": "stale-semantic-propagation",
+  "title": "Stale semantic propagation",
+  "ui": false,
+  "behavior": "semantic"
+}

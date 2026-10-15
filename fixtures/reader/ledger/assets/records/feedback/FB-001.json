@@ -1,0 +1,8 @@
+{
+  "id": "FB-001",
+  "received_at": "2026-01-09T00:00:00Z",
+  "from": "po@example.test",
+  "verbatim": "Confirm before delete.",
+  "scope": "shared-rule",
+  "disposition": "open"
+}

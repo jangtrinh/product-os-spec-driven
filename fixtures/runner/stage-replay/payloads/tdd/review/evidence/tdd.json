@@ -1,0 +1,12 @@
+{
+  "stage": "tdd",
+  "build": "not-built",
+  "head": "saved-filters-v1",
+  "status": "planned",
+  "method": "review",
+  "scenarios": [
+    {"id": "US-01.SCN-01-01", "ac": ["US-01.AC-01"], "screens": ["SCR-001--normal", "SCR-002--normal"], "method": "review", "status": "planned"},
+    {"id": "US-01.SCN-01-02", "ac": ["US-01.AC-02"], "screens": ["SCR-001--empty", "SCR-001--error"], "method": "review", "status": "planned"},
+    {"id": "US-02.SCN-02-01", "ac": ["US-02.AC-01", "US-02.AC-02"], "screens": ["SCR-002--normal", "SCR-002--empty"], "method": "review", "status": "planned"}
+  ]
+}

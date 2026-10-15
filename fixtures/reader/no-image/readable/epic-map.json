@@ -1,0 +1,60 @@
+{
+  "version": "1.0",
+  "date": "2026-01-10",
+  "language": "vi (EN product terms kept)",
+  "statuses": {
+    "Built": "đã merge vào integration line",
+    "In review": "đã build trên branch, đang review",
+    "Planned": "chưa bắt đầu",
+    "Backlog": "owner tạm gác lại"
+  },
+  "epics": [
+    {
+      "id": "E1",
+      "slug": "reuse-my-filters",
+      "title": "Dùng lại bộ lọc của mình",
+      "title_en": "Reuse my filters",
+      "page": "epic-1-reuse-my-filters.md",
+      "goal": "Lưu một bộ lọc một lần và mở lại đúng kết quả đó bất cứ lúc nào.",
+      "roles": [
+        "Developer"
+      ],
+      "status": "Planned",
+      "screens": [
+        "Filter bar",
+        "Saved filters list"
+      ],
+      "capabilities": [
+        {
+          "id": "C-01",
+          "title": "Lưu và mở lại bộ lọc",
+          "text": "Lưu bộ lọc hiện tại với một tên và mở lại đúng kết quả đó.",
+          "done_when": "Bộ lọc đã lưu mở lại đúng các dòng đã thấy lúc lưu.",
+          "us": [
+            "US-01",
+            "US-02"
+          ],
+          "status": "Planned",
+          "req": [
+            "REQ-01",
+            "REQ-02"
+          ]
+        },
+        {
+          "id": "C-02",
+          "title": "Dọn bộ lọc không dùng",
+          "text": "Xoá bộ lọc đã lưu sau khi xác nhận.",
+          "done_when": "Bộ lọc đã xoá biến mất khỏi danh sách và không thể mở lại.",
+          "us": [
+            "US-03"
+          ],
+          "status": "Planned",
+          "req": [
+            "REQ-03"
+          ]
+        }
+      ]
+    }
+  ],
+  "hidden": []
+}

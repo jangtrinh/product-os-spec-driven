@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec-driven.local/format/v2/dependency-graph.schema.json",
+  "title": "Dependency Graph",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Content/version pin; binding context, not a separate reference.","x-spec-exclusion":{"category":"free-text"}},
+    "complete": {"type":"boolean"},
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {"type":"string","minLength":1,"x-spec-ref":"dependency-graph-nodes-id"},
+          "kind": {"enum":["contract","req","us","ac","scenario","screen-state","board","component","pattern","token","rule","test","fixture","environment","build","artifact","gate","receipt","amendment","decision"],"x-spec-ref":false,"x-spec-ref-reason":"Closed kind selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},
+          "revision": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Content/version pin; binding context, not a separate reference.","x-spec-exclusion":{"category":"free-text"}},
+          "source": {"type":"string","minLength":1,"x-spec-ref":"dependency-graph-nodes-source"}
+        },
+        "required": ["id","kind","revision","source"]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "from": {"type":"string","minLength":1,"x-spec-ref":"dependency-graph-edges-from"},
+          "to": {"type":"string","minLength":1,"x-spec-ref":"dependency-graph-edges-to"},
+          "relation": {"enum":["derives","implements","verifies","uses","governs","renders","supersedes","mentions"],"x-spec-ref":false,"x-spec-ref-reason":"Closed relation selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},
+          "source": {"type":"string","minLength":1,"x-spec-ref":"dependency-graph-edges-source"},
+          "revision": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Content/version pin; binding context, not a separate reference.","x-spec-exclusion":{"category":"free-text"}}
+        },
+        "required": ["from","to","relation","source","revision"]
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    }
+  },
+  "required": ["version","complete","nodes","edges"]
+}

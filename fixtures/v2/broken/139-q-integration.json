@@ -1,0 +1,12 @@
+{
+  "code": "Q-INTEGRATION",
+  "severity": "error",
+  "fault": null,
+  "changes": [
+    {
+      "path": "assets/records/integration/INT-001.json",
+      "before": "cea536cb1407dc12c3fe30ff5a27109774b42a2459c5768136c1a24fe71ddce6",
+      "after": "ewogICJpZCI6ICJJTlQtMDAxIiwKICAiYXQiOiAiMjAyNi0wMS0wOVQwMDowMDowMFoiLAogICJiYXNlIjogImZpeHR1cmUtYmFzZSIsCiAgImJyYW5jaGVzIjogWwogICAgewogICAgICAicmVmIjogImZlYXR1cmUiLAogICAgICAiaGVhZCI6ICJmaXh0dXJlLWhlYWQiCiAgICB9CiAgXSwKICAic3BlY19oZWFkIjogImZpeHR1cmUtaGVhZCIsCiAgInNoYXJlZF9kZXBlbmRlbmNpZXMiOiBbXSwKICAic2VtYW50aWNfY29uZmxpY3RzIjogW10sCiAgInN0YXR1cyI6ICJjbGVhbiIsCiAgInJldmlld2VkX2J5IjogInJldmlld0BleGFtcGxlLnRlc3QiLAogICJyZXZpZXdlcl9pbmRlcGVuZGVudCI6IGZhbHNlCn0K"
+    }
+  ]
+}

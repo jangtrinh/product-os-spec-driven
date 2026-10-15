@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Orders Console — Bộ lọc đã lưu Prototype</title>
+<style>
+:root { color-scheme: light; }
+* { box-sizing: border-box; }
+body { font: 16px/1.5 system-ui, sans-serif; margin: 0; background: #f5f5f5; color: #222; }
+main { max-width: 1040px; padding: 32px; margin: auto; }
+h1 { font-size: 32px; line-height: 1.25; }
+h2 { font-size: 24px; line-height: 1.25; }
+h3 { font-size: 20px; line-height: 1.25; margin: 0; }
+section { padding: 24px 0 40px; scroll-margin-top: 16px; }
+.trace { margin: 8px 0 16px; max-width: 65ch; }
+.screen { width: 100%; max-width: 720px; border: 1px solid #777; background: #fafafa; }
+.screen-header { padding: 16px 24px; background: #e5e5e5; border-bottom: 1px solid #777; }
+.screen-body { padding: 24px; }
+.screen-body > label { display: block; font-weight: 600; margin-bottom: 8px; }
+.screen-body > input { width: 100%; min-width: 0; height: 44px; border: 1px solid #777; padding: 8px 12px; font: inherit; color: #222; background: #fafafa; }
+.screen-body > input:disabled { opacity: 1; background: #e5e5e5; color: #555; }
+.actions, .state-nav { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+a { display: inline-flex; align-items: center; min-height: 44px; padding: 8px 16px; color: #222; text-underline-offset: 4px; }
+a.button { border: 1px solid #777; background: #e5e5e5; text-decoration: none; justify-content: center; }
+a:focus-visible, input:focus-visible { outline: 2px solid #222; outline-offset: 2px; }
+.rows { list-style: none; margin: 24px 0 0; padding: 0; }
+.rows li { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-top: 1px solid #777; }
+.state-message { margin: 16px 0; }
+</style></head><body><main>
+<section id="start"><h1>Orders Console — Bộ lọc đã lưu Prototype</h1><p>Mô phỏng ngoại tuyến luồng lưu bộ lọc và dùng lại bộ lọc đã lưu.</p><nav class="actions" aria-label="Bắt đầu luồng User Story"><a class="button" href="#SCR-001--normal">US-01: Nhập tên và bấm Lưu</a><a class="button" href="#SCR-002--normal">US-02: Bấm tên bộ lọc hoặc Xóa</a></nav></section>
+<section id="SCR-001--normal"><h2>SCR-001: normal</h2><p class="trace">US-01 · US-02 · US-01.AC-01 · US-01.AC-02 · US-02.AC-01 · US-02.AC-02</p>
+<div class="screen" role="group" aria-labelledby="SCR-001--normal-title"><header class="screen-header"><h3 id="SCR-001--normal-title">Hộp thoại lưu bộ lọc</h3></header><div class="screen-body">
+<label for="SCR-001--normal-input">Tên bộ lọc (tối đa 40 ký tự)</label><input id="SCR-001--normal-input" type="text" value="Đơn đang giao kênh web" readonly>
+<p class="state-message" id="SCR-001--normal-message">Tên hợp lệ (22/40 ký tự). Bấm Lưu để thêm vào danh sách bộ lọc.</p>
+
+<nav class="actions" aria-label="SCR-001 normal actions"><a class="button" href="#SCR-002--normal">Lưu và mở danh sách bộ lọc</a></nav>
+</div></div><nav class="state-nav" aria-label="SCR-001 normal states"><a href="#SCR-001--empty">Xem trạng thái empty</a><a href="#SCR-001--error">Xem trạng thái error</a><a href="#SCR-001--loading">Xem trạng thái loading</a><a href="#start">Về trang bắt đầu</a></nav></section>
+<section id="SCR-001--empty"><h2>SCR-001: empty</h2><p class="trace">US-01 · US-02 · US-01.AC-01 · US-01.AC-02 · US-02.AC-01 · US-02.AC-02</p>
+<div class="screen" role="group" aria-labelledby="SCR-001--empty-title"><header class="screen-header"><h3 id="SCR-001--empty-title">Hộp thoại lưu bộ lọc</h3></header><div class="screen-body">
+<label for="SCR-001--empty-input">Tên bộ lọc (tối đa 40 ký tự)</label><input id="SCR-001--empty-input" type="text" value="" readonly>
+<p class="state-message" id="SCR-001--empty-message">Nhập tên bộ lọc dài từ 1 đến 40 ký tự. Nút Lưu đang bị vô hiệu hóa.</p>
+
+<nav class="actions" aria-label="SCR-001 empty actions"><a class="button" href="#SCR-001--normal">Quay lại trạng thái normal</a></nav>
+</div></div><nav class="state-nav" aria-label="SCR-001 empty states"><a href="#SCR-001--normal">Xem trạng thái normal</a><a href="#SCR-001--error">Xem trạng thái error</a><a href="#SCR-001--loading">Xem trạng thái loading</a><a href="#start">Về trang bắt đầu</a></nav></section>
+<section id="SCR-001--error"><h2>SCR-001: error</h2><p class="trace">US-01 · US-02 · US-01.AC-01 · US-01.AC-02 · US-02.AC-01 · US-02.AC-02</p>
+<div class="screen" role="group" aria-labelledby="SCR-001--error-title"><header class="screen-header"><h3 id="SCR-001--error-title">Hộp thoại lưu bộ lọc</h3></header><div class="screen-body">
+<label for="SCR-001--error-input">Tên bộ lọc (tối đa 40 ký tự)</label><input id="SCR-001--error-input" type="text" value="Đơn đang giao kênh web" readonly>
+<p class="state-message" id="SCR-001--error-message">Tên bộ lọc đã tồn tại hoặc bạn đã lưu đủ 20 bộ lọc. Bộ lọc chưa được tạo.</p>
+
+<nav class="actions" aria-label="SCR-001 error actions"><a class="button" href="#SCR-001--normal">Quay lại trạng thái normal</a></nav>
+</div></div><nav class="state-nav" aria-label="SCR-001 error states"><a href="#SCR-001--normal">Xem trạng thái normal</a><a href="#SCR-001--empty">Xem trạng thái empty</a><a href="#SCR-001--loading">Xem trạng thái loading</a><a href="#start">Về trang bắt đầu</a></nav></section>
+<section id="SCR-001--loading"><h2>SCR-001: loading</h2><p class="trace">US-01 · US-02 · US-01.AC-01 · US-01.AC-02 · US-02.AC-01 · US-02.AC-02</p>
+<div class="screen" role="group" aria-labelledby="SCR-001--loading-title" aria-busy="true"><header class="screen-header"><h3 id="SCR-001--loading-title">Hộp thoại lưu bộ lọc</h3></header><div class="screen-body">
+<label for="SCR-001--loading-input">Tên bộ lọc (tối đa 40 ký tự)</label><input id="SCR-001--loading-input" type="text" value="Đơn đang giao kênh web" readonly disabled>
+<p class="state-message" id="SCR-001--loading-message">Đang lưu bộ lọc, vui lòng chờ.</p>
+
+<nav class="actions" aria-label="SCR-001 loading actions"><a class="button" href="#SCR-001--normal">Quay lại trạng thái normal</a></nav>
+</div></div><nav class="state-nav" aria-label="SCR-001 loading states"><a href="#SCR-001--normal">Xem trạng thái normal</a><a href="#SCR-001--empty">Xem trạng thái empty</a><a href="#SCR-001--error">Xem trạng thái error</a><a href="#start">Về trang bắt đầu</a></nav></section>
+<section id="SCR-002--normal"><h2>SCR-002: normal</h2><p class="trace">US-01 · US-02 · US-01.AC-01 · US-01.AC-02 · US-02.AC-01 · US-02.AC-02</p>
+<div class="screen" role="group" aria-labelledby="SCR-002--normal-title"><header class="screen-header"><h3 id="SCR-002--normal-title">Danh sách bộ lọc đã lưu</h3></header><div class="screen-body">
+<label for="SCR-002--normal-input">Tên bộ lọc (tối đa 40 ký tự)</label><input id="SCR-002--normal-input" type="text" value="Đơn đang giao kênh web" readonly>
+<p class="state-message" id="SCR-002--normal-message">Bấm tên bộ lọc để áp dụng, hoặc bấm Xóa rồi xác nhận để bỏ bộ lọc.</p>
+<ul class="rows" aria-label="Danh sách bộ lọc"><li><span>Đơn đang giao kênh web</span><span>Áp dụng · Xóa</span></li></ul>
+<nav class="actions" aria-label="SCR-002 normal actions"><a class="button" href="#SCR-001--normal">Quay lại hộp thoại lưu</a></nav>
+</div></div><nav class="state-nav" aria-label="SCR-002 normal states"><a href="#SCR-002--empty">Xem trạng thái empty</a><a href="#SCR-002--error">Xem trạng thái error</a><a href="#SCR-002--loading">Xem trạng thái loading</a><a href="#start">Về trang bắt đầu</a></nav></section>
+<section id="SCR-002--empty"><h2>SCR-002: empty</h2><p class="trace">US-01 · US-02 · US-01.AC-01 · US-01.AC-02 · US-02.AC-01 · US-02.AC-02</p>
+<div class="screen" role="group" aria-labelledby="SCR-002--empty-title"><header class="screen-header"><h3 id="SCR-002--empty-title">Danh sách bộ lọc đã lưu</h3></header><div class="screen-body">
+<label for="SCR-002--empty-input">Tên bộ lọc (tối đa 40 ký tự)</label><input id="SCR-002--empty-input" type="text" value="" readonly>
+<p class="state-message" id="SCR-002--empty-message">Bạn chưa lưu bộ lọc nào. Lọc danh sách đơn rồi bấm Lưu bộ lọc.</p>
+
+<nav class="actions" aria-label="SCR-002 empty actions"><a class="button" href="#SCR-002--normal">Quay lại trạng thái normal</a></nav>
+</div></div><nav class="state-nav" aria-label="SCR-002 empty states"><a href="#SCR-002--normal">Xem trạng thái normal</a><a href="#SCR-002--error">Xem trạng thái error</a><a href="#SCR-002--loading">Xem trạng thái loading</a><a href="#start">Về trang bắt đầu</a></nav></section>
+<section id="SCR-002--error"><h2>SCR-002: error</h2><p class="trace">US-01 · US-02 · US-01.AC-01 · US-01.AC-02 · US-02.AC-01 · US-02.AC-02</p>
+<div class="screen" role="group" aria-labelledby="SCR-002--error-title"><header class="screen-header"><h3 id="SCR-002--error-title">Danh sách bộ lọc đã lưu</h3></header><div class="screen-body">
+<label for="SCR-002--error-input">Tên bộ lọc (tối đa 40 ký tự)</label><input id="SCR-002--error-input" type="text" value="Đơn đang giao kênh web" readonly>
+<p class="state-message" id="SCR-002--error-message">Không tải được danh sách bộ lọc. Bấm Thử lại để tải lại.</p>
+
+<nav class="actions" aria-label="SCR-002 error actions"><a class="button" href="#SCR-002--normal">Quay lại trạng thái normal</a></nav>
+</div></div><nav class="state-nav" aria-label="SCR-002 error states"><a href="#SCR-002--normal">Xem trạng thái normal</a><a href="#SCR-002--empty">Xem trạng thái empty</a><a href="#SCR-002--loading">Xem trạng thái loading</a><a href="#start">Về trang bắt đầu</a></nav></section>
+<section id="SCR-002--loading"><h2>SCR-002: loading</h2><p class="trace">US-01 · US-02 · US-01.AC-01 · US-01.AC-02 · US-02.AC-01 · US-02.AC-02</p>
+<div class="screen" role="group" aria-labelledby="SCR-002--loading-title" aria-busy="true"><header class="screen-header"><h3 id="SCR-002--loading-title">Danh sách bộ lọc đã lưu</h3></header><div class="screen-body">
+<label for="SCR-002--loading-input">Tên bộ lọc (tối đa 40 ký tự)</label><input id="SCR-002--loading-input" type="text" value="" readonly disabled>
+<p class="state-message" id="SCR-002--loading-message">Đang tải danh sách bộ lọc đã lưu.</p>
+
+<nav class="actions" aria-label="SCR-002 loading actions"><a class="button" href="#SCR-002--normal">Quay lại trạng thái normal</a></nav>
+</div></div><nav class="state-nav" aria-label="SCR-002 loading states"><a href="#SCR-002--normal">Xem trạng thái normal</a><a href="#SCR-002--empty">Xem trạng thái empty</a><a href="#SCR-002--error">Xem trạng thái error</a><a href="#start">Về trang bắt đầu</a></nav></section>
+</main></body></html>

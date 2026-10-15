@@ -1,0 +1,187 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec-driven.local/format/v2/front-matter.schema.json",
+  "title": "Front Matter",
+  "type": "object",
+  "required": ["id","type","title","updated"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {"type":"string","pattern":"^[A-Za-z0-9][A-Za-z0-9_-]*$","maxLength":64,"x-spec-ref":"front-matter-id"},
+    "type": {"type":"string","enum":["overview","intake","contract","prd","us-index","us","release","epic","readable-review","ux","wireframe-index","build","review","decisions","note","ui-contract","glossary","screen-inventory","change-set"],"x-spec-ref":false,"x-spec-ref-reason":"Closed type selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},
+    "title": {"type":"string","minLength":1,"maxLength":160,"x-spec-ref":false,"x-spec-ref-reason":"Literal title value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+    "updated": {"type":"string","pattern":"^\\d{4}-\\d{2}-\\d{2}$","format":"date","x-spec-ref":false,"x-spec-ref-reason":"Timestamp/date value, not a dependency identity.","x-spec-exclusion":{"category":"format-value"}},
+    "status": {"type":"string","maxLength":60,"x-spec-ref":false,"x-spec-ref-reason":"Literal status value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+    "owner_role": {"type":"string","maxLength":60,"x-spec-ref":false,"x-spec-ref-reason":"Actor identity/role, not an artifact dependency.","x-spec-exclusion":{"category":"free-text"}},
+    "tier": {"type":"string","pattern":"^[a-z][a-z0-9-]*$","x-spec-ref":"front-matter-tier"},
+    "audience": {"type":"string","maxLength":80,"x-spec-ref":false,"x-spec-ref-reason":"Literal audience value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+    "group": {"type":"string","maxLength":60,"x-spec-ref":false,"x-spec-ref-reason":"Literal group value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+    "label": {"type":"string","maxLength":160,"x-spec-ref":false,"x-spec-ref-reason":"Literal label value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+    "order": {"type":"integer","minimum":0},
+    "primary": {"type":"boolean"},
+    "ledger": {"type":"boolean"},
+    "inventory": {"type":"boolean"},
+    "wireframe": {"type":"boolean"},
+    "trace": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "req": {"type":"array","uniqueItems":true,"items":{"type":"string","pattern":"^REQ-\\d+$","x-spec-ref":"front-matter-trace-req"},"x-spec-ref":false,"x-spec-ref-reason":"Literal req value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"front-matter.schema.json#/properties/trace/properties/req/items"}},
+        "us": {"type":"array","uniqueItems":true,"items":{"type":"string","pattern":"^(US-(\\d+|P\\d+)|NF-\\d+)$","x-spec-ref":"front-matter-trace-us"},"x-spec-ref":false,"x-spec-ref-reason":"Literal us value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"front-matter.schema.json#/properties/trace/properties/us/items"}},
+        "ac": {"type":"array","uniqueItems":true,"items":{"type":"string","pattern":"^((US-(\\d+|P\\d+)|NF-\\d+)\\.)?AC-\\d+$","x-spec-ref":"front-matter-trace-ac"},"x-spec-ref":false,"x-spec-ref-reason":"Literal ac value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"front-matter.schema.json#/properties/trace/properties/ac/items"}},
+        "decisions": {"type":"array","uniqueItems":true,"items":{"type":"string","pattern":"^D\\d+$","x-spec-ref":"front-matter-trace-decisions"},"x-spec-ref":false,"x-spec-ref-reason":"Literal decisions value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"front-matter.schema.json#/properties/trace/properties/decisions/items"}},
+        "amendments": {"type":"array","uniqueItems":true,"items":{"type":"string","pattern":"^([A-Za-z0-9_-]+\\.)?A-\\d+$","x-spec-ref":"front-matter-trace-amendments"},"x-spec-ref":false,"x-spec-ref-reason":"Literal amendments value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"front-matter.schema.json#/properties/trace/properties/amendments/items"}}
+      }
+    },
+    "images": {"type":"array","items":{"type":"object","required":["src","role"],"additionalProperties":false,"properties":{"src":{"type":"string","minLength":1,"x-spec-ref":"front-matter-images-src"},"role":{"type":"string","enum":["coded","wireframe"],"x-spec-ref":false,"x-spec-ref-reason":"Closed role selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},"reason":{"type":"string","minLength":1,"maxLength":300,"x-spec-ref":false,"x-spec-ref-reason":"Literal reason value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}}}}},
+    "epic": {"type":"string","minLength":1,"maxLength":80,"x-spec-ref":"front-matter-epic"},
+    "priority": {"type":"string","maxLength":40,"x-spec-ref":false,"x-spec-ref-reason":"Literal priority value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+    "wave": {"type":"string","maxLength":40,"x-spec-ref":false,"x-spec-ref-reason":"Literal wave value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+    "screens": {"type":"array","uniqueItems":true,"items":{"type":"string","pattern":"^S\\d{2}(-[a-z])?$","x-spec-ref":"front-matter-screens"},"x-spec-ref":false,"x-spec-ref-reason":"Literal screens value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"front-matter.schema.json#/properties/screens/items"}},
+    "boards": {"type":"array","uniqueItems":true,"items":{"type":"string","pattern":"^W-\\d{2}$","x-spec-ref":"front-matter-boards"},"x-spec-ref":false,"x-spec-ref-reason":"Literal boards value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"front-matter.schema.json#/properties/boards/items"}},
+    "scenarios": {"type":"array","minItems":1,"uniqueItems":true,"items":{"$ref":"#/$defs/scenario"}},
+    "board_names": {"type":"array","items":{"type":"object","required":["id","name"],"additionalProperties":false,"properties":{"id":{"type":"string","pattern":"^W-\\d{2}$","x-spec-ref":"front-matter-board-names-id"},"name":{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal name value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}}}}},
+    "topics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id","name","ids"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {"type":"string","pattern":"^[a-z][a-z0-9]*$","x-spec-ref":"front-matter-topics-id"},
+          "name": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal name value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+          "note": {"type":"string","x-spec-ref":false,"x-spec-ref-reason":"Literal note value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+          "ids": {"type":"array","minItems":1,"items":{"type":"string","pattern":"^D\\d+$","x-spec-ref":"front-matter-topics-ids"},"x-spec-ref":false,"x-spec-ref-reason":"Literal ids value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"front-matter.schema.json#/properties/topics/items/properties/ids/items"}}
+        }
+      }
+    },
+    "amendments": {"type":"array","items":{"type":"object","required":["id","summary"],"additionalProperties":false,"properties":{"id":{"type":"string","pattern":"^A-\\d+$","x-spec-ref":"front-matter-amendments-id"},"summary":{"type":"string","minLength":1,"maxLength":300,"x-spec-ref":false,"x-spec-ref-reason":"Literal summary value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}}}}},
+    "data": {"type":"string","minLength":1,"pattern":"^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\)(?![A-Za-z][A-Za-z0-9+.-]*:)[^\\s#]+$","x-spec-ref":"front-matter-data"},
+    "no_ui": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal no_ui value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}}
+  },
+  "$defs": {
+    "scenario": {
+      "type": "object",
+      "required": ["id","ac","method","status"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type":"string","pattern":"^SCN-[A-Z0-9]+-\\d+$","x-spec-ref":"front-matter-defs-scenario-id"},
+        "ac": {"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string","pattern":"^AC-\\d+$","x-spec-ref":"front-matter-defs-scenario-ac"},"x-spec-ref":false,"x-spec-ref-reason":"Literal ac value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"front-matter.schema.json#/$defs/scenario/properties/ac/items"}},
+        "method": {"enum":["auto","visual","review","manual","not-built","unassigned"],"x-spec-ref":false,"x-spec-ref-reason":"Closed method selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},
+        "test": {"type":"string","minLength":1,"pattern":"^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\)(?![A-Za-z][A-Za-z0-9+.-]*:)[^#\\s]+#[^#\\r\\n]+$","x-spec-ref":"front-matter-defs-scenario-test"},
+        "status": {"enum":["planned","passing","failing","blocked","stale"],"x-spec-ref":false,"x-spec-ref-reason":"Closed status selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}}
+      },
+      "allOf": [
+        {
+          "if": {"properties":{"method":{"const":"auto","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#/$defs/scenario/properties/method"}}},"required":["method"],"type":"object"},
+          "then": {"required":["test"],"type":"object","properties":{"test":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#/$defs/scenario/properties/test"}}}},
+          "else": {"not":{"required":["test"],"type":"object","properties":{"test":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#/$defs/scenario/properties/test"}}}},"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#/$defs/scenario"}},
+          "x-spec-ref": false,
+          "x-spec-ref-reason": "Constraint refinement; extraction belongs to the owning field."
+        ,"x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#/$defs/scenario"}},
+        {
+          "if": {"properties":{"method":{"enum":["not-built","unassigned"],"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#/$defs/scenario/properties/method"}}},"required":["method"],"type":"object"},
+          "then": {"properties":{"status":{"enum":["planned","blocked"],"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#/$defs/scenario/properties/status"}}},"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#/$defs/scenario"}},
+          "x-spec-ref": false,
+          "x-spec-ref-reason": "Constraint refinement; extraction belongs to the owning field."
+        ,"x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#/$defs/scenario"}}
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties":{"type":{"const":"us","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#/properties/type"}}},"required":["type"],"type":"object"},
+      "then": {
+        "required": ["epic","trace","scenarios"],
+        "properties": {"trace":{"required":["req"],"properties":{"req":{"minItems":1,"type":"array","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#/properties/trace/properties/req"}}},"type":"object"},"epic":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#/properties/epic"}},"scenarios":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#/properties/scenarios"}}},
+        "type": "object"
+      },
+      "x-spec-ref": false,
+      "x-spec-ref-reason": "Constraint refinement; extraction belongs to the owning field."
+    ,"x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#"}},
+    {
+      "if": {"required":["epic"],"type":"object","properties":{"epic":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#/properties/epic"}}}},
+      "then": {"properties":{"type":{"enum":["us"],"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#/properties/type"}}},"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#"}},
+      "x-spec-ref": false,
+      "x-spec-ref-reason": "Constraint refinement; extraction belongs to the owning field."
+    ,"x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#"}},
+    {
+      "if": {"required":["priority"],"type":"object","properties":{"priority":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#/properties/priority"}}}},
+      "then": {"properties":{"type":{"enum":["us"],"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#/properties/type"}}},"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#"}},
+      "x-spec-ref": false,
+      "x-spec-ref-reason": "Constraint refinement; extraction belongs to the owning field."
+    ,"x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#"}},
+    {
+      "if": {"required":["wave"],"type":"object","properties":{"wave":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#/properties/wave"}}}},
+      "then": {"properties":{"type":{"enum":["us"],"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#/properties/type"}}},"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#"}},
+      "x-spec-ref": false,
+      "x-spec-ref-reason": "Constraint refinement; extraction belongs to the owning field."
+    ,"x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#"}},
+    {
+      "if": {"required":["screens"],"type":"object","properties":{"screens":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#/properties/screens"}}}},
+      "then": {"properties":{"type":{"enum":["us"],"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#/properties/type"}}},"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#"}},
+      "x-spec-ref": false,
+      "x-spec-ref-reason": "Constraint refinement; extraction belongs to the owning field."
+    ,"x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#"}},
+    {
+      "if": {"required":["boards"],"type":"object","properties":{"boards":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#/properties/boards"}}}},
+      "then": {"properties":{"type":{"enum":["us"],"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#/properties/type"}}},"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#"}},
+      "x-spec-ref": false,
+      "x-spec-ref-reason": "Constraint refinement; extraction belongs to the owning field."
+    ,"x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#"}},
+    {
+      "if": {"required":["scenarios"],"type":"object","properties":{"scenarios":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#/properties/scenarios"}}}},
+      "then": {"properties":{"type":{"enum":["us"],"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#/properties/type"}}},"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#"}},
+      "x-spec-ref": false,
+      "x-spec-ref-reason": "Constraint refinement; extraction belongs to the owning field."
+    ,"x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#"}},
+    {
+      "if": {"required":["board_names"],"type":"object","properties":{"board_names":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#/properties/board_names"}}}},
+      "then": {"properties":{"type":{"enum":["wireframe-index"],"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#/properties/type"}}},"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#"}},
+      "x-spec-ref": false,
+      "x-spec-ref-reason": "Constraint refinement; extraction belongs to the owning field."
+    ,"x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#"}},
+    {
+      "if": {"required":["topics"],"type":"object","properties":{"topics":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#/properties/topics"}}}},
+      "then": {"properties":{"type":{"enum":["decisions"],"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#/properties/type"}}},"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#"}},
+      "x-spec-ref": false,
+      "x-spec-ref-reason": "Constraint refinement; extraction belongs to the owning field."
+    ,"x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#"}},
+    {
+      "if": {"required":["amendments"],"type":"object","properties":{"amendments":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#/properties/amendments"}}}},
+      "then": {"properties":{"type":{"enum":["contract"],"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#/properties/type"}}},"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#"}},
+      "x-spec-ref": false,
+      "x-spec-ref-reason": "Constraint refinement; extraction belongs to the owning field."
+    ,"x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#"}},
+    {
+      "if": {"required":["ledger"],"type":"object","properties":{"ledger":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#/properties/ledger"}}}},
+      "then": {"properties":{"type":{"enum":["decisions"],"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#/properties/type"}}},"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#"}},
+      "x-spec-ref": false,
+      "x-spec-ref-reason": "Constraint refinement; extraction belongs to the owning field."
+    ,"x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#"}},
+    {
+      "if": {"required":["inventory"],"type":"object","properties":{"inventory":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#/properties/inventory"}}}},
+      "then": {"properties":{"type":{"enum":["ux"],"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#/properties/type"}}},"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#"}},
+      "x-spec-ref": false,
+      "x-spec-ref-reason": "Constraint refinement; extraction belongs to the owning field."
+    ,"x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#"}},
+    {
+      "if": {"required":["primary"],"type":"object","properties":{"primary":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#/properties/primary"}}}},
+      "then": {"properties":{"type":{"enum":["prd","contract"],"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#/properties/type"}}},"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#"}},
+      "x-spec-ref": false,
+      "x-spec-ref-reason": "Constraint refinement; extraction belongs to the owning field."
+    ,"x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#"}},
+    {"if":{"properties":{"type":{"enum":["screen-inventory","change-set"],"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#/properties/type"}}},"required":["type"],"type":"object"},"then":{"required":["data"],"type":"object","properties":{"data":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#/properties/data"}}}},"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#"}},
+    {
+      "if": {"required":["data"],"type":"object","properties":{"data":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#/properties/data"}}}},
+      "then": {"properties":{"type":{"enum":["screen-inventory","change-set"],"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#/properties/type"}}},"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#"}},
+      "x-spec-ref": false,
+      "x-spec-ref-reason": "Constraint refinement; extraction belongs to the owning field."
+    ,"x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#"}},
+    {
+      "if": {"required":["no_ui"],"type":"object","properties":{"no_ui":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#/properties/no_ui"}}}},
+      "then": {"properties":{"type":{"const":"us","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#/properties/type"}}},"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#"}},
+      "x-spec-ref": false,
+      "x-spec-ref-reason": "Constraint refinement; extraction belongs to the owning field."
+    ,"x-spec-exclusion":{"category":"refinement-of","owner":"front-matter.schema.json#"}}
+  ]
+}

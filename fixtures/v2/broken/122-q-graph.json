@@ -1,0 +1,12 @@
+{
+  "code": "Q-GRAPH",
+  "severity": "error",
+  "fault": null,
+  "changes": [
+    {
+      "path": "assets/graph.json",
+      "before": "0d70034cdb33591533bfd73214331e2afdad120835a72176b10569ab9476cfe8",
+      "after": "ewogICJ2ZXJzaW9uIjogIjEiLAogICJjb21wbGV0ZSI6IHRydWUsCiAgIm5vZGVzIjogWwogICAgewogICAgICAiaWQiOiAidXM6VVMtMDEiLAogICAgICAia2luZCI6ICJ1cyIsCiAgICAgICJyZXZpc2lvbiI6ICIxIiwKICAgICAgInNvdXJjZSI6ICJ1cy9VUy0wMS5tZCIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJhYzpVUy0wMS5BQy0wMSIsCiAgICAgICJraW5kIjogImFjIiwKICAgICAgInJldmlzaW9uIjogIjEiLAogICAgICAic291cmNlIjogInVzL1VTLTAxLm1kIgogICAgfQogIF0sCiAgImVkZ2VzIjogWwogICAgewogICAgICAiZnJvbSI6ICJ1czpVUy0wMSIsCiAgICAgICJ0byI6ICJhYzpVUy05OS5BQy0wMSIsCiAgICAgICJyZWxhdGlvbiI6ICJkZXJpdmVzIiwKICAgICAgInNvdXJjZSI6ICJ1cy9VUy0wMS5tZCIsCiAgICAgICJyZXZpc2lvbiI6ICIxIgogICAgfQogIF0KfQo="
+    }
+  ]
+}

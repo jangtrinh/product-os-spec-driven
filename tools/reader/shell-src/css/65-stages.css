@@ -1,0 +1,19 @@
+/* Wireframes (ASCII shown as screens) and the Prototype page. */
+.stage-links { margin: 0 0 var(--space-4); }
+.prose .screen-frame { margin: 0; gap: 0; border: 1px solid var(--color-outline); border-radius: var(--radius-2xl, 16px); background: var(--color-surface); overflow: hidden; }
+.screen-frame-bar { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-2) var(--space-4); background: var(--surface-2); border-bottom: 1px solid var(--color-border); font-size: var(--text-xs); color: var(--color-text-muted); }
+.screen-frame-bar .chip { font-size: var(--text-xs); }
+.screen-frame pre { margin: 0; padding: var(--space-4) var(--space-5); overflow-x: auto; font: var(--weight-regular) 12.5px/17px var(--font-mono); color: var(--color-text); tab-size: 2; }
+.screen-frame pre code { background: transparent; border: 0; padding: 0; font: inherit; color: inherit; white-space: pre; }
+.flow-cell { white-space: normal; font-weight: var(--weight-medium); }
+
+.proto { display: flex; flex-direction: column; gap: var(--space-3); }
+.proto-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3) var(--space-4); }
+.proto-group { display: flex; flex-wrap: nowrap; gap: var(--space-2); max-width: 100%; overflow-x: auto; padding: 1px; }
+.proto-group[hidden] { display: none; }
+.proto-chip { flex: none; }
+.proto-state { text-transform: capitalize; }
+.proto-tools { margin-left: auto; display: flex; gap: var(--space-2); }
+.proto-hint { margin: 0; font-size: var(--text-sm); color: var(--color-text-muted); }
+.proto-frame { width: 100%; height: clamp(480px, calc(100dvh - 300px), 920px); border: 1px solid var(--color-outline); border-radius: var(--radius-2xl, 16px); background: #fff; }
+.proto.is-annotating .proto-frame { outline: 2px solid var(--color-primary); outline-offset: 2px; }

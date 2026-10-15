@@ -1,0 +1,41 @@
+{
+  "version": "1",
+  "screens": [
+    {
+      "screen": "S01",
+      "state": "normal",
+      "route": "/review",
+      "roles": [
+        "po"
+      ],
+      "scope": [
+        "batch-example"
+      ],
+      "us": [
+        "US-01"
+      ],
+      "ac": [
+        "US-01.AC-01"
+      ],
+      "scenarios": [
+        "US-01.SCN-01-01"
+      ],
+      "flow": "../us/US-01.md#2-flow",
+      "boards": [],
+      "components": [],
+      "patterns": [],
+      "data": "../us/US-01.md#3-data-and-rules",
+      "source": {
+        "kind": "not-created",
+        "ref": null,
+        "reason": "Ví dụ cú pháp, chưa có nguồn ngoài hoặc board"
+      },
+      "availability": "PO đọc phạm vi ví dụ đang chờ",
+      "overlay": "none",
+      "consequences": [
+        "Hoãn quyết định giữ phạm vi chờ theo US-01.AC-01"
+      ],
+      "evidence": []
+    }
+  ]
+}

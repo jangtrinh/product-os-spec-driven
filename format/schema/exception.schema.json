@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec-driven.local/format/v2/exception.schema.json",
+  "title": "Exception",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "id": {"type":"string","minLength":1,"x-spec-ref":"exception-id"},
+    "kind": {"enum":["prototype-first","continuation","applicability"],"x-spec-ref":false,"x-spec-ref-reason":"Closed kind selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},
+    "scope": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/scope","x-spec-ref":"exception-scope"},
+    "source": {"type":"string","minLength":1,"x-spec-ref":"exception-source"},
+    "reason": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal reason value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+    "by": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/email","x-spec-ref":false,"x-spec-ref-reason":"Actor identity/role, not an artifact dependency.","x-spec-exclusion":{"category":"alias-of","owner":"model-common.schema.json#/$defs/email"}},
+    "at": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/utc","x-spec-ref":false,"x-spec-ref-reason":"Timestamp/date value, not a dependency identity.","x-spec-exclusion":{"category":"alias-of","owner":"model-common.schema.json#/$defs/utc"}},
+    "expires": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/utc","x-spec-ref":false,"x-spec-ref-reason":"Timestamp/date value, not a dependency identity.","x-spec-exclusion":{"category":"alias-of","owner":"model-common.schema.json#/$defs/utc"}},
+    "deferred_gates": {"type":"array","items":{"type":"string","minLength":1,"x-spec-ref":"exception-deferred-gates"},"minItems":0,"uniqueItems":true,"x-spec-ref":false,"x-spec-ref-reason":"Literal deferred_gates value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"exception.schema.json#/properties/deferred_gates/items"}},
+    "compensating_checks": {"type":"array","items":{"type":"string","minLength":1,"x-spec-ref":"exception-compensating-checks"},"minItems":1,"uniqueItems":true,"x-spec-ref":false,"x-spec-ref-reason":"Literal compensating_checks value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"exception.schema.json#/properties/compensating_checks/items"}},
+    "non_waivable": {"type":"array","items":{"type":"string","minLength":1,"x-spec-ref":"exception-non-waivable"},"minItems":1,"uniqueItems":true,"x-spec-ref":false,"x-spec-ref-reason":"Literal non_waivable value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"exception.schema.json#/properties/non_waivable/items"}},
+    "status": {"enum":["active","expired","revoked","fulfilled"],"x-spec-ref":false,"x-spec-ref-reason":"Closed status selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},
+    "extra_rounds": {"type":"integer","minimum":1},
+    "combined_checkpoint": {"type":"string","minLength":1,"x-spec-ref":"exception-combined-checkpoint"}
+  },
+  "required": ["id","kind","scope","source","reason","by","at","expires","deferred_gates","compensating_checks","non_waivable","status"],
+  "allOf": [
+    {"if":{"type":"object","properties":{"kind":{"const":"continuation","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"exception.schema.json#/properties/kind"}}},"required":["kind"]},"then":{"type":"object","properties":{"extra_rounds":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"exception.schema.json#/properties/extra_rounds"}}},"required":["extra_rounds"]},"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"exception.schema.json#"}},
+    {
+      "if": {"type":"object","properties":{"kind":{"const":"prototype-first","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"exception.schema.json#/properties/kind"}}},"required":["kind"]},
+      "then": {"type":"object","properties":{"combined_checkpoint":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"exception.schema.json#/properties/combined_checkpoint"}}},"required":["combined_checkpoint"]},
+      "x-spec-ref": false,
+      "x-spec-ref-reason": "Constraint refinement; extraction belongs to the owning field."
+    ,"x-spec-exclusion":{"category":"refinement-of","owner":"exception.schema.json#"}}
+  ]
+}

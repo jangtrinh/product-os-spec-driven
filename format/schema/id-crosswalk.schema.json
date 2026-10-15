@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec-driven.local/format/v2/id-crosswalk.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "rows"
+  ],
+  "properties": {
+    "version": {
+      "const": 1,
+      "type": "integer"
+    },
+    "rows": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "legacy_id",
+          "family",
+          "canonical_kind",
+          "canonical_id",
+          "source",
+          "assignment_rule"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^CW-[0-9]+$",
+            "x-spec-ref": "crosswalk-row-id"
+          },
+          "legacy_id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(?:SCN-PUB-[0-9]{2}-[0-9]{2}|SCR-PUB-[0-9]{2}|EMAIL-[0-9]{2}|CTRL-[0-9]{2}|PD-[0-9]+)$",
+            "x-spec-ref": false,
+            "x-spec-exclusion": {
+              "category": "legacy-id"
+            }
+          },
+          "family": {
+            "type": "string",
+            "minLength": 1,
+            "enum": [
+              "scn-pub",
+              "scr-pub",
+              "email",
+              "ctrl",
+              "pd-feedback"
+            ],
+            "x-spec-ref": false,
+            "x-spec-exclusion": {
+              "category": "enum-literal"
+            }
+          },
+          "canonical_kind": {
+            "type": "string",
+            "minLength": 1,
+            "enum": [
+              "scenario",
+              "screen-state",
+              "ac",
+              "artifact"
+            ],
+            "x-spec-ref": false,
+            "x-spec-exclusion": {
+              "category": "enum-literal"
+            }
+          },
+          "canonical_id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(?:(?:US-(?:\\d+|P\\d+)|NF-\\d+)\\.(?:AC-\\d+|SCN-[A-Z0-9]+-\\d+)|S\\d{2}(?:-[a-z])?|FB-\\d+)$",
+            "x-spec-ref": "crosswalk-canonical-id"
+          },
+          "owner": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(?:US-(?:\\d+|P\\d+)|NF-\\d+)$",
+            "x-spec-ref": "crosswalk-owner"
+          },
+          "source": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "file",
+              "line"
+            ],
+            "properties": {
+              "file": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\)(?!.*:)[^\\s#]+$",
+                "x-spec-ref": "crosswalk-source-file"
+              },
+              "line": {
+                "type": "integer",
+                "minimum": 1
+              }
+            }
+          },
+          "assignment_rule": {
+            "type": "string",
+            "minLength": 1,
+            "enum": [
+              "scenario-next",
+              "screen-next",
+              "ac-next",
+              "feedback-next"
+            ],
+            "x-spec-ref": false,
+            "x-spec-exclusion": {
+              "category": "enum-literal"
+            }
+          }
+        }
+      }
+    }
+  }
+}

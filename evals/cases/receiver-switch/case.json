@@ -1,0 +1,6 @@
+{
+  "name": "receiver-switch",
+  "title": "Post-handoff receiver switch",
+  "ui": false,
+  "behavior": "delivery"
+}

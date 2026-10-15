@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec-driven.local/format/v2/batch-decision.schema.json",
+  "title": "Batch Decision",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "id": {"type":"string","minLength":1,"x-spec-ref":"batch-decision-id"},
+    "packet_id": {"type":"string","minLength":1,"pattern":"^packet-[a-f0-9]{64}$","x-spec-ref":"batch-decision-packet-id"},
+    "data_sha256": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/hash","x-spec-ref":false,"x-spec-ref-reason":"Content/version pin; binding context, not a separate reference.","x-spec-exclusion":{"category":"alias-of","owner":"model-common.schema.json#/$defs/hash"}},
+    "scope": {
+      "allOf": [
+        {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/scope"},
+        {"type":"object","properties":{"kind":{"const":"ac","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"enum-literal"}},"ids":{"type":"array","items":{"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/ac","x-spec-ref":"batch-decision-scope-ids"},"minItems":1,"uniqueItems":true,"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"container-of","owner":"batch-decision.schema.json#/properties/scope/allOf/1/properties/ids/items"}}}}
+      ]
+    },
+    "pins": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/pins","x-spec-ref":"batch-decision-pins"},
+    "by": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/email","x-spec-ref":false,"x-spec-ref-reason":"Actor identity/role, not an artifact dependency.","x-spec-exclusion":{"category":"alias-of","owner":"model-common.schema.json#/$defs/email"}},
+    "channel": {"enum":["direct","agent-ask-user"],"x-spec-ref":false,"x-spec-ref-reason":"Decision input channel, not an artifact reference.","x-spec-exclusion":{"category":"enum-literal"}},
+    "at": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/utc","x-spec-ref":false,"x-spec-ref-reason":"Timestamp/date value, not a dependency identity.","x-spec-exclusion":{"category":"alias-of","owner":"model-common.schema.json#/$defs/utc"}},
+    "default": {"enum":["approve","changes-requested","defer"],"x-spec-ref":false,"x-spec-ref-reason":"Closed default selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},
+    "reason": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal reason value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+    "overrides": {
+      "type": "array",
+      "items": {"type":"object","additionalProperties":false,"properties":{"id":{"type":"string","minLength":1,"x-spec-ref":"batch-decision-overrides-id"},"decision":{"enum":["approve","changes-requested","defer"],"x-spec-ref":false,"x-spec-ref-reason":"Closed decision selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},"reason":{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal reason value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}}},"required":["id","decision","reason"]},
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "exceptions": {"type":"array","items":{"type":"string","minLength":1,"x-spec-ref":"batch-decision-exceptions"},"minItems":0,"uniqueItems":true,"x-spec-ref":false,"x-spec-ref-reason":"Literal exceptions value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"batch-decision.schema.json#/properties/exceptions/items"}}
+  },
+  "required": ["id","packet_id","data_sha256","scope","pins","by","at","default","reason","overrides","exceptions"]
+}

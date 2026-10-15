@@ -1,0 +1,65 @@
+{
+  "id": "example",
+  "version": "1",
+  "authority": [
+    {
+      "id": "identity",
+      "path": "README.md",
+      "revision": "643e4b1bde92df958deeea6019da3a0091c75245b5438cc88e3cd046567366b1",
+      "kind": "identity",
+      "non_waivable": true
+    }
+  ],
+  "tokens": {
+    "owner": "Dev",
+    "source": "assets/tokens.json",
+    "revision": "0c504381dec326c573f0fa95ab845df01fb2285e40ac22ac7e95dead34fa677c",
+    "generated": [],
+    "sync_direction": "source to generated"
+  },
+  "catalogs": [
+    {
+      "id": "example",
+      "path": "assets/catalog.json",
+      "revision": "ba10c93823d54745d18f13bfae875a968b152735d330520657c0f30bcc9d8f7f",
+      "kind": "component"
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "browser",
+      "status": "available",
+      "reason": "local fixture"
+    }
+  ],
+  "rubrics": {
+    "core": "assets/rubric.txt",
+    "adapter": []
+  },
+  "evidence_providers": [],
+  "locales": [
+    "vi",
+    "en"
+  ],
+  "viewports": [
+    {
+      "width": 375,
+      "height": 800
+    },
+    {
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "width": 1440,
+      "height": 900
+    }
+  ],
+  "modes": [
+    "light",
+    "dark"
+  ],
+  "inputs": [
+    "README.md"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec-driven.local/format/v2/gate-review.schema.json",
+  "title": "Gate Data Review",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "enabled": {"type":"boolean"},
+    "independent": {"type":"boolean"},
+    "verdict": {"anyOf":[{"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/review","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"gate-review.schema.json#/properties/verdict"}},{"type":"null"}],"x-spec-ref":false,"x-spec-ref-reason":"Literal verdict value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+    "criteria": {"type":"array","items":{"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/criterion"}},
+    "findings": {"type":"array","items":{"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/finding"}},
+    "report": {"anyOf":[{"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/path","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"gate-review.schema.json#/properties/report"}},{"type":"null","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"gate-review.schema.json#/properties/report"}}],"x-spec-ref":"gate-review-report"}
+  },
+  "required": ["enabled","independent","verdict","criteria","findings","report"],
+  "allOf": [
+    {
+      "if": {"properties":{"enabled":{"const":false}},"required":["enabled"],"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"gate-review.schema.json#"}},
+      "then": {"properties":{"independent":{"const":false},"verdict":{"type":"null"},"criteria":{"type":"array","maxItems":0},"findings":{"type":"array","maxItems":0}},"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"gate-review.schema.json#"}},
+      "else": {"properties":{"verdict":{"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/review","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"gate-review.schema.json#/properties/verdict"}}},"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"gate-review.schema.json#"}},
+      "x-spec-ref": false,
+      "x-spec-ref-reason": "Constraint refinement; extraction belongs to the owning field."
+    ,"x-spec-exclusion":{"category":"refinement-of","owner":"gate-review.schema.json#"}},
+    {
+      "if": {"properties":{"enabled":{"const":true},"criteria":{"type":"array","not":{"type":"array","contains":{"type":"object","properties":{"applicability":{"const":"applicable","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"enum-literal"}}}}}}},"required":["enabled","criteria"],"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"gate-review.schema.json#"}},
+      "then": {"properties":{"verdict":{"const":"NOT_RUN","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"gate-review.schema.json#/properties/verdict"}}},"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"gate-review.schema.json#"}},
+      "x-spec-ref": false,
+      "x-spec-ref-reason": "Constraint refinement; extraction belongs to the owning field."
+    ,"x-spec-exclusion":{"category":"refinement-of","owner":"gate-review.schema.json#"}}
+  ]
+}

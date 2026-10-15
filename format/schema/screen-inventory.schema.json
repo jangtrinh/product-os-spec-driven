@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec-driven.local/format/v2/screen-inventory.schema.json",
+  "title": "Screen Inventory",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Content/version pin; binding context, not a separate reference.","x-spec-exclusion":{"category":"free-text"}},
+    "screens": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "screen": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/screen","x-spec-ref":"screen-inventory-screens-screen"},
+          "state": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/state","x-spec-ref":"screen-inventory-screens-state"},
+          "route": {"type":"string","minLength":1,"pattern":"^/[^\\s]*$","x-spec-ref":false,"x-spec-ref-reason":"Declared application route is an availability context, not a spec-file path.","x-spec-exclusion":{"category":"regex"}},
+          "roles": {"type":"array","items":{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal items value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},"minItems":1,"uniqueItems":true},
+          "scope": {"type":"array","items":{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal items value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},"minItems":1,"uniqueItems":true},
+          "us": {"type":"array","items":{"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/us","x-spec-ref":"screen-inventory-screens-us"},"minItems":1,"uniqueItems":true,"x-spec-ref":false,"x-spec-ref-reason":"Literal us value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"screen-inventory.schema.json#/properties/screens/items/properties/us/items"}},
+          "ac": {"type":"array","items":{"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/ac","x-spec-ref":"screen-inventory-screens-ac"},"minItems":0,"uniqueItems":true,"x-spec-ref":false,"x-spec-ref-reason":"Literal ac value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"screen-inventory.schema.json#/properties/screens/items/properties/ac/items"}},
+          "scenarios": {"type":"array","items":{"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/scn","x-spec-ref":"screen-inventory-screens-scenarios"},"minItems":0,"uniqueItems":true,"x-spec-ref":false,"x-spec-ref-reason":"Literal scenarios value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"screen-inventory.schema.json#/properties/screens/items/properties/scenarios/items"}},
+          "flow": {"type":"string","minLength":1,"x-spec-ref":"screen-inventory-screens-flow"},
+          "boards": {"type":"array","items":{"type":"string","minLength":1,"pattern":"^W-\\d{2}$","x-spec-ref":"screen-inventory-screens-boards"},"minItems":0,"uniqueItems":true,"x-spec-ref":false,"x-spec-ref-reason":"Literal boards value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"screen-inventory.schema.json#/properties/screens/items/properties/boards/items"}},
+          "components": {"type":"array","items":{"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/handle","x-spec-ref":"screen-inventory-screens-components"},"minItems":0,"uniqueItems":true,"x-spec-ref":false,"x-spec-ref-reason":"Literal components value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"screen-inventory.schema.json#/properties/screens/items/properties/components/items"}},
+          "patterns": {"type":"array","items":{"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/handle","x-spec-ref":"screen-inventory-screens-patterns"},"minItems":0,"uniqueItems":true,"x-spec-ref":false,"x-spec-ref-reason":"Literal patterns value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"screen-inventory.schema.json#/properties/screens/items/properties/patterns/items"}},
+          "data": {"type":"string","minLength":1,"x-spec-ref":"screen-inventory-screens-data"},
+          "source": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "kind": {"enum":["figma","html-board","not-created"],"x-spec-ref":false,"x-spec-ref-reason":"Closed kind selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},
+              "ref": {"anyOf":[{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"screen-inventory.schema.json#/properties/screens/items/properties/source/properties/ref"}},{"type":"null","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"screen-inventory.schema.json#/properties/screens/items/properties/source/properties/ref"}}],"x-spec-ref":"screen-inventory-screens-source-ref"},
+              "reason": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal reason value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}}
+            },
+            "required": ["kind","ref"],
+            "allOf": [
+              {
+                "if": {"properties":{"kind":{"const":"not-created","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"screen-inventory.schema.json#/properties/screens/items/properties/source/properties/kind"}}},"required":["kind"],"type":"object"},
+                "then": {"required":["reason"],"properties":{"ref":{"type":"null","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"screen-inventory.schema.json#/properties/screens/items/properties/source/properties/ref"}},"reason":{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"screen-inventory.schema.json#/properties/screens/items/properties/source/properties/reason"}}},"type":"object"},
+                "else": {"properties":{"ref":{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"screen-inventory.schema.json#/properties/screens/items/properties/source/properties/ref"}}},"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"screen-inventory.schema.json#/properties/screens/items/properties/source"}},
+                "x-spec-ref": false,
+                "x-spec-ref-reason": "Constraint refinement; extraction belongs to the owning field."
+              ,"x-spec-exclusion":{"category":"refinement-of","owner":"screen-inventory.schema.json#/properties/screens/items/properties/source"}}
+            ]
+          },
+          "availability": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal availability value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+          "overlay": {"enum":["none","modal","non-modal"],"x-spec-ref":false,"x-spec-ref-reason":"Closed overlay selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},
+          "consequences": {"type":"array","items":{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal items value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},"minItems":0,"uniqueItems":true},
+          "evidence": {"type":"array","items":{"type":"string","minLength":1,"x-spec-ref":"screen-inventory-screens-evidence"},"minItems":0,"uniqueItems":true,"x-spec-ref":false,"x-spec-ref-reason":"Literal evidence value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"screen-inventory.schema.json#/properties/screens/items/properties/evidence/items"}}
+        },
+        "required": ["screen","state","route","roles","scope","us","ac","scenarios","flow","boards","components","patterns","data","source","availability","overlay","consequences","evidence"]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    }
+  },
+  "required": ["version","screens"]
+}

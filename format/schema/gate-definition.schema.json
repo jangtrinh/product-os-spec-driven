@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec-driven.local/format/v2/gate-definition.schema.json",
+  "title": "Gate Definition",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "id": {"type":"string","minLength":1,"pattern":"^[a-z][a-z0-9-]*$","x-spec-ref":"gate-definition-id"},
+    "version": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Content/version pin; binding context, not a separate reference.","x-spec-exclusion":{"category":"free-text"}},
+    "stage": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/stage","x-spec-ref":false,"x-spec-ref-reason":"Shared value grammar; not a separate dependency at this alias.","x-spec-exclusion":{"category":"alias-of","owner":"model-common.schema.json#/$defs/stage"}},
+    "scope": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/scope","x-spec-ref":"gate-definition-scope"},
+    "inputs": {"type":"array","items":{"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/path","x-spec-ref":"gate-definition-inputs"},"minItems":1,"uniqueItems":true,"x-spec-ref":false,"x-spec-ref-reason":"Literal inputs value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"gate-definition.schema.json#/properties/inputs/items"}},
+    "outputs": {"type":"array","items":{"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/path","x-spec-ref":"gate-definition-outputs"},"minItems":1,"uniqueItems":true,"x-spec-ref":false,"x-spec-ref-reason":"Literal outputs value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"gate-definition.schema.json#/properties/outputs/items"}},
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {"id":{"type":"string","minLength":1,"x-spec-ref":"gate-definition-checks-id"},"command":{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal command value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},"mandatory":{"type":"boolean"},"blocker_policy":{"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal blocker_policy value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}}},
+        "required": ["id","command","mandatory","blocker_policy"]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "reviewer": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/actor","x-spec-ref":false,"x-spec-ref-reason":"Actor identity/role, not an artifact dependency.","x-spec-exclusion":{"category":"alias-of","owner":"model-common.schema.json#/$defs/actor"}},
+    "decider": {"enum":["po","qc","dev"],"x-spec-ref":false,"x-spec-ref-reason":"Closed decider selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},
+    "transitions": {"type":"array","items":{"enum":["advance","repair","backward","exception","change-set","recovery"],"x-spec-ref":false,"x-spec-ref-reason":"Closed items selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},"minItems":1,"uniqueItems":true},
+    "invalidation": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal invalidation value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+    "exceptions": {"type":"array","items":{"type":"string","minLength":1,"x-spec-ref":"gate-definition-exceptions"},"minItems":0,"uniqueItems":true,"x-spec-ref":false,"x-spec-ref-reason":"Literal exceptions value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"gate-definition.schema.json#/properties/exceptions/items"}},
+    "versions": {"$ref":"https://spec-driven.local/format/v2/model-common.schema.json#/$defs/versions"}
+  },
+  "required": ["id","version","stage","scope","inputs","outputs","checks","reviewer","decider","transitions","invalidation","exceptions","versions"]
+}

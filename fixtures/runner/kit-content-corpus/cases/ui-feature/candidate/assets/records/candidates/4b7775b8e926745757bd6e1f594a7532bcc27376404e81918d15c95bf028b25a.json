@@ -1,0 +1,13 @@
+{
+  "version": "1",
+  "members": [
+    {
+      "kind": "ac",
+      "id": "US-01.AC-01",
+      "artifacts": {
+        "us/US-01.md": "3aff2f28d75dd505783fc144478025d15c95c213077b3897ca8a7bd0ba872bfb"
+      },
+      "revision": "c428c4b93f9859b9ac0c3d010ed09d2e195361b6f006f902e4e7d234c9f81011"
+    }
+  ]
+}

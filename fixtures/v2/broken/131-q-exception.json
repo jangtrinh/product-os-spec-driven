@@ -1,0 +1,12 @@
+{
+  "code": "Q-EXCEPTION",
+  "severity": "error",
+  "fault": null,
+  "changes": [
+    {
+      "path": "assets/records/exceptions/no-ui.json",
+      "before": "9e7754564a41c226176448ffd142ae3269b52a4df96c74a34058d4065e5dc6d0",
+      "after": "ewogICJpZCI6ICJuby11aSIsCiAgImtpbmQiOiAiYXBwbGljYWJpbGl0eSIsCiAgInNjb3BlIjogewogICAgImtpbmQiOiAiYWMiLAogICAgImlkcyI6IFsKICAgICAgIlVTLTAxLkFDLTAxIgogICAgXSwKICAgICJyZXZpc2lvbiI6ICJmaXh0dXJlLXJldmlzaW9uIgogIH0sCiAgInNvdXJjZSI6ICJEMSIsCiAgInJlYXNvbiI6ICJubyBVSSBhY2NlcHRhbmNlIGF0IHNwZWMgc3RhZ2UiLAogICJieSI6ICJwb0BleGFtcGxlLnRlc3QiLAogICJhdCI6ICIyMDI2LTAxLTA5VDAwOjAwOjAwWiIsCiAgImV4cGlyZXMiOiAiMjAyNS0wMS0wMVQwMDowMDowMFoiLAogICJkZWZlcnJlZF9nYXRlcyI6IFtdLAogICJjb21wZW5zYXRpbmdfY2hlY2tzIjogWwogICAgInNwZWMgcmV2aWV3IgogIF0sCiAgIm5vbl93YWl2YWJsZSI6IFsKICAgICJtYW5kYXRvcnkgcXVhbGl0eSIKICBdLAogICJzdGF0dXMiOiAiYWN0aXZlIgp9Cg=="
+    }
+  ]
+}

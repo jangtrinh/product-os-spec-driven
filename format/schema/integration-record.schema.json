@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec-driven.local/format/v2/integration-record.schema.json",
+  "title": "Integration record (AM-5)",
+  "description": "One integration of parallel work: re-anchored spec head, shared dependencies recomputed, semantic conflicts reviewed.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id","at","base","branches","spec_head","shared_dependencies","semantic_conflicts","status"],
+  "properties": {
+    "id": {"type":"string","pattern":"^INT-[0-9]{3,}$","x-spec-ref":"integration-record-id"},
+    "at": {"type":"string","format":"date-time","x-spec-ref":false,"x-spec-ref-reason":"Timestamp/date value, not a dependency identity.","x-spec-exclusion":{"category":"format-value"}},
+    "base": {"type":"string","minLength":7,"x-spec-ref":false,"x-spec-ref-reason":"Content/version pin; binding context, not a separate reference.","x-spec-exclusion":{"category":"free-text"}},
+    "branches": {"type":"array","minItems":1,"items":{"type":"object","additionalProperties":false,"required":["ref","head"],"properties":{"ref":{"type":"string","minLength":1,"x-spec-ref":"integration-record-branches-ref"},"head":{"type":"string","minLength":7,"x-spec-ref":false,"x-spec-ref-reason":"Content/version pin; binding context, not a separate reference.","x-spec-exclusion":{"category":"free-text"}}}}},
+    "spec_head": {"type":"string","minLength":7,"x-spec-ref":false,"x-spec-ref-reason":"Literal spec_head value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+    "shared_dependencies": {"type":"array","items":{"type":"object","additionalProperties":false,"required":["kind","id"],"properties":{"kind":{"enum":["rule","contract","ds","screen","fixture","config","graph"],"x-spec-ref":false,"x-spec-ref-reason":"Closed kind selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},"id":{"type":"string","minLength":1,"x-spec-ref":"integration-record-shared-dependencies-id"}}}},
+    "semantic_conflicts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id","description","resolution"],
+        "properties": {
+          "id": {"type":"string","minLength":1,"x-spec-ref":"integration-record-semantic-conflicts-id"},
+          "description": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal description value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+          "resolution": {"enum":["open","resolved"],"x-spec-ref":false,"x-spec-ref-reason":"Closed resolution selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},
+          "decided_by": {"type":"string","format":"email","x-spec-ref":false,"x-spec-ref-reason":"Actor identity/role, not an artifact dependency.","x-spec-exclusion":{"category":"format-value"}},
+          "decision_ref": {"type":"string","minLength":1,"x-spec-ref":"integration-record-semantic-conflicts-decision-ref"}
+        },
+        "allOf": [
+          {
+            "if": {"properties":{"resolution":{"const":"resolved","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"integration-record.schema.json#/properties/semantic_conflicts/items/properties/resolution"}}},"required":["resolution"],"type":"object"},
+            "then": {"required":["decided_by","decision_ref"],"type":"object","properties":{"decided_by":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"integration-record.schema.json#/properties/semantic_conflicts/items/properties/decided_by"}},"decision_ref":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"integration-record.schema.json#/properties/semantic_conflicts/items/properties/decision_ref"}}}},
+            "x-spec-ref": false,
+            "x-spec-ref-reason": "Constraint refinement; extraction belongs to the owning field."
+          ,"x-spec-exclusion":{"category":"refinement-of","owner":"integration-record.schema.json#/properties/semantic_conflicts/items"}}
+        ]
+      }
+    },
+    "status": {"enum":["clean","conflicts-open","resolved"],"x-spec-ref":false,"x-spec-ref-reason":"Closed status selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},
+    "reviewed_by": {"type":"string","format":"email","x-spec-ref":false,"x-spec-ref-reason":"Actor identity/role, not an artifact dependency.","x-spec-exclusion":{"category":"format-value"}},
+    "reviewer_independent": {"type":"boolean"}
+  },
+  "allOf": [
+    {
+      "if": {"properties":{"status":{"enum":["clean","resolved"],"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"integration-record.schema.json#/properties/status"}}},"required":["status"],"type":"object"},
+      "then": {"required":["reviewed_by","reviewer_independent"],"properties":{"reviewer_independent":{"const":true},"reviewed_by":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"integration-record.schema.json#/properties/reviewed_by"}}},"type":"object"},
+      "x-spec-ref": false,
+      "x-spec-ref-reason": "Constraint refinement; extraction belongs to the owning field."
+    ,"x-spec-exclusion":{"category":"refinement-of","owner":"integration-record.schema.json#"}}
+  ]
+}

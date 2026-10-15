@@ -1,0 +1,112 @@
+{
+  "version": 1,
+  "normalization": "nfc-lf-trim-trailing-v1",
+  "crosswalk": "crosswalk.json",
+  "items": [
+    {
+      "id": "intake-item-01",
+      "source": {
+        "file": "source.txt",
+        "line": 1
+      },
+      "text_sha256": "5f20bb85cd22d88b6518b365708b17f6682a4b710198c457032a4e3b6af11573",
+      "status": "exact",
+      "mappings": [
+        {
+          "kind": "contract",
+          "id": "contract:FC-01"
+        },
+        {
+          "kind": "req",
+          "id": "req:REQ-01"
+        },
+        {
+          "kind": "us",
+          "id": "us:US-16"
+        },
+        {
+          "kind": "ac",
+          "id": "ac:US-16.AC-01"
+        },
+        {
+          "kind": "scenario",
+          "id": "scenario:US-16.SCN-16-01"
+        },
+        {
+          "kind": "screen-state",
+          "id": "screen-state:S01/normal"
+        },
+        {
+          "kind": "board",
+          "id": "board:W-01"
+        },
+        {
+          "kind": "component",
+          "id": "component:core/Button"
+        },
+        {
+          "kind": "pattern",
+          "id": "pattern:core/form"
+        },
+        {
+          "kind": "token",
+          "id": "token:core/color"
+        },
+        {
+          "kind": "rule",
+          "id": "rule:FC-01.BR-01"
+        },
+        {
+          "kind": "test",
+          "id": "test:tests/form.cjs"
+        },
+        {
+          "kind": "fixture",
+          "id": "fixture:fixtures/form.json"
+        },
+        {
+          "kind": "environment",
+          "id": "environment:local"
+        },
+        {
+          "kind": "build",
+          "id": "build:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        {
+          "kind": "artifact",
+          "id": "artifact:FB-01"
+        },
+        {
+          "kind": "gate",
+          "id": "gate:G4"
+        },
+        {
+          "kind": "receipt",
+          "id": "receipt:receipt-01"
+        },
+        {
+          "kind": "amendment",
+          "id": "amendment:FC-01.A-01"
+        },
+        {
+          "kind": "decision",
+          "id": "decision:D1"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "source_preservation": {
+      "total": 1,
+      "preserved": 1
+    },
+    "typed_coverage": {
+      "total": 20,
+      "mapped": 20
+    },
+    "demo_coverage": {
+      "total": 0,
+      "passed": 0
+    }
+  }
+}

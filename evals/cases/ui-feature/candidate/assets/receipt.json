@@ -1,0 +1,67 @@
+{
+  "id": "receipt-spec",
+  "scope": {
+    "kind": "ac",
+    "ids": [
+      "US-01.AC-01"
+    ],
+    "revision": "49ab152c81062c0a429dd64b78c59ca1ec070f58f1c52823a36a7011906e3402"
+  },
+  "at": "2026-01-09T00:00:00Z",
+  "freshness": "CURRENT",
+  "pins": {
+    "head": "fixture-head",
+    "base": "fixture-base",
+    "manifest": "4b7775b8e926745757bd6e1f594a7532bcc27376404e81918d15c95bf028b25a",
+    "build": "not-built"
+  },
+  "execution": {
+    "command": "node test",
+    "cwd": "tests",
+    "exit": 0,
+    "result": "PASS",
+    "selected": 1,
+    "total": 1,
+    "skipped": [],
+    "baseline_debt": [],
+    "red_controls": [
+      "missing-fixture"
+    ],
+    "recovery": "rerun after changes"
+  },
+  "review": {
+    "builder": "Dev",
+    "reviewer": "QC",
+    "independent": true,
+    "evaluator_version": "1",
+    "prompt_version": "1",
+    "ruleset_version": "1",
+    "verdict": "PASS",
+    "inputs": [
+      "us/US-01.md"
+    ],
+    "criteria": [
+      {
+        "id": "quality",
+        "mandatory": true,
+        "score": 2,
+        "evidence": "us/US-01.md"
+      }
+    ],
+    "findings": []
+  },
+  "coverage": {
+    "ac": [
+      "US-01.AC-01"
+    ],
+    "scenarios": [
+      "US-01.SCN-01-01"
+    ],
+    "passed": [],
+    "na": []
+  },
+  "artifacts": {
+    "us/US-01.md": "3aff2f28d75dd505783fc144478025d15c95c213077b3897ca8a7bd0ba872bfb"
+  },
+  "domain": "spec"
+}

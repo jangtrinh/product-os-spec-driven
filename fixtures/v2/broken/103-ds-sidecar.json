@@ -1,0 +1,12 @@
+{
+  "code": "DS-SIDECAR",
+  "severity": "error",
+  "fault": null,
+  "changes": [
+    {
+      "path": "assets/sources.json",
+      "before": "6cd8d7cda9ff3a3ff52cdcf47b2b195e553865306ba6f72f078311c5221556d0",
+      "after": "ewogICJnZW5lcmF0ZWQiOiBmYWxzZSwKICAiZ2VuZXJhdG9yIjogImZpeHR1cmUtZ2VuZXJhdG9yIiwKICAidmVyc2lvbiI6ICIxIiwKICAiYXQiOiAiMjAyNi0wMS0wOVQwMDowMDowMFoiLAogICJpbnB1dHMiOiB7CiAgICAiUkVBRE1FLm1kIjogIjY0M2U0YjFiZGU5MmRmOTU4ZGVlZWE2MDE5ZGEzYTAwOTFjNzUyNDViNTQzOGNjODhlM2NkMDQ2NTY3MzY2YjEiCiAgfSwKICAiZW50cmllcyI6IFtdCn0K"
+    }
+  ]
+}

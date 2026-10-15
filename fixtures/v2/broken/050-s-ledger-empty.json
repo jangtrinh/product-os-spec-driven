@@ -1,0 +1,12 @@
+{
+  "code": "S-LEDGER-EMPTY",
+  "severity": "error",
+  "fault": null,
+  "changes": [
+    {
+      "path": "decisions/decision-log.md",
+      "before": "32bcca4fed8621e924ba457a8f039a465e97ccb03cdae2acb240e142b131add6",
+      "after": "LS0tCmlkOiBkZWNpc2lvbi1sb2cKdHlwZTogZGVjaXNpb25zCnRpdGxlOiAiRGVjaXNpb24gbG9nIgpzdGF0dXM6IEN1cnJlbnQgdG8gRDQKdXBkYXRlZDogMjAyNi0wMS0xMApsZWRnZXI6IHRydWUKdHJhY2U6CiAgYW1lbmRtZW50czogW0EtMDEsIEEtMDJdCnRvcGljczoKICAtIGlkOiBzY29wZQogICAgbmFtZTogU2NvcGUKICAgIG5vdGU6IFdoYXQgaXMgYnVpbHQgYW5kIHdoYXQgd2FpdHMKICAgIGlkczogW0QxLCBEM10KICAtIGlkOiB1aQogICAgbmFtZTogVUkgcnVsZXMKICAgIG5vdGU6IEhvdyBzY3JlZW5zIGJlaGF2ZQogICAgaWRzOiBbRDIsIEQ0XQotLS0KCnwgSWQgfCBEZWNpc2lvbiB8IFNvdXJjZSBhbmQgZGV0YWlsIHwKfC0tLXwtLS18LS0tfAo="
+    }
+  ]
+}

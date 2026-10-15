@@ -1,0 +1,22 @@
+{
+  "id": "XC-001",
+  "target": {
+    "kind": "ac",
+    "id": "US-03.AC-01"
+  },
+  "before": "No confirmation",
+  "after": "Confirmation required",
+  "reason": "owner ruling",
+  "requested_by": "po@example.test",
+  "requested_at": "2026-01-08T00:00:00Z",
+  "status": "approved",
+  "decided_by": "po@example.test",
+  "decided_at": "2026-01-09T00:00:00Z",
+  "amendment_ref": "fc-001.A-01",
+  "red_history": [
+    {
+      "receipt": "receipt-red",
+      "result": "FAIL"
+    }
+  ]
+}

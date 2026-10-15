@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec-driven.local/format/v2/model-common.schema.json",
+  "title": "Model Common",
+  "$ref": "#/$defs/scope",
+  "$defs": {
+    "path": {"type":"string","minLength":1,"pattern":"^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\)(?![A-Za-z][A-Za-z0-9+.-]*:)[^\\s#]+$","x-spec-ref":"model-common-defs-path"},
+    "hash": {"type":"string","minLength":1,"pattern":"^[a-f0-9]{64}$","x-spec-ref":false,"x-spec-ref-reason":"Content/version pin; binding context, not a separate reference.","x-spec-exclusion":{"category":"regex"}},
+    "utc": {"type":"string","format":"date-time","pattern":"^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{3})?Z$","x-spec-ref":false,"x-spec-ref-reason":"Timestamp/date value, not a dependency identity.","x-spec-exclusion":{"category":"format-value"}},
+    "actor": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Actor identity/role, not an artifact dependency.","x-spec-exclusion":{"category":"free-text"}},
+    "email": {"type":"string","format":"email","x-spec-ref":false,"x-spec-ref-reason":"Actor identity/role, not an artifact dependency.","x-spec-exclusion":{"category":"format-value"}},
+    "stage": {"enum":["intake","clarify","contract","prd","us","wireframe","prototype","design","tdd","uiux","handoff"],"x-spec-ref":false,"x-spec-ref-reason":"Closed stage selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "kind": {"enum":["stage","artifact","bundle","us","ac"],"x-spec-ref":false,"x-spec-ref-reason":"Closed kind selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},
+        "ids": {"type":"array","items":{"type":"string","minLength":1,"x-spec-ref":"model-common-defs-scope-ids"},"minItems":1,"uniqueItems":true,"x-spec-ref":false,"x-spec-ref-reason":"Literal ids value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"model-common.schema.json#/$defs/scope/properties/ids/items"}},
+        "revision": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Content/version pin; binding context, not a separate reference.","x-spec-exclusion":{"category":"free-text"}}
+      },
+      "required": ["kind","ids","revision"]
+    },
+    "screen": {"type":"string","minLength":1,"pattern":"^S\\d{2}(-[a-z])?$","x-spec-ref":"model-common-defs-screen"},
+    "state": {"type":"string","minLength":1,"pattern":"^[a-z][a-z0-9-]*$","x-spec-ref":"model-common-defs-state"},
+    "us": {"type":"string","minLength":1,"pattern":"^(US-(\\d+|P\\d+)|NF-\\d+)$","x-spec-ref":"model-common-defs-us"},
+    "ac": {"type":"string","minLength":1,"pattern":"^[A-Za-z0-9_-]+\\.AC-\\d+$","x-spec-ref":"model-common-defs-ac"},
+    "scn": {"type":"string","minLength":1,"pattern":"^(US-(\\d+|P\\d+)|NF-\\d+)\\.SCN-[A-Z0-9]+-\\d+$","x-spec-ref":"model-common-defs-scn"},
+    "handle": {"type":"string","minLength":1,"pattern":"^[a-z][a-z0-9-]*/[A-Za-z0-9_.-]+$","x-spec-ref":"model-common-defs-handle"},
+    "pins": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "head": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Content/version pin; binding context, not a separate reference.","x-spec-exclusion":{"category":"free-text"}},
+        "base": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Content/version pin; binding context, not a separate reference.","x-spec-exclusion":{"category":"free-text"}},
+        "manifest": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Content/version pin; binding context, not a separate reference.","x-spec-exclusion":{"category":"free-text"}},
+        "build": {"type":"string","minLength":1,"x-spec-ref":"model-common-defs-pins-build"}
+      },
+      "required": ["head","base","manifest","build"]
+    },
+    "versions": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "workflow": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal workflow value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+        "templates": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal templates value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+        "ruleset": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal ruleset value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+        "skill": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal skill value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}}
+      },
+      "required": ["workflow","templates","ruleset","skill"]
+    },
+    "hashes": {"type":"object","minProperties":1,"propertyNames":{"type":"string","minLength":1,"pattern":"^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\)(?![A-Za-z][A-Za-z0-9+.-]*:)[^\\s#]+$","x-spec-ref":"model-common-defs-hashes-key"},"additionalProperties":{"type":"string","minLength":1,"pattern":"^[a-f0-9]{64}$","x-spec-ref":false,"x-spec-ref-reason":"Literal additionalProperties value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"regex"}}},
+    "impact": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "node": {"type":"string","minLength":1,"x-spec-ref":"model-common-defs-impact-node"},
+        "domain": {"enum":["spec","ui","test","delivery"],"x-spec-ref":false,"x-spec-ref-reason":"Closed domain selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},
+        "classification": {"enum":["direct","transitive","unknown"],"x-spec-ref":false,"x-spec-ref-reason":"Closed classification selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},
+        "reason": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal reason value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+        "path": {"type":"array","items":{"type":"string","minLength":1,"x-spec-ref":"model-common-defs-impact-path"},"minItems":0,"uniqueItems":true,"x-spec-ref":false,"x-spec-ref-reason":"Literal path value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"container-of","owner":"model-common.schema.json#/$defs/impact/properties/path/items"}}
+      },
+      "required": ["node","domain","classification","reason","path"]
+    },
+    "criterion": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type":"string","minLength":1,"x-spec-ref":"model-common-defs-criterion-id"},
+        "mandatory": {"type":"boolean"},
+        "score": {"type":["integer","null"],"minimum":0,"maximum":2},
+        "evidence": {"type":"string","minLength":1,"x-spec-ref":"model-common-defs-criterion-evidence"},
+        "applicability": {"enum":["applicable","na"],"x-spec-ref":false,"x-spec-ref-reason":"Closed applicability selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},
+        "reason": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal reason value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+        "confirmer": {"$ref":"#/$defs/actor","x-spec-ref":false,"x-spec-ref-reason":"Actor identity/role, not an artifact dependency.","x-spec-exclusion":{"category":"alias-of","owner":"model-common.schema.json#/$defs/actor"}}
+      },
+      "required": ["id","mandatory","score","evidence"],
+      "allOf": [
+        {
+          "if": {"type":"object","properties":{"applicability":{"const":"na","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"model-common.schema.json#/$defs/criterion/properties/applicability"}}},"required":["applicability"]},
+          "then": {"type":"object","properties":{"score":{"type":"null"},"reason":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"model-common.schema.json#/$defs/criterion/properties/reason"}},"confirmer":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"model-common.schema.json#/$defs/criterion/properties/confirmer"}}},"required":["reason","confirmer"]},
+          "else": {
+            "properties": {"score":{"type":"integer"}},
+            "not": {"anyOf":[{"type":"object","properties":{"reason":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"model-common.schema.json#/$defs/criterion/properties/reason"}}},"required":["reason"]},{"type":"object","properties":{"confirmer":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"model-common.schema.json#/$defs/criterion/properties/confirmer"}}},"required":["confirmer"]}]},
+            "x-spec-ref": false,
+            "x-spec-ref-reason": "Constraint refinement; extraction belongs to the owning field."
+          ,"x-spec-exclusion":{"category":"refinement-of","owner":"model-common.schema.json#/$defs/criterion"}},
+          "x-spec-ref": false,
+          "x-spec-ref-reason": "Constraint refinement; extraction belongs to the owning field."
+        ,"x-spec-exclusion":{"category":"refinement-of","owner":"model-common.schema.json#/$defs/criterion"}}
+      ]
+    },
+    "finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type":"string","minLength":1,"x-spec-ref":"model-common-defs-finding-id"},
+        "criterion": {"type":"string","minLength":1,"x-spec-ref":"model-common-defs-finding-criterion"},
+        "severity": {"enum":["Critical","Major","Minor"],"x-spec-ref":false,"x-spec-ref-reason":"Closed severity selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},
+        "file": {"type":"string","minLength":1,"pattern":"^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\)(?![A-Za-z][A-Za-z0-9+.-]*:)[^\\s#]+$","x-spec-ref":"model-common-defs-finding-file"},
+        "line": {"type":"integer","minimum":1},
+        "impact": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal impact value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+        "fix": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal fix value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+        "owner": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Actor identity/role, not an artifact dependency.","x-spec-exclusion":{"category":"free-text"}},
+        "disposition": {"enum":["open","fixed","rejected","accepted-minor"],"x-spec-ref":false,"x-spec-ref-reason":"Closed disposition selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},
+        "reason": {"type":"string","minLength":1,"x-spec-ref":false,"x-spec-ref-reason":"Literal reason value; no reference namespace or dependency join.","x-spec-exclusion":{"category":"free-text"}},
+        "accepted_by": {"type":"string","format":"email","x-spec-ref":false,"x-spec-ref-reason":"Actor identity/role, not an artifact dependency.","x-spec-exclusion":{"category":"format-value"}},
+        "follow_up": {"type":"string","minLength":1,"x-spec-ref":"model-common-defs-finding-follow-up"}
+      },
+      "required": ["id","criterion","severity","file","line","impact","fix","owner","disposition","reason"],
+      "allOf": [
+        {
+          "if": {"properties":{"disposition":{"const":"accepted-minor","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"model-common.schema.json#/$defs/finding/properties/disposition"}}},"required":["disposition"],"type":"object"},
+          "then": {"properties":{"severity":{"const":"Minor","x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"model-common.schema.json#/$defs/finding/properties/severity"}},"accepted_by":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"model-common.schema.json#/$defs/finding/properties/accepted_by"}},"follow_up":{"x-spec-ref":false,"x-spec-ref-reason":"Constraint refinement; extraction belongs to the owning field.","x-spec-exclusion":{"category":"refinement-of","owner":"model-common.schema.json#/$defs/finding/properties/follow_up"}}},"required":["accepted_by","follow_up"],"type":"object"},
+          "x-spec-ref": false,
+          "x-spec-ref-reason": "Constraint refinement; extraction belongs to the owning field."
+        ,"x-spec-exclusion":{"category":"refinement-of","owner":"model-common.schema.json#/$defs/finding"}}
+      ]
+    },
+    "eval": {"enum":["PASS","FAIL","BLOCKED","NOT_RUN","SKIPPED","NA"],"x-spec-ref":false,"x-spec-ref-reason":"Closed eval selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},
+    "review": {"enum":["PASS","NEEDS_CHANGES","FAIL","BLOCKED","NOT_RUN"],"x-spec-ref":false,"x-spec-ref-reason":"Closed review selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}},
+    "freshness": {"enum":["CURRENT","STALE","MISSING"],"x-spec-ref":false,"x-spec-ref-reason":"Closed freshness selector; no dependency identity.","x-spec-exclusion":{"category":"enum-literal"}}
+  }
+}

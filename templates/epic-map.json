@@ -1,0 +1,38 @@
+{
+  "version": "1.0",
+  "statuses": {
+    "Planned": "Chưa triển khai, không là approval"
+  },
+  "epics": [
+    {
+      "id": "E1",
+      "slug": "quyet-dinh-pham-vi",
+      "title": "Quyết định phạm vi",
+      "page": "epic-1.md",
+      "goal": "Giữ phạm vi chưa quyết ở trạng thái chờ",
+      "roles": [
+        "PO"
+      ],
+      "status": "Planned",
+      "screens": [
+        "S01"
+      ],
+      "capabilities": [
+        {
+          "id": "C-01",
+          "title": "Hoãn quyết định",
+          "text": "Giữ phạm vi ở trạng thái chờ.",
+          "done_when": "Phạm vi hoãn tiếp tục chờ.",
+          "us": [
+            "US-01"
+          ],
+          "status": "Planned",
+          "req": [
+            "REQ-01"
+          ]
+        }
+      ]
+    }
+  ],
+  "hidden": []
+}

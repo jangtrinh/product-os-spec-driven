@@ -1,0 +1,17 @@
+{
+  "id": "INT-001",
+  "at": "2026-01-09T00:00:00Z",
+  "base": "fixture-base",
+  "branches": [
+    {
+      "ref": "feature",
+      "head": "fixture-head"
+    }
+  ],
+  "spec_head": "fixture-head",
+  "shared_dependencies": [],
+  "semantic_conflicts": [],
+  "status": "clean",
+  "reviewed_by": "review@example.test",
+  "reviewer_independent": true
+}

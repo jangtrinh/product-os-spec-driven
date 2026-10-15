@@ -1,0 +1,12 @@
+{
+  "code": "D-FRONTMATTER-SCHEMA",
+  "severity": "error",
+  "fault": null,
+  "changes": [
+    {
+      "path": "intake/BRD.md",
+      "before": "11776ee2acb42e26a64305efa7b01d84a01f2872c1a7f586e41962e7a139f883",
+      "after": "LS0tCmlkOiBicmQtc2F2ZWQtZmlsdGVycwp0eXBlOiBpbnRha2UKdW5rbm93bjogdHJ1ZQp0aXRsZTogIkJSRDogbMawdSBi4buZIGzhu41jIgpzdGF0dXM6IERvbmUKdXBkYXRlZDogMjAyNi0wMS0wMgpncm91cDogQnJpZWYKdHJhY2U6CiAgcmVxOiBbUkVRLTAxXQotLS0KCiMjIFbhuqVuIMSR4buBCgpOZ8aw4budaSBkw7luZyBwaOG6o2kgY2jhu41uIGzhuqFpIGPDuW5nIG3hu5l0IGLhu5kgbOG7jWMgbeG7l2kgbOG6p24gbeG7nyBkYW5oIHPDoWNoLiBQTyBtdeG7kW4gbMawdSB2w6AgbeG7nyBs4bqhaSBi4buZIGzhu41jIHRyb25nIG3hu5l0IGLGsOG7m2MuCgojIyBOZ3Xhu5NuCgotIEVtYWlsIGPhu6dhIFBPLCAyMDI2LTAxLTAyIChgb3duZXJAZXhhbXBsZS50ZXN0YCkuCi0gWGVtIFtmZWF0dXJlIGNvbnRyYWN0XSguLi9jb250cmFjdC9GQy0wMDEubWQjMy1zY29wZS1hbmQtYnVzaW5lc3MtcnVsZXMpIGNobyBwaOG6oW0gdmkgxJHDoyBraG/DoS4K"
+    }
+  ]
+}

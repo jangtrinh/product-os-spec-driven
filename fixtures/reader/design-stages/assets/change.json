@@ -1,0 +1,53 @@
+{
+  "id": "CS-filter",
+  "baseline": {
+    "head": "fixture-head",
+    "base": "fixture-base",
+    "manifest": "fixture-manifest",
+    "build": "not-built"
+  },
+  "candidate": null,
+  "scope": {
+    "kind": "ac",
+    "ids": [
+      "US-01.AC-01"
+    ],
+    "revision": "fixture-revision"
+  },
+  "source": "A-01",
+  "reason": "Fixture repair",
+  "state": "Proposed",
+  "impact": [
+    {
+      "node": "ac:US-01.AC-01",
+      "domain": "spec",
+      "classification": "direct",
+      "reason": "Rule changed",
+      "path": [
+        "us:US-01",
+        "ac:US-01.AC-01"
+      ]
+    }
+  ],
+  "propagation": [
+    {
+      "behavior": "Require confirmation",
+      "ac": [
+        "US-01.AC-01"
+      ],
+      "scenario": [
+        "US-01.SCN-01-01"
+      ],
+      "ui": [
+        "S01/normal"
+      ],
+      "evidence": [],
+      "status": "not-run",
+      "review": "QC must inspect semantics"
+    }
+  ],
+  "po_decision": null,
+  "regates": [],
+  "packet": null,
+  "receivers": []
+}

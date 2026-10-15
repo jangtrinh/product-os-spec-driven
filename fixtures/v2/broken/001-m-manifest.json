@@ -1,0 +1,12 @@
+{
+  "code": "M-MANIFEST",
+  "severity": "error",
+  "fault": null,
+  "changes": [
+    {
+      "path": "spec.manifest.json",
+      "before": "dbc544607b2a1504ed677194505663df1bc363c92fa779d0ca4b373c32898d35",
+      "after": null
+    }
+  ]
+}

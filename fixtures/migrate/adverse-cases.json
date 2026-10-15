@@ -1,0 +1,11 @@
+{
+  "missing-image": {"append": "\n![Missing](../assets/missing.png)\n", "lint": "L-IMG-MISSING"},
+  "missing-flow": {"replace": ["```mermaid\nflowchart LR\nA[Open] --> B[Read]\n```", "Open → Read."], "lint": "S-US-SECTION"},
+  "missing-association": {"replace": ["scenarios: [SCN-01-01]", "scenarios: [SCN-01-01, SCN-01-02]"], "blocker": "SCENARIO-UNMAPPED"},
+  "invalid-provenance": {"extra": {"review/receipt.json": {"freshness": "CURRENT", "verdict": "PASS", "source": "file:///outside/private.png", "build": null}}, "history": true},
+  "retired-asset": {"extra": {"assets/retirement.json": {"state": "retired", "reason": "Source capture obsolete", "path": "old.png"}}, "history": true},
+  "missing-source": {"append": "\n[Source](../assets/absent.html)\n", "lint": "L-LINK-DEAD"},
+  "duplicate-screen-state": {"extra": {"ux/inventory.json": {"screens": [{"screen": "S01", "state": "loading"}, {"screen": "S01", "state": "loading"}]}}, "unverified": true},
+  "canvas-inventory": {"extra": {"ux/canvas.json": {"board": "W-01", "source": "not-created", "states": [], "roles": [], "selector": null}}, "unverified": true},
+  "locale-terms": {"append": "\nThuật ngữ: Dịch vụ; quyền truy cập; Bắt đầu.\n", "locale": "Dịch vụ; quyền truy cập; Bắt đầu"}
+}

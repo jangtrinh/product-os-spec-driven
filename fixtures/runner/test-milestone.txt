@@ -1,0 +1,340 @@
+TAP version 13
+# Subtest: US-SD0901.AC-01: agents accept runnable CLI commands or manual
+ok 1 - US-SD0901.AC-01: agents accept runnable CLI commands or manual
+  ---
+  duration_ms: 338.119333
+  type: 'test'
+  ...
+# Subtest: US-SD0901.AC-02: shared agent command creates a fresh reviewer with source/AC/output only
+ok 2 - US-SD0901.AC-02: shared agent command creates a fresh reviewer with source/AC/output only
+  ---
+  duration_ms: 245.851666
+  type: 'test'
+  ...
+# Subtest: US-SD0901.AC-03: manual prints prompt and resumes nonempty matching --result
+ok 3 - US-SD0901.AC-03: manual prints prompt and resumes nonempty matching --result
+  ---
+  duration_ms: 263.530416
+  type: 'test'
+  ...
+# Subtest: US-SD0901.AC-04: manual self-review discloses unmet independence and remains PENDING
+ok 4 - US-SD0901.AC-04: manual self-review discloses unmet independence and remains PENDING
+  ---
+  duration_ms: 322.652
+  type: 'test'
+  ...
+# Subtest: US-SD0901.AC-05: agent command missing is exit 4
+ok 5 - US-SD0901.AC-05: agent command missing is exit 4
+  ---
+  duration_ms: 79.269708
+  type: 'test'
+  ...
+# Subtest: US-SD0902.AC-01: writer receives only its declared context and prompt
+ok 6 - US-SD0902.AC-01: writer receives only its declared context and prompt
+  ---
+  duration_ms: 242.799333
+  type: 'test'
+  ...
+# Subtest: US-SD0902.AC-02: absent output from disabled stage skipped and recorded
+ok 7 - US-SD0902.AC-02: absent output from disabled stage skipped and recorded
+  ---
+  duration_ms: 234.828375
+  type: 'test'
+  ...
+# Subtest: US-SD0902.AC-03: absent required context is exit 3 naming file
+ok 8 - US-SD0902.AC-03: absent required context is exit 3 naming file
+  ---
+  duration_ms: 76.536584
+  type: 'test'
+  ...
+# Subtest: manual checkpoint rejects changed input, empty file and wrong phase
+ok 9 - manual checkpoint rejects changed input, empty file and wrong phase
+  ---
+  duration_ms: 153.629667
+  type: 'test'
+  ...
+# Subtest: reviewer mutation fails closed and leaves original artifact unchanged
+ok 10 - reviewer mutation fails closed and leaves original artifact unchanged
+  ---
+  duration_ms: 219.199292
+  type: 'test'
+  ...
+# Subtest: batch import validates full membership/pins/authority and is idempotent
+ok 11 - batch import validates full membership/pins/authority and is idempotent
+  ---
+  duration_ms: 419.788333
+  type: 'test'
+  ...
+# Subtest: stale packet, unknown scope, changed bytes and conflicting overrides mutate no decision/audit
+ok 12 - stale packet, unknown scope, changed bytes and conflicting overrides mutate no decision/audit
+  ---
+  duration_ms: 1275.854458
+  type: 'test'
+  ...
+# Subtest: per-AC override precedes per-US then default; requested/deferred remains pending
+ok 13 - per-AC override precedes per-US then default; requested/deferred remains pending
+  ---
+  duration_ms: 334.965292
+  type: 'test'
+  ...
+# Subtest: missing authority, NA-only, self-grade and old semantic outcome never waive quality
+ok 14 - missing authority, NA-only, self-grade and old semantic outcome never waive quality
+  ---
+  duration_ms: 1318.227625
+  type: 'test'
+  ...
+# Subtest: candidate build/base moves and incompatible drafts reject stale approval
+ok 15 - candidate build/base moves and incompatible drafts reject stale approval
+  ---
+  duration_ms: 1038.702708
+  type: 'test'
+  ...
+# Subtest: override parser rejects duplicate decisions with the same target
+ok 16 - override parser rejects duplicate decisions with the same target
+  ---
+  duration_ms: 0.22375
+  type: 'test'
+  ...
+# Subtest: YAML block and flow maps/sequences preserve boolean types and command quotes
+ok 17 - YAML block and flow maps/sequences preserve boolean types and command quotes
+  ---
+  duration_ms: 0.5375
+  type: 'test'
+  ...
+# Subtest: duplicate JSON/YAML keys and unsupported YAML constructs fail closed
+ok 18 - duplicate JSON/YAML keys and unsupported YAML constructs fail closed
+  ---
+  duration_ms: 0.177666
+  type: 'test'
+  ...
+# Subtest: malformed config names the bad key rather than coercing booleans
+ok 19 - malformed config names the bad key rather than coercing booleans
+  ---
+  duration_ms: 0.269333
+  type: 'test'
+  ...
+# Subtest: US-SD0501.AC-01: eval repair caps persist across restart and stop at exit 2
+ok 20 - US-SD0501.AC-01: eval repair caps persist across restart and stop at exit 2
+  ---
+  duration_ms: 505.70575
+  type: 'test'
+  ...
+# Subtest: US-SD0501.AC-02: reviewer VERDICT parsed and scores must agree
+ok 21 - US-SD0501.AC-02: reviewer VERDICT parsed and scores must agree
+  ---
+  duration_ms: 507.792708
+  type: 'test'
+  ...
+# Subtest: US-SD0501.AC-03: finding disposition and reason retained in review log
+ok 22 - US-SD0501.AC-03: finding disposition and reason retained in review log
+  ---
+  duration_ms: 258.543667
+  type: 'test'
+  ...
+# Subtest: US-SD0501.AC-04: final FAIL with no edits stops 2 and never creates a gate
+ok 23 - US-SD0501.AC-04: final FAIL with no edits stops 2 and never creates a gate
+  ---
+  duration_ms: 288.991
+  type: 'test'
+  ...
+# Subtest: US-SD0501.AC-05: disabled review explicitly recorded
+ok 24 - US-SD0501.AC-05: disabled review explicitly recorded
+  ---
+  duration_ms: 200.673583
+  type: 'test'
+  ...
+# Subtest: US-SD0501.AC-06: actual eval exits recorded; unavailable tool is not PASS
+ok 25 - US-SD0501.AC-06: actual eval exits recorded; unavailable tool is not PASS
+  ---
+  duration_ms: 414.936791
+  type: 'test'
+  ...
+# Subtest: repair reruns eval before a fresh review of final bytes
+ok 26 - repair reruns eval before a fresh review of final bytes
+  ---
+  duration_ms: 375.282875
+  type: 'test'
+  ...
+# Subtest: all NA review is NOT_RUN and cannot create a passing gate
+ok 27 - all NA review is NOT_RUN and cannot create a passing gate
+  ---
+  duration_ms: 238.135625
+  type: 'test'
+  ...
+# Subtest: timeout is exit 4; empty per_file is exit 3; neither consumes behavioral fix round
+ok 28 - timeout is exit 4; empty per_file is exit 3; neither consumes behavioral fix round
+  ---
+  duration_ms: 259.849916
+  type: 'test'
+  ...
+# Subtest: US-SD0203.AC-01: changed PRD bytes reset US and rerun
+ok 29 - US-SD0203.AC-01: changed PRD bytes reset US and rerun
+  ---
+  duration_ms: 903.695833
+  type: 'test'
+  ...
+# Subtest: US-SD0203.AC-02: source change resets every later passed gate before rerun
+ok 30 - US-SD0203.AC-02: source change resets every later passed gate before rerun
+  ---
+  duration_ms: 891.515708
+  type: 'test'
+  ...
+# Subtest: US-SD0203.AC-03: unchanged inventory never reruns passed gates
+ok 31 - US-SD0203.AC-03: unchanged inventory never reruns passed gates
+  ---
+  duration_ms: 531.4175
+  type: 'test'
+  ...
+# Subtest: adding/deleting directory context member invalidates sorted inventory
+ok 32 - adding/deleting directory context member invalidates sorted inventory
+  ---
+  duration_ms: 588.360584
+  type: 'test'
+  ...
+# Subtest: typed closure traverses cycles; mentions never proves causal independence
+ok 33 - typed closure traverses cycles; mentions never proves causal independence
+  ---
+  duration_ms: 0.304625
+  type: 'test'
+  ...
+# Subtest: old scenario with valid amendment tag does not establish semantic propagation
+ok 34 - old scenario with valid amendment tag does not establish semantic propagation
+  ---
+  duration_ms: 0.092833
+  type: 'test'
+  ...
+# Subtest: deleted runtime state cannot reset unresolved persisted caps
+ok 35 - deleted runtime state cannot reset unresolved persisted caps
+  ---
+  duration_ms: 436.127958
+  type: 'test'
+  ...
+# Subtest: scoped PO continuation adds explicit rounds, retains counters and rejects expiry
+ok 36 - scoped PO continuation adds explicit rounds, retains counters and rejects expiry
+  ---
+  duration_ms: 572.638709
+  type: 'test'
+  ...
+# Subtest: backward/expected-result re-entry requires recorded PO decision
+ok 37 - backward/expected-result re-entry requires recorded PO decision
+  ---
+  duration_ms: 662.97775
+  type: 'test'
+  ...
+# Subtest: publication, acknowledgment and switch are separate, immutable and idempotent
+ok 38 - publication, acknowledgment and switch are separate, immutable and idempotent
+  ---
+  duration_ms: 340.477875
+  type: 'test'
+  ...
+# Subtest: multi-output writer materializes complete files JSON atomically
+ok 39 - multi-output writer materializes complete files JSON atomically
+  ---
+  duration_ms: 5.763375
+  type: 'test'
+  ...
+# Subtest: path traversal, absolute and symlink escapes fail before writing
+ok 40 - path traversal, absolute and symlink escapes fail before writing
+  ---
+  duration_ms: 4.777708
+  type: 'test'
+  ...
+# Subtest: directory/glob selection sorted with negative controls
+ok 41 - directory/glob selection sorted with negative controls
+  ---
+  duration_ms: 12.883417
+  type: 'test'
+  ...
+# Subtest: schema validator rejects unexecuted CURRENT, impossible UTC and unknown fields
+ok 42 - schema validator rejects unexecuted CURRENT, impossible UTC and unknown fields
+  ---
+  duration_ms: 0.214292
+  type: 'test'
+  ...
+# Subtest: manual --paste first invocation yields gate PENDING and exit 2
+ok 43 - manual --paste first invocation yields gate PENDING and exit 2
+  ---
+  duration_ms: 202.096958
+  type: 'test'
+  ...
+# Subtest: US-SD0201.AC-01: owner enabled + gate stops with PENDING/2
+ok 44 - US-SD0201.AC-01: owner enabled + gate stops with PENDING/2
+  ---
+  duration_ms: 251.736625
+  type: 'test'
+  ...
+# Subtest: US-SD0201.AC-02: disabled owner still runs stage and advances
+ok 45 - US-SD0201.AC-02: disabled owner still runs stage and advances
+  ---
+  duration_ms: 437.785958
+  type: 'test'
+  ...
+# Subtest: US-SD0201.AC-03: bad owner rejected before any stage
+ok 46 - US-SD0201.AC-03: bad owner rejected before any stage
+  ---
+  duration_ms: 65.984333
+  type: 'test'
+  ...
+# Subtest: US-SD0201.AC-04: uiux requires design and tdd before any stage
+ok 47 - US-SD0201.AC-04: uiux requires design and tdd before any stage
+  ---
+  duration_ms: 125.605459
+  type: 'test'
+  ...
+# Subtest: US-SD0201.AC-05: baseline defaults preserve PO/QC/Dev and design/TDD ownership
+ok 48 - US-SD0201.AC-05: baseline defaults preserve PO/QC/Dev and design/TDD ownership
+  ---
+  duration_ms: 242.03875
+  type: 'test'
+  ...
+# Subtest: US-SD0202.AC-01: current APPROVED gate continues into next stage
+ok 49 - US-SD0202.AC-01: current APPROVED gate continues into next stage
+  ---
+  duration_ms: 486.431958
+  type: 'test'
+  ...
+# Subtest: US-SD0202.AC-02: CHANGES_REQUESTED reruns with retained request
+ok 50 - US-SD0202.AC-02: CHANGES_REQUESTED reruns with retained request
+  ---
+  duration_ms: 479.035541
+  type: 'test'
+  ...
+# Subtest: US-SD0202.AC-03: invalid later gate rejects before writer launches
+ok 51 - US-SD0202.AC-03: invalid later gate rejects before writer launches
+  ---
+  duration_ms: 73.302625
+  type: 'test'
+  ...
+# Subtest: pending role toggle never silently clears approval
+ok 52 - pending role toggle never silently clears approval
+  ---
+  duration_ms: 315.602791
+  type: 'test'
+  ...
+# Subtest: moved Git head invalidates G5 without editing its context source
+ok 53 - moved Git head invalidates G5 without editing its context source
+  ---
+  duration_ms: 589.549333
+  type: 'test'
+  ...
+# Subtest: moved base/build invalidates G5 and leaves old candidate manifest immutable
+ok 54 - moved base/build invalidates G5 and leaves old candidate manifest immutable
+  ---
+  duration_ms: 478.907959
+  type: 'test'
+  ...
+# Subtest: required build/baseline and invalid UI design inputs fail before stage execution
+ok 55 - required build/baseline and invalid UI design inputs fail before stage execution
+  ---
+  duration_ms: 184.693125
+  type: 'test'
+  ...
+1..55
+# tests 55
+# suites 0
+# pass 55
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 18579.951292

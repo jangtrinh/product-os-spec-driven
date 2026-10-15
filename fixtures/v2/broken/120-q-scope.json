@@ -1,0 +1,12 @@
+{
+  "code": "Q-SCOPE",
+  "severity": "error",
+  "fault": null,
+  "changes": [
+    {
+      "path": "assets/records/definitions/story/1.json",
+      "before": "387fb4ff7a6027e431ec1abb97139b1ff67b430665949a372dc748687885e24e",
+      "after": "ewogICJpZCI6ICJzdG9yeSIsCiAgInZlcnNpb24iOiAiMSIsCiAgInN0YWdlIjogInVzIiwKICAic2NvcGUiOiB7CiAgICAia2luZCI6ICJhYyIsCiAgICAiaWRzIjogWwogICAgICAiQUMtMDEiCiAgICBdLAogICAgInJldmlzaW9uIjogIjkxNjBjOGRhMzRhYTA4Y2JiN2U1MDdjNWViMWY5ODAxMzRkZDBkOTg5OTNhYzU2M2EzNzVlZDQ1NzkwNDRjNjQiCiAgfSwKICAiaW5wdXRzIjogWwogICAgInVzL1VTLTAxLm1kIgogIF0sCiAgIm91dHB1dHMiOiBbCiAgICAiYXNzZXRzL3JlY2VpcHQuanNvbiIKICBdLAogICJjaGVja3MiOiBbCiAgICB7CiAgICAgICJpZCI6ICJsaW50IiwKICAgICAgImNvbW1hbmQiOiAibm9kZSBsaW50IiwKICAgICAgIm1hbmRhdG9yeSI6IHRydWUsCiAgICAgICJibG9ja2VyX3BvbGljeSI6ICJhbnkgZXJyb3IgYmxvY2tzIgogICAgfQogIF0sCiAgInJldmlld2VyIjogIlFDIiwKICAiZGVjaWRlciI6ICJwbyIsCiAgInRyYW5zaXRpb25zIjogWwogICAgImFkdmFuY2UiLAogICAgInJlcGFpciIKICBdLAogICJpbnZhbGlkYXRpb24iOiAidHlwZWQgY2xvc3VyZTsgQlItMTQgZmFsbGJhY2siLAogICJleGNlcHRpb25zIjogW10sCiAgInZlcnNpb25zIjogewogICAgIndvcmtmbG93IjogIjEiLAogICAgInRlbXBsYXRlcyI6ICIxIiwKICAgICJydWxlc2V0IjogIjEiLAogICAgInNraWxsIjogIm5vbmUiCiAgfQp9Cg=="
+    }
+  ]
+}

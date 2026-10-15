@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jangtrinh.github.io/product-os-spec-driven/sitemap.xml

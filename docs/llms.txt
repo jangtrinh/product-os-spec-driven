@@ -1,0 +1,18 @@
+# PRODUCT:OS Spec Driven
+
+> A source-available, local-first kit for PO-guided product specification stages, independent review, explicit gates, and offline reader output.
+
+## Start here
+
+- [Overview](https://jangtrinh.github.io/product-os-spec-driven/): installation, operating guide, and kit-owner checks.
+- [README](https://github.com/jangtrinh/product-os-spec-driven#readme): installation, operating guide, and kit-owner checks.
+- [PO guide](https://jangtrinh.github.io/product-os-spec-driven/po-guide.html): PO workflow and decision guidance.
+- [Architecture](https://jangtrinh.github.io/product-os-spec-driven/architecture.html): runtime layers, stage flow, and boundaries.
+- [Known limits](https://jangtrinh.github.io/product-os-spec-driven/known-limits.html): current constraints and safe recovery steps.
+- [Cookbook](https://jangtrinh.github.io/product-os-spec-driven/cookbook.html): command recipes for POs and kit owners.
+
+## Reference
+
+- [Specification](https://github.com/jangtrinh/product-os-spec-driven/blob/main/SPEC.md): kit contracts and stage requirements.
+- [Changelog](https://github.com/jangtrinh/product-os-spec-driven/blob/main/CHANGELOG.md): release history.
+- [License](https://github.com/jangtrinh/product-os-spec-driven/blob/main/LICENSE): PolyForm Noncommercial 1.0.0 terms.

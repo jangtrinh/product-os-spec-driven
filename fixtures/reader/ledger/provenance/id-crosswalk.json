@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "rows": [
+    {
+      "id": "CW-1",
+      "legacy_id": "SCN-PUB-01-02",
+      "family": "scn-pub",
+      "canonical_kind": "scenario",
+      "canonical_id": "US-01.SCN-01-01",
+      "owner": "US-01",
+      "source": {
+        "file": "source/legacy.md",
+        "line": 1
+      },
+      "assignment_rule": "fixture"
+    }
+  ]
+}
