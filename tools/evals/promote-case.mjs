@@ -112,8 +112,10 @@ export async function promoteCase(argv = process.argv.slice(2), print = console.
     const config = loadConfig(opt.project);
     const gate = readGate(opt.project, config, opt.stage);
     if (!gate || gate.value !== 'APPROVED' || gate.data.model.states.freshness !== 'CURRENT') throw Error(`gate not approved: ${opt.stage}`);
-    target = path.join(opt.out, opt.name);
-    if (fs.existsSync(target)) throw Error(`case already exists: ${target}`);
+    const destination = path.join(opt.out, opt.name);
+    if (fs.existsSync(destination)) throw Error(`case already exists: ${destination}`);
+    // Arm cleanup only for a directory this run creates; a refused existing case stays intact.
+    target = destination;
     writeCase(opt.project, target, config, opt.stage, gate);
     const results = fs.mkdtempSync(path.join(os.tmpdir(), 'promote-case-evals-'));
     try {

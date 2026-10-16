@@ -79,8 +79,10 @@ test('T4: promote-case refuses pending gate, hash mismatch, empty approvers, and
   assert.equal(result.status, 3); assert.match(result.stderr, /approvers/i);
 
   const existing = approvedProject(t); fs.mkdirSync(path.join(out, 'existing'));
+  fs.writeFileSync(path.join(out, 'existing', 'po-spec.md'), 'earlier promoted case\n');
   result = run('--project', existing.root, '--stage', 'us', '--name', 'existing', '--out', out);
   assert.equal(result.status, 3); assert.match(result.stderr, /already exists/i);
+  assert.equal(fs.readFileSync(path.join(out, 'existing', 'po-spec.md'), 'utf8'), 'earlier promoted case\n', 'refusing an existing case keeps it intact');
 
   const red = approvedProject(t, {complete: false}); const before = treeHash(out);
   result = run('--project', red.root, '--stage', 'us', '--name', 'red-case', '--out', out);
