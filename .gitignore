@@ -12,6 +12,7 @@ examples/
 
 # Dev-run records never enter the repo (packers exclude them too)
 evals/results/
+evals/promoted/
 format/evidence/
 tools/lint/evidence/
 tools/migrate/evidence/

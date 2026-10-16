@@ -6,7 +6,7 @@ import {fileURLToPath} from 'node:url';
 const kit = fs.realpathSync(fileURLToPath(new URL('../', import.meta.url)));
 const roots = ['README.md', 'SPEC.md', 'CHANGELOG.md', 'CONTRIBUTING.md', 'CODE_OF_CONDUCT.md', 'LICENSE', 'llms.txt', 'PRIVACY.md', 'SECURITY.md', 'commands/', 'docs/', 'config/', 'format/', 'prompts/', 'rules/', 'templates/', 'tools/', 'skills/', 'scripts/', '.claude-plugin/', '.codex-plugin/', '.factory-plugin/', 'fixtures/', 'evals/'];
 // Dev-run records never ship; a project's own review/evidence/ path is kit content and stays.
-const devRecords = ['evals/results/', 'format/evidence/', 'tools/lint/evidence/', 'tools/migrate/evidence/'];
+const devRecords = ['evals/results/', 'evals/promoted/', 'format/evidence/', 'tools/lint/evidence/', 'tools/migrate/evidence/'];
 const excluded = file => file === 'AGENTS.md' || devRecords.some(prefix => file.startsWith(prefix)) || file.split('/').some(part => ['node_modules', '.git', '.brv'].includes(part));
 export function packPlugin(argv = process.argv.slice(2), print = console.log) {
   let created;

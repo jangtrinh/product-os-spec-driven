@@ -1,6 +1,6 @@
 {
   "name": "spec",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "description": "PRODUCT:OS Spec Driven — setup, projects, runner, PO clarification, gates, status, reader and upgrades.",
   "author": {"name": "Jang"},
   "keywords": ["product-os", "spec", "po", "gates"]

@@ -68,7 +68,7 @@ export function withUpgradeLock(root,action) {
   throw error;
  }finally {activeLocks.delete(root);if(acquired)fs.unlinkSync(file);}
 }
-const excluded=file=>file.split('/').some(part=>part==='node_modules'||part==='.git')||file==='evals/results'||file.startsWith('evals/results/');
+const excluded=file=>file.split('/').some(part=>part==='node_modules'||part==='.git')||file==='evals/results'||file.startsWith('evals/results/')||file==='evals/promoted'||file.startsWith('evals/promoted/');
 const owned=file=>!excluded(file)&&kitContentPaths.some(prefix=>prefix.endsWith('/')?file.startsWith(prefix):file===prefix);
 const equal=(a,b)=>canonical(a)===canonical(b);
 const read=(root,file)=>fs.readFileSync(localPath(root,file));

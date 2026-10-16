@@ -20,6 +20,8 @@ Loại secrets là theo mẫu (URL userinfo, header `Authorization`, token `sk-`
 
 **Runtime state cũ sau upgrade.** `repair_entry` trong `review/runtime/<stage>.json` đổi từ chuỗi (hoặc `foreign` dạng mảng đường dẫn) sang `{key, foreign}` với `foreign` là map `{path: sha256}`. Stage đang dở với state cũ vào lại repair đúng một lần ở lần chạy đầu sau upgrade (tốn tối đa một fix round, vẫn trong cap; đếm vẫn audit). Sau đó dùng định dạng mới.
 
+**Prompt clarify và contract sau nâng cấp 2.4.0.** Prompt đổi là input của stage, nên gate clarify và contract đã duyệt thành STALE đúng một lần khi project nâng cấp. Chạy lại hai stage và PO duyệt lại sau khi xem thay đổi; mọi prompt đổi cùng release này nên không cần duyệt lại nhiều lần.
+
 **`.kit-upgrade.lock`.** Lock đang có thì `init --upgrade` thoát 3, in pid, giờ bắt đầu, và `looks live` hoặc `looks exited`. Không đổi lock. Không có cờ `--break-stale-lock` (D48).
 Xác nhận process đã thoát, xóa `<project>/.kit-upgrade.lock`, chạy lại. Câu in ra: `confirm that process has exited, then delete <file> and rerun`. Đang `looks live` thì không xóa.
 

@@ -1,4 +1,5 @@
 import './rules.test.mjs';
+import './scope-dispositions.test.mjs';
 
 import './adversarial.test.mjs';
 import './approval-joins.test.mjs';

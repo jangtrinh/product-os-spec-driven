@@ -8,11 +8,11 @@ import {createHash} from 'node:crypto';
 import {kitIdentity} from '../lib/kit-version.mjs';
 
 const kit=fileURLToPath(new URL('../../',import.meta.url));
-const docs=['README.md','docs/po-guide.md','CHANGELOG.md','CONTRIBUTING.md','CODE_OF_CONDUCT.md','LICENSE','llms.txt','PRIVACY.md','SECURITY.md','docs/cookbook.md','docs/po-quickstart.md','docs/known-limits.md','docs/architecture.md','docs/context-guide.md'];
+const docs=['README.md','docs/po-guide.md','CHANGELOG.md','CONTRIBUTING.md','CODE_OF_CONDUCT.md','LICENSE','llms.txt','PRIVACY.md','SECURITY.md','docs/cookbook.md','docs/feedback.md','docs/po-quickstart.md','docs/known-limits.md','docs/architecture.md','docs/context-guide.md'];
 const kitPaths=['README.md','SPEC.md','CHANGELOG.md','CONTRIBUTING.md','CODE_OF_CONDUCT.md','LICENSE','llms.txt','PRIVACY.md','SECURITY.md','commands/','docs/','config/','format/','prompts/','rules/','templates/','tools/','skills/','scripts/','.claude-plugin/','.codex-plugin/','.factory-plugin/','fixtures/','evals/'];
 const requiredPaths=['SPEC.md','config/','format/','prompts/','rules/','templates/','tools/','skills/','scripts/','.claude-plugin/','fixtures/','evals/'];
 // Dev-run records never ship; a project's own review/evidence/ path is kit content and stays.
-const devRecords=['evals/results/','format/evidence/','tools/lint/evidence/','tools/migrate/evidence/'];
+const devRecords=['evals/results/','evals/promoted/','format/evidence/','tools/lint/evidence/','tools/migrate/evidence/'];
 const excluded=file=>file==='AGENTS.md'||devRecords.some(prefix=>file.startsWith(prefix))||file.split('/').some(part=>['node_modules','.git','.brv'].includes(part));
 const allowed=file=>kitPaths.some(prefix=>prefix.endsWith('/')?file.startsWith(prefix):file===prefix);
 function command(name,args,options={}) {

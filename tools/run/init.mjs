@@ -57,7 +57,7 @@ function copyMissing(source,target,relative='') {
   fs.mkdirSync(target,{recursive:true});
   for(const name of fs.readdirSync(source).sort()) {
    const rel=relative?`${relative}/${name}`:name;
-   if(name==='node_modules'||name==='.git'||rel==='evals/results') continue;
+   if(name==='node_modules'||name==='.git'||rel==='evals/results'||rel==='evals/promoted') continue;
    copyMissing(path.join(source,name),path.join(target,name),rel);
   }
  } else if(!fs.existsSync(target)) fs.copyFileSync(source,target,fs.constants.COPYFILE_EXCL);

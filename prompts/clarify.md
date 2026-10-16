@@ -36,6 +36,7 @@ context:
 - Soát đủ năm nhóm: mâu thuẫn, hai cách hiểu, ràng buộc xung đột, giả định chưa nói, edge case thiếu.
 - Đọc prior answers/rulings; deduplicate subject/scope trước khi hỏi lại.
 - Mỗi câu hỏi chỉ chứa một quyết định PO phải chốt; options loại trừ nhau, recommendation có reason.
+- Mọi câu hỏi ảnh hưởng phạm vi luôn có đúng ba lựa chọn: **Trong phạm vi**; **Hoãn** (ghi `status: deferred`, `reason`, và điều kiện xem lại); **Ngoài phạm vi** (ghi reason). Hoãn chỉ đổi trạng thái câu hỏi, không tự chốt scope.
 - Lưu id/question/options/recommendation/dependencies/asked round/answer+source/disposition open|answered|superseded|deferred.
 - Deferred có ảnh hưởng AC vẫn blocking; tái dùng accepted decisions, không tự chốt unknown answer.
 - Record Q-<nnn> theo clarify-record schema: group đúng năm nhóm, recommended là vị trí zero-based hợp lệ; duplicate_of là Q-id có nguồn.

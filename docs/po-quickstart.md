@@ -2,6 +2,18 @@
 
 Hướng dẫn đầy đủ (cài đặt, bắt đầu dự án, từng stage, troubleshoot): [README.md](../README.md). Trang này chỉ gom lệnh để chép.
 
+| PO nói | AI gợi ý |
+|---|---|
+| Tôi muốn duyệt / xong chưa? | `/spec:gate` |
+| Còn câu hỏi gì? | `/spec:clarify` |
+| Đang ở đâu? | `/spec:status` |
+| Cho tôi xem spec | `/spec:view` |
+| Có bản mới không? | `/spec:upgrade` |
+| Chạy tiếp | `/spec:run` |
+| Bắt đầu dự án mới | `/spec:new` |
+| Kiểm tra cài đặt | `/spec:setup` |
+| Kit bị lỗi | [Hướng dẫn báo lỗi](feedback.md) |
+
 ## Cài bằng plugin
 
 Trong Claude Code:

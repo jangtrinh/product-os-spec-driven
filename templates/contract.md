@@ -15,6 +15,15 @@ status: draft
 ## Phạm vi và nguồn chuẩn
 <SC, BR, in/out scope, nguyên tắc và nguồn authority.>
 
+### Trong phạm vi
+- <ID>: <hạng mục>; nguồn: <quyết định PO hoặc nguồn chuẩn>.
+
+### Hoãn
+- <ID>: <hạng mục>; lý do: <vì sao hoãn>; xem lại khi: <điều kiện>; nguồn: <quyết định PO hoặc nguồn chuẩn>.
+
+### Ngoài phạm vi
+- <ID>: <hạng mục>; lý do: <vì sao loại>; nguồn: <quyết định PO hoặc nguồn chuẩn>.
+
 ## Nghiệm thu
 <Contract AC, PRD/US/AC selection.>
 
@@ -50,7 +59,13 @@ PO cần giữ phạm vi chưa quyết ở trạng thái chờ.
 | ID | Rule | Source |
 |---|---|---|
 | SC-01 | Hoãn quyết định giữ phạm vi chờ | SPEC.md §4.5.1 |
-Nguồn tạm là kit. Chưa có Product Contract riêng. Ngoài phạm vi: tự duyệt hoặc triển khai sản phẩm.
+Nguồn tạm là kit. Chưa có Product Contract riêng.
+### Trong phạm vi
+- SC-01: giữ phạm vi chưa quyết ở trạng thái chờ; nguồn: SPEC.md §4.5.1.
+### Hoãn
+- SC-02: chọn Product Contract; lý do: PO chưa cung cấp authority; xem lại khi: PO ghi contract hoặc authority tạm; nguồn: SPEC.md §4.5.1.
+### Ngoài phạm vi
+- SC-03: tự duyệt hoặc triển khai sản phẩm; lý do: PO giữ quyền duyệt; nguồn: SPEC.md §4.2.
 ## Nghiệm thu
 | ID | Given | When | Then | Source |
 |---|---|---|---|---|

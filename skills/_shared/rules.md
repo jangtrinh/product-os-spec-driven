@@ -10,3 +10,4 @@
 - Writer/reviewer must be different vendors, reviewer fresh and read-only. Grok is reviewer-only. No automatic login, secret display, external publication, repository rename or fabricated source.
 - New projects need real `roles.po.approvers`; G5 needs a real immutable baseline. Intake alone is proven with real models; later stages remain unproven even when fixture tests pass.
 - If the skill or tool is unavailable, state NOT RUN and the exact recovery. Do not claim installation or host support from documentation alone.
+- Map plain PO words through the table in `docs/po-quickstart.md`; when two commands fit, ask the PO which command they mean. On a kit problem, follow `docs/feedback.md`, ask before posting, and never post project data.

@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-2.3.0-202020?style=flat-square&labelColor=202020&color=202020" alt="Version 2.3.0" height="28"></a>
+  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-2.4.0-202020?style=flat-square&labelColor=202020&color=202020" alt="Version 2.4.0" height="28"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-PolyForm_NC_1.0.0-202020?style=flat-square&labelColor=202020&color=202020" alt="PolyForm Noncommercial 1.0.0" height="28"></a>
   <img src="https://img.shields.io/badge/runtime-Node-202020?style=flat-square&labelColor=202020&color=202020" alt="Node runtime" height="28">
   <img src="https://img.shields.io/badge/local--first-202020?style=flat-square&labelColor=202020&color=202020" alt="Local-first" height="28">
@@ -128,6 +128,8 @@ node scripts/install-hosts.mjs --host grok
 
 Use `--check` for a read-only installation check. Codex and Grok use parity command names such as `spec-status`. The installer is [scripts/install-hosts.mjs](scripts/install-hosts.mjs); the Codex prompt mirror is [prompts/doctor.md](prompts/doctor.md).
 
+Factory has plugin manifests that have not been smoke-tested.
+
 ### Writer and reviewer choices
 
 Writers may use Codex, Claude Code, or manual mode. Reviewers may use Codex, Claude Code, Grok, or manual mode; Grok is reviewer-only. Choose a reviewer from a different vendor than the writer, and run the reviewer in a fresh, read-only session.
@@ -237,6 +239,7 @@ product-os-spec-driven/
 ## Governance and license
 
 - [Contributing](CONTRIBUTING.md) explains contribution expectations and checks.
+- [Kit feedback](docs/feedback.md) explains how a PO's AI prepares a redacted issue draft and asks before posting it.
 - [Security](SECURITY.md) covers vulnerability reporting; [privacy](PRIVACY.md) documents the local-first, no-telemetry stance.
 - [Code of Conduct](CODE_OF_CONDUCT.md) governs participation; [CHANGELOG.md](CHANGELOG.md) records releases.
 - [llms.txt](llms.txt) is the machine-readable discovery index.

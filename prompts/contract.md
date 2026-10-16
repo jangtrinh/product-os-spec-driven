@@ -30,6 +30,7 @@ context:
 - Product nêu outcome, boundary, users, terms, principles, constraints, sources, templates, DS, workflow, gates và delivery.
 - Feature kế thừa product version; product pending cần named temporary authority có nguồn.
 - Chọn rõ PRD/US/qualified AC; nối flow/DS/dependency/scenario/evidence/demo limits/handoff.
+- Ở boundary Phạm vi, liệt kê **Trong phạm vi**, **Hoãn** và **Ngoài phạm vi**; mỗi mục dẫn quyết định PO hoặc nguồn. Hoãn ghi reason và điều kiện xem lại; Ngoài phạm vi ghi reason.
 - G2 không đòi bằng chứng implementation; viết điều kiện cần quan sát thay lời khẳng định đã đạt.
 - Contract đã khóa chỉ đổi qua dated/versioned amendment: giữ exact before/history, affected ids và supersession.
 - Trước re-approval nối rule→AC→SCN expected→screen/state/target→test/visual receipt; giữ baseline cũ.

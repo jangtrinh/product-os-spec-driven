@@ -8,6 +8,7 @@ Thanks for helping improve this source-available kit. By contributing, you agree
 - Follow the D48 rule: fix the shared cause, do not add a one-off bypass, and do not weaken a safety or delivery gate to make a case pass.
 - Use Conventional Commits, such as `feat(run): add a project check` or `fix(reader): preserve local links`.
 - Keep public content free of retired names, client material, and machine-specific paths. Run the hygiene guard before proposing a change.
+- For a kit problem, use the [kit feedback issue form](.github/ISSUE_TEMPLATE/kit-feedback.yml) after removing project data.
 
 ## Run the gates
 

@@ -2,6 +2,16 @@
 
 Run `node tools/evals/run-evals.mjs --fake` for the offline deterministic case harness; run `node --test tools/evals/test/` for its tests. `node tools/evals/verify-negative-controls.mjs` plants an unmet content item and verifies the real CLI exits 1.
 
+## Promote an approved stage
+
+Kit owners can preserve a PO-approved stage as a local regression case:
+
+```sh
+node tools/evals/promote-case.mjs --project <dir> --stage <stage> --name <case>
+```
+
+The default destination is `evals/promoted/`, which stays out of Git and release bundles. `--out <dir>` selects another local case root. Promotion copies the exact PO input and approved `spec/` outputs, writes literal expectations plus provenance hashes, then runs `run-evals.mjs --fake` against that one case. It refuses with exit 3 without writing a case when the gate is not current and APPROVED, approved bytes differ, PO approvers are absent, or the target exists. A fake-eval failure removes the new case and exits 1.
+
 Each case owns its PO input, authored synthetic candidate, metadata and literal must-have/must-not-have checks in `expected.md`. The baseline input is an unchanged copy of the baseline source. Fake mode replays only declared candidate outputs, using the existing pipeline runner and lint. Candidate documents are seeded before traversal to test integration, rather than to attest model synthesis. Diagnostic gate stops are disabled in fake projects only; the runner still requires G4 final-build eligibility. An expected `not-built` refusal may pass the harness assertion while the raw UI pipeline remains BLOCKED/PENDING with exit 2.
 
 `--agent '<local command>'` configures the writer and fresh read-only rubric reviewer; their stdin/stdout contract is owned by [the pipeline runner](../run/README.md). Provider/model identity remains unverified. With no agent, manual mode stops pending and quality review is NOT_RUN. This CLI does not submit human approvals, supply credentials, install tools, or call a provider on its own.

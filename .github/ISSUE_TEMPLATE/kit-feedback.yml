@@ -1,0 +1,54 @@
+name: Kit feedback
+description: Report a reproducible PRODUCT:OS Spec Driven kit problem without project data.
+title: "[Kit feedback]: "
+labels: [kit-feedback]
+body:
+  - type: input
+    id: kit-version
+    attributes:
+      label: Kit version
+    validations:
+      required: true
+  - type: input
+    id: host-cli
+    attributes:
+      label: Host and CLI
+    validations:
+      required: true
+  - type: textarea
+    id: command
+    attributes:
+      label: Command run
+    validations:
+      required: true
+  - type: input
+    id: exit-code
+    attributes:
+      label: Exit code
+    validations:
+      required: true
+  - type: textarea
+    id: occurred
+    attributes:
+      label: What happened
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What was expected
+    validations:
+      required: true
+  - type: textarea
+    id: error-lines
+    attributes:
+      label: Exact kit error lines
+    validations:
+      required: true
+  - type: checkboxes
+    id: project-data-removed
+    attributes:
+      label: Redaction
+      options:
+        - label: I removed project data
+          required: true

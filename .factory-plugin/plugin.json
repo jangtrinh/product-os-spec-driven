@@ -1,7 +1,7 @@
 {
   "name": "spec",
   "description": "PRODUCT:OS Spec Driven — setup, projects, runner, PO clarification, gates, status, reader and upgrades.",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "author": {"name": "Jang Trinh", "url": "https://github.com/jangtrinh"},
   "homepage": "https://jangtrinh.github.io/product-os-spec-driven/",
   "repository": "https://github.com/jangtrinh/product-os-spec-driven",

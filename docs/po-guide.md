@@ -59,6 +59,8 @@ Kit owner tạo thư mục plugin mỏng từ checkout này bằng `node scripts
 
 Kết quả dưới đây đo bằng HOME/config tạm, không đổi cấu hình thật. Chỉ smoke `status`; chưa kiểm một phiên PO trả lời hoặc duyệt gate trên từng host.
 
+Factory có plugin manifests nhưng chưa smoke-test; không coi Factory là host đã kiểm.
+
 | Host | Cài / gọi | Smoke trên fixture | Tool hỏi PO |
 |---|---|---|---|
 | Claude Code 2.1.296 | Hai lệnh `/plugin` ở trên; `/spec:status` | Marketplace + install thành công; model smoke **NOT RUN**: scratch config báo `Not logged in` (0 API tokens). PO đăng nhập trong cấu hình tạm rồi kiểm `/spec:status` trước khi dùng. | `AskUserQuestion` trong phiên tương tác; chưa kiểm bằng một câu trả lời PO trong smoke. |

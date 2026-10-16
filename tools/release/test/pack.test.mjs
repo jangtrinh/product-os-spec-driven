@@ -10,7 +10,7 @@ import {createRequire} from 'node:module';
 
 const source=fileURLToPath(new URL('../../../',import.meta.url));
 const require=createRequire(import.meta.url);
-const docs=['README.md','CHANGELOG.md','CONTRIBUTING.md','CODE_OF_CONDUCT.md','LICENSE','llms.txt','PRIVACY.md','SECURITY.md','docs/cookbook.md','docs/po-quickstart.md','docs/known-limits.md','docs/architecture.md','docs/context-guide.md'];
+const docs=['README.md','CHANGELOG.md','CONTRIBUTING.md','CODE_OF_CONDUCT.md','LICENSE','llms.txt','PRIVACY.md','SECURITY.md','docs/cookbook.md','docs/feedback.md','docs/po-quickstart.md','docs/known-limits.md','docs/architecture.md','docs/context-guide.md'];
 const kitPaths=['SPEC.md','CHANGELOG.md','CONTRIBUTING.md','CODE_OF_CONDUCT.md','LICENSE','llms.txt','PRIVACY.md','SECURITY.md','commands/','format/','templates/','rules/','prompts/','tools/','config/','skills/','scripts/','.claude-plugin/','.codex-plugin/','.factory-plugin/','evals/'];
 let temp,repo;
 const call=(cmd,args,cwd=repo,env=process.env)=>spawnSync(cmd,args,{cwd,env,encoding:'utf8',maxBuffer:100*1024*1024,timeout:180000});
@@ -35,7 +35,7 @@ before(()=>{
  temp=fs.realpathSync(fs.mkdtempSync(path.join(os.tmpdir(),'kit-release-')));repo=path.join(temp,'repo');fs.mkdirSync(repo);
  for(const file of [...kitPaths,'fixtures/'])fs.cpSync(path.join(source,file),path.join(repo,file),{recursive:true,filter:file=>!file.split(path.sep).some(part=>['node_modules','.git'].includes(part))});
  for(const file of docs)put(file,`# Release test stub: ${file}\n`);
- for(const file of ['.brv/private.txt','AGENTS.md','plans/private.txt','reference/private.txt','examples/private.txt','context/private.txt','evals/results/private.txt','format/evidence/private.txt','tools/lint/evidence/private.txt','tools/migrate/evidence/private.txt','tools/node_modules/private.txt'])put(file,'excluded\n');
+ for(const file of ['.brv/private.txt','AGENTS.md','plans/private.txt','reference/private.txt','examples/private.txt','context/private.txt','evals/results/private.txt','evals/promoted/private.txt','format/evidence/private.txt','tools/lint/evidence/private.txt','tools/migrate/evidence/private.txt','tools/node_modules/private.txt'])put(file,'excluded\n');
  ok(call('git',['init','-q']));commit();put('tools/untracked.txt','must never ship\n');
 });
 after(()=>fs.rmSync(temp,{recursive:true,force:true}));
@@ -45,7 +45,7 @@ test('pack ships committed kit paths and docs with metadata, checksum and runtim
  assert.ok(fs.statSync(bundle.archive).size<50*1024*1024);
  for(const prefix of [...kitPaths,...docs,'kit-release.json','fixtures/runner/census-graph.mjs'])assert.ok(listing.some(file=>file===prefix||file.startsWith(prefix)),prefix);
  assert.equal(listing.some(file=>/^(\.brv|plans|reference|examples|context|\.git)\//.test(file)||file==='AGENTS.md'||file.includes('/node_modules/')||/^(format|tools\/lint|tools\/migrate)\/evidence\//.test(file)||file.startsWith('evals/results/')||file==='tools/untracked.txt'),false);
- for(const file of ['LICENSE','SECURITY.md','PRIVACY.md','CONTRIBUTING.md','CODE_OF_CONDUCT.md','CHANGELOG.md','llms.txt','docs/cookbook.md','commands/doctor.md','prompts/doctor.md','scripts/self_check.py','.codex-plugin/plugin.json','.factory-plugin/plugin.json','.factory-plugin/marketplace.json'])assert.ok(listing.includes(file),file);
+ for(const file of ['LICENSE','SECURITY.md','PRIVACY.md','CONTRIBUTING.md','CODE_OF_CONDUCT.md','CHANGELOG.md','llms.txt','docs/cookbook.md','docs/feedback.md','commands/doctor.md','prompts/doctor.md','scripts/self_check.py','.codex-plugin/plugin.json','.factory-plugin/plugin.json','.factory-plugin/marketplace.json'])assert.ok(listing.includes(file),file);
  const checksum=createHash('sha256').update(fs.readFileSync(bundle.archive)).digest('hex');
  assert.equal(fs.readFileSync(path.join(bundle.out,'SHA256SUMS'),'utf8'),`${checksum}  ${path.basename(bundle.archive)}\n`);
  const kit=extract(bundle,'first-kit'),metadata=JSON.parse(fs.readFileSync(path.join(kit,'kit-release.json')));
@@ -64,18 +64,20 @@ test('pack ships committed kit paths and docs with metadata, checksum and runtim
 });
 
 test('release packers never ship development records or private roots',()=>{
- const forbidden=/^(?:\.brv(?:\/|$)|AGENTS\.md$|reference(?:\/|$)|plans(?:\/|$)|evals\/results\/|(?:format|tools\/lint|tools\/migrate)\/evidence\/)/;
+ const forbidden=/^(?:\.brv(?:\/|$)|AGENTS\.md$|reference(?:\/|$)|plans(?:\/|$)|evals\/(?:results|promoted)\/|(?:format|tools\/lint|tools\/migrate)\/evidence\/)/;
  // A project's review/evidence/ path is kit content (stage-replay payloads), not a dev record.
  const projectEvidence='fixtures/runner/stage-replay/payloads/tdd/review/evidence/tdd.json';
  const release=pack('forbidden-release');
  const releaseListing=ok(call('tar',['-tzf',release.archive])).stdout.split('\n').map(file=>file.replace(/^\.\//,''));
  assert.equal(releaseListing.some(file=>forbidden.test(file)),false);
  assert.ok(releaseListing.includes(projectEvidence),projectEvidence);
+ assert.ok(releaseListing.includes('docs/feedback.md'),'docs/feedback.md');
  const plugin=path.join(temp,'forbidden-plugin');
  ok(call(process.execPath,[path.join(repo,'scripts/pack-plugin.mjs'),'--out',plugin]));
  const pluginFiles=Object.keys(tree(plugin));
  assert.equal(pluginFiles.some(file=>forbidden.test(file)),false);
  assert.ok(pluginFiles.includes(projectEvidence),projectEvidence);
+ assert.ok(pluginFiles.includes('docs/feedback.md'),'docs/feedback.md');
 });
 
 test('older extracted bundle upgrades to a newer version without git, dry run preserves every byte',()=>{

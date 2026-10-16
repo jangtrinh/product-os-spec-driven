@@ -2,6 +2,18 @@
 
 All notable changes to this kit are documented here. This project uses the Keep a Changelog format.
 
+## [2.4.0] - 2026-10-16
+
+### Added
+
+- Added three explicit scope dispositions, private promoted regression cases, PO feedback guidance, and a plain-language command table.
+- Added the private kit feedback issue form and deterministic checks for promoted cases and public documentation.
+
+### Changed
+
+- Clarify and contract gates become STALE once after a 2.4.0 upgrade because their prompts changed.
+- Clarified that Factory manifests have not been smoke-tested.
+
 ## [2.3.0] - 2026-10-15
 
 ### Added
