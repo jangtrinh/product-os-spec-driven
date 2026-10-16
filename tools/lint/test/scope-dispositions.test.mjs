@@ -2,7 +2,9 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const read = file => fs.readFileSync(file, 'utf8');
+// Kit-relative paths resolve from this file, so the suite passes from the repo root or from tools/.
+const kit = new URL('../../../', import.meta.url);
+const read = file => fs.readFileSync(new URL(file, kit), 'utf8');
 const scopeLabels = ['Trong phạm vi', 'Hoãn', 'Ngoài phạm vi'];
 
 function lintContractTemplate(text) {
